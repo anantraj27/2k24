@@ -59,11 +59,13 @@ button.addEventListener("click", async (e) => {
       emailvalid.style.display = "block"
       emailvalid.innerHTML = "🔴 Email is not valid"
       emailvalid.style.color = "red"
+      button.disabled = false
+
     } else {
       emailvalid.style.display = "none"
       try {
         const { data } = await axios.post(
-          `{API}/api/auth/signup,
+          `${API}/api/auth/signup`,
           
           {
             Name: name,
@@ -103,3 +105,4 @@ button.addEventListener("click", async (e) => {
     alert("Please fill all fields")
   }
 })
+      
