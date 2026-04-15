@@ -1,5 +1,0 @@
-# Environment variables (secrets)
-.env
-
-# Node modules (bahut heavy folder)
-node_modules/
