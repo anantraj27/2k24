@@ -5,14 +5,15 @@ const password =document.querySelector(".password")
 const login = document.querySelector(".login")
 login.addEventListener('click', async (e) => {
     e.preventDefault(); // 👈 Sabse important! Page ko reload hone se rokta hai
-
+    console.log("login button click")
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
     try {
+        console.log("data is going ")
         const response = await axios.post(
             `${API}/auth/signin`,
-            {
+            {   
                 Email: emailValue, // Match backend usernameField
                 password: passwordValue
             },
