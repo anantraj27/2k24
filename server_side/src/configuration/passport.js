@@ -17,7 +17,7 @@ passport.use(
         },
         async function verify(Email, password, cb) {
             try {
-                const result = await db.query('SELECT * FROM LOGIN WHERE  email = $1', [Email]);
+                const result = await db.query('SELECT * FROM users WHERE  email = $1', [Email]);
                 if (result.rows.length === 0) {
                     return cb(null, false, {
                         message: 'Enter Email is not related to password',
@@ -59,7 +59,7 @@ passport.serializeUser((user, cb) => {
 
 passport.deserializeUser(async (id, done) => {
     try {
-        const result = await db.query('SELECT * FROM login WHERE id = $1', [id]);
+        const result = await db.query('SELECT * FROM users WHERE id = $1', [id]);
 
         done(null, result.rows[0]);
         // --> req.user = result.rows[0]
