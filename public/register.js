@@ -65,7 +65,7 @@ button.addEventListener("click", async (e) => {
       emailvalid.style.display = "none"
       try {
         const { data } = await axios.post(
-          `${API}/api/auth/signup`,
+          `${API}/auth/signup`,
           
           {
             Name: name,
