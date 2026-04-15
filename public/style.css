@@ -1,0 +1,920 @@
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:#0a0f1a;
+color:white;
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+/* ================= NAVBAR ================= */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
+display:flex;
+justify-content:center;
+
+background:rgba(10,15,30,0.85);
+
+backdrop-filter:blur(10px);
+
+border-bottom:1px solid rgba(0,234,255,0.2);
+
+z-index:1000;
+}
+
+.navbar-items{
+width:90%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:15px 0;
+}
+
+/* ================= BRAND ================= */
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+}
+
+
+
+.brand span{
+font-size:22px;
+font-weight:bold;
+
+color:white;
+}
+
+.brand span span{
+color:#00eaff;
+}
+
+/* ================= MENU ================= */
+
+.nav-menu-list{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+.nav-menu-item{
+color:#ccc;
+text-decoration:none;
+font-weight:500;
+font-size:15px;
+position:relative;
+transition:0.3s;
+}
+
+/* Hover underline animation */
+
+.nav-menu-item::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+
+width:0%;
+height:2px;
+
+background:#00eaff;
+
+transition:0.3s;
+}
+
+.nav-menu-item:hover{
+color:#00eaff;
+}
+
+.nav-menu-item:hover::after{
+width:100%;
+}
+
+/* ================= REGISTER BUTTON ================= */
+
+.register-btn{
+    padding:8px 18px;
+    border:2px solid #4ecbff;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+
+    display:inline-block;
+    transition: all 0.25s ease;
+}
+
+.register-btn:hover{
+    background:#00eaff;
+    color:black;
+
+    transform: translateY(-4px);
+    box-shadow: 
+        0 8px 18px rgba(0,234,255,0.4),
+        0 0 12px #00eaff;
+}
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+#particles-js{
+position:absolute;
+width:100%;
+height:100%;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:70px;
+}
+
+.hero span{
+color:#00eaff;
+}
+
+.btn{
+    background:#00eaff;
+    color:black;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+  display: inline-block;
+  
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover{
+    background:rgb(9, 171, 9);
+    transform: scale(1.2);
+
+}
+/* Hero Animated Title */
+
+.hero-title{
+font-size:70px;
+font-weight:bold;
+letter-spacing:4px;
+color:#ffffff;
+text-align:center;
+}
+
+/* Glow Effect */
+
+.hero-title span{
+color:#00eaff;
+text-shadow:
+0 0 5px #00eaff,
+0 0 10px #00eaff,
+0 0 20px #00eaff;
+}
+
+/* Cursor */
+
+.hero-title span::after{
+content:"|";
+animation:blink 1s infinite;
+margin-left:5px;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
+/* ================= HERO SUBTITLE ================= */
+.hero-subtitle{
+font-size:26px;
+font-weight:500;
+letter-spacing:1px;
+
+color:#0bc6f5;
+
+text-align:center;
+
+margin-top:25px;
+
+position:relative;
+
+padding:12px 24px;
+
+background:rgba(0, 234, 255, 0.05);
+
+border-radius:12px;
+
+backdrop-filter:blur(6px);
+
+box-shadow:0 0 10px rgba(0,234,255,0.2);
+
+transition:all 0.4s ease;
+
+/* Floating animation */
+animation:floatText 4s ease-in-out infinite;
+}
+
+/* Floating keyframes */
+
+@keyframes floatText{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Hover effect */
+
+.hero-subtitle:hover{
+
+transform:translateY(-6px) scale(1.03);
+
+box-shadow:
+0 0 10px rgba(0,234,255,0.4),
+0 0 20px rgba(0,234,255,0.4),
+0 0 30px rgba(0,234,255,0.3);
+
+background:rgba(0,234,255,0.1);
+}
+
+/* Neon underline */
+
+.hero-subtitle::after{
+content:"";
+
+position:absolute;
+
+left:50%;
+bottom:-8px;
+
+transform:translateX(-50%);
+
+width:120px;
+height:3px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00eaff,
+transparent
+);
+
+border-radius:5px;
+
+transition:all 0.4s ease;
+}
+
+.hero-subtitle:hover::after{
+width:200px;
+box-shadow:0 0 10px #00eaff;
+}
+
+
+
+/* Icon */
+
+.event-icon{
+font-size:40px;
+color:#00eaff;
+min-width:60px;
+text-align:center;
+margin-bottom:15px;
+}
+
+/* Content */
+
+.event-content{
+text-align:left;
+}
+
+.event-content h3{
+color:#00eaff;
+margin-bottom:5px;
+}
+
+.event-content p{
+color:#ccc;
+}
+
+#events h2{
+text-align:center;
+width:100%;
+
+font-size:36px;
+
+margin-bottom:40px;
+
+color:#00eaff;
+
+text-shadow:
+0 0 5px rgba(0,234,255,0.6),
+0 0 10px rgba(0,234,255,0.4);
+}
+#events h2::after{
+content:"";
+
+display:block;
+
+width:120px;
+height:3px;
+
+margin:12px auto;
+
+background:linear-gradient(
+90deg,
+transparent,
+#00eaff,
+transparent
+);
+}
+
+
+
+
+section{
+padding:80px 20px;
+text-align:center;
+}
+
+
+
+/* ================= EVENT GRID ================= */
+
+.event-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+max-width:900px;
+margin:auto;
+}
+
+/* ================= EVENT CARD ================= */
+
+
+
+.event-card{
+display:block;
+background:#111827;
+padding:25px;
+border-radius:14px;
+border:1px solid rgba(0,234,255,0.2);
+transition:all 0.35s ease;
+}
+
+/* Hover Animation */
+
+.event-card:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+border:1px solid #00eaff;
+
+box-shadow:
+0 0 10px rgba(0,234,255,0.5),
+0 0 20px rgba(0,234,255,0.3);
+
+}
+/* ================= IMAGE CONTAINER ================= */
+
+.event-image{
+position:relative;
+overflow:hidden;
+
+border-radius:12px;
+
+border:1px solid rgba(0,234,255,0.2);
+
+background:#111827;
+}
+
+/* ================= IMAGE ================= */
+
+.event-image img{
+width:100%;
+height:250px;
+object-fit:cover;
+transition:transform 0.5s;
+}
+
+/* ================= ZOOM EFFECT ================= */
+
+.event-card:hover img{
+transform:scale(1.1);
+}
+
+/* ================= TEXT OVERLAY ================= */
+
+.event-overlay{
+position:absolute;
+bottom:0;
+left:0;
+
+width:100%;
+
+background:linear-gradient(
+transparent,
+rgba(0,0,0,0.85)
+);
+
+padding:20px;
+
+backdrop-filter:blur(3px);
+
+transition:0.3s;
+}
+
+/* Title */
+
+.event-overlay h3{
+color:#00eaff;
+margin-bottom:5px;
+}
+
+/* Description */
+
+.event-overlay p{
+color:#ddd;
+font-size:14px;
+}
+
+/* ================= HOVER GLOW ================= */
+
+.event-card:hover .event-image{
+
+box-shadow:
+0 0 10px rgba(0,234,255,0.4),
+0 0 20px rgba(0,234,255,0.4);
+
+border:1px solid #00eaff;
+
+}
+/* SIDEBAR */
+/* ================= FEST SIDEBAR ================= */
+
+.fest-sidebar{
+position:fixed;
+top:50%;
+left:10px;
+
+transform:translateY(-50%);
+
+display:flex;
+flex-direction:column;
+gap:15px;
+
+z-index:999;
+}
+
+/* ================= SIDEBAR BUTTON ================= */
+
+.fest-icon{
+display:flex;
+align-items:center;
+width:55px;
+height:55px;
+
+border-radius:40px;
+
+background:#0d1323;
+
+overflow:hidden;
+
+text-decoration:none;
+
+color:white;
+box-shadow:0 0 10px rgba(0,234,255,0.3);
+transition:0.4s;
+}
+
+
+
+/* Expand on hover */
+
+.fest-icon:hover{
+width:180px;
+
+background:linear-gradient(
+45deg,
+#00eaff,
+#4ecbff
+);
+
+color:black;
+
+box-shadow:0 0 15px #00eaff;
+}
+
+/* ================= ICON ================= */
+
+
+.icon{
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:55px;
+height:55px;
+
+font-size:22px;
+flex-shrink:0;
+}
+
+
+/* ================= TEXT ================= */
+
+.fest-name{
+font-size:14px;
+font-weight:bold;
+
+opacity:0;
+
+transform:translateX(-10px);
+
+transition:0.4s;
+
+white-space:nowrap;
+}
+
+/* Show text on hover */
+
+.fest-icon:hover .fest-name{
+opacity:1;
+transform:translateX(0);
+}
+
+/* FOOTER */
+
+footer{
+background:#0d1323;
+padding:20px;
+text-align:center;
+}
+
+
+/* ================= AUTH PAGES ================= */
+
+.auth-section{
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.auth-card{
+
+background:#111827;
+
+padding:40px;
+
+border-radius:14px;
+
+width:350px;
+
+text-align:center;
+
+border:1px solid rgba(0,234,255,0.2);
+
+box-shadow:
+0 0 10px rgba(0,234,255,0.3);
+
+}
+
+.auth-card h2{
+margin-bottom:25px;
+color:#00eaff;
+}
+
+.auth-card form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.auth-card input{
+
+padding:12px;
+
+border:none;
+
+border-radius:6px;
+
+background:#1f2937;
+
+color:white;
+
+outline:none;
+}
+
+.auth-card input:focus{
+border:1px solid #00eaff;
+}
+
+.auth-card button{
+
+padding:12px;
+
+background:#00eaff;
+
+border:none;
+
+border-radius:6px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.auth-card button:hover{
+
+box-shadow:0 0 10px #00eaff;
+
+background:#4ecbff;
+
+}
+
+.auth-link{
+margin-top:10px;
+font-size:14px;
+}
+
+.auth-link a{
+color:#00eaff;
+text-decoration:none;
+}
+
+
+/* ================= COUNTDOWN ================= */
+
+.countdown{
+
+display:flex;
+justify-content:center;
+gap:25px;
+
+margin-top:30px;
+
+}
+
+.time-box{
+
+background:#111827;
+
+padding:15px 20px;
+
+border-radius:10px;
+
+text-align:center;
+
+border:1px solid rgba(0,234,255,0.3);
+
+box-shadow:0 0 10px rgba(0,234,255,0.2);
+
+}
+
+.time-box span{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#ff0000;
+
+display:block;
+
+}
+
+.time-box p{
+
+font-size:14px;
+
+margin-top:5px;
+
+color:#ccc;
+
+}
+
+
+
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 900px){
+
+/* NAVBAR */
+
+.navbar-items{
+width:95%;
+}
+
+.nav-menu-list{
+gap:15px;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero-title{
+font-size:45px;
+}
+
+.hero-subtitle{
+font-size:18px;
+padding:10px 15px;
+}
+
+.hero h2{
+font-size:20px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+flex-wrap:wrap;
+gap:15px;
+}
+
+.time-box{
+padding:10px 15px;
+}
+
+.time-box span{
+font-size:20px;
+}
+
+/* EVENTS GRID */
+
+.event-container{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.event-image img{
+height:200px;
+}
+
+/* SIDEBAR */
+
+.fest-sidebar{
+left:5px;
+}
+
+
+.fest-icon{
+width:45px;
+height:45px;
+}
+
+
+.fest-icon:hover{
+width:150px;
+}
+
+/* FORM */
+
+form{
+width:90%;
+}
+
+/* AUTH PAGES */
+
+.auth-card{
+width:90%;
+padding:25px;
+}
+
+}
+
+/* ================= SMALL PHONES ================= */
+
+@media (max-width: 480px){
+
+.hero-title{
+font-size:32px;
+}
+
+.hero-subtitle{
+font-size:16px;
+}
+
+.nav-menu-list{
+gap:10px;
+font-size:13px;
+}
+
+.brand span{
+font-size:18px;
+}
+
+.time-box span{
+font-size:18px;
+}
+
+}
+
+
+
+form{
+display:flex;
+flex-direction:column;
+width:300px;
+margin:auto;
+gap:10px;
+}
+
+button{
+padding:12px;
+background:#00eaff;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#4ecbff;
+box-shadow:0 0 12px #00eaff;
+transform:translateY(-2px);
+}
+
+
+input, select{
+padding:12px;
+background:#1f2937;
+color:white;
+border:1px solid rgba(0,234,255,0.2);
+border-radius:6px;
+outline:none;
+}
+
+input:focus, select:focus{
+border:1px solid #00eaff;
+box-shadow:0 0 8px rgba(0,234,255,0.5);
+}
+
+/* Hover effect */
+
+select:hover{
+
+border:1px solid #00eaff;
+
+}
+
+.brand-logo{
+    width:40px;
+
+    border: 2px solid red;
+    border-radius: 2rem;
+
+    animation: rotate 1.8s linear infinite;
+}
+
+@keyframes rotate{
+    to{
+        transform: rotate(360deg);
+    }
+}

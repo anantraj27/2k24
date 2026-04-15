@@ -1,0 +1,521 @@
+/* ================= BASE ================= */
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: radial-gradient(circle at center, #1a2236 0%, #0a0d14 70%);
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+
+  letter-spacing: 0.2px;
+  color: #e6edf7;
+}
+
+/* ================= PARTICLES ================= */
+/* ================= BACKGROUND ================= */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0a0d14, #020308);
+  overflow: hidden;
+}
+
+/* ================= PARTICLES CONTAINER ================= */
+
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ================= STAR ================= */
+
+.particle {
+
+  position: absolute;
+  bottom: -20px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+background: radial-gradient(
+  circle,
+  rgba(255,255,255,1) 0%,
+  rgba(255,255,255,0.8) 30%,
+  rgba(255,255,255,0.3) 60%,
+  transparent 100%
+);
+  /* glow */
+  box-shadow:
+    0 0 6px white,
+    0 0 12px rgba(255,255,255,0.8),
+    0 0 20px rgba(255,255,255,0.4);
+
+  opacity: 0;
+
+  animation:
+    floatUp linear infinite,
+    twinkle ease-in-out infinite;
+}
+
+/* ================= SIZE VARIATION ================= */
+
+.particle:nth-child(3n) {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(
+  circle,
+  rgba(255,255,255,1) 0%,
+  rgba(255,255,255,0.8) 30%,
+  rgba(255,255,255,0.3) 60%,
+  transparent 100%
+);
+}
+
+.particle:nth-child(4n) {
+  width: 8px;
+  height: 8px;
+}
+
+.particle:nth-child(5n) {
+  width: 3px;
+  height: 3px;
+  
+}
+
+/* ================= SPEED VARIATION ================= */
+
+.particle:nth-child(2n) {
+  animation-duration: 18s, 3s;
+  animation-delay: -2s, 0s;
+}
+
+.particle:nth-child(3n) {
+  animation-duration: 22s, 4s;
+  animation-delay: -4s, 0s;
+}
+
+.particle:nth-child(4n) {
+  animation-duration: 26s, 5s;
+  animation-delay: -6s, 0s;
+}
+
+.particle:nth-child(5n) {
+  animation-duration: 20s, 6s;
+  animation-delay: -8s, 0s;
+}
+
+/* ================= SPREAD ================= */
+
+.particle:nth-child(1){ left:5%; }
+.particle:nth-child(2){ left:12%; }
+.particle:nth-child(3){ left:20%; }
+.particle:nth-child(4){ left:28%; }
+.particle:nth-child(5){ left:35%; }
+.particle:nth-child(6){ left:42%; }
+.particle:nth-child(7){ left:99%;}
+.particle:nth-child(8){ left:58%; }
+.particle:nth-child(9){ left:0%;}
+.particle:nth-child(10){ left:1%;}
+.particle:nth-child(11){ left:5%;}
+.particle:nth-child(12){ left:88%; }
+.particle:nth-child(13){ left:15%; }
+.particle:nth-child(14){ left:30%; }
+.particle:nth-child(15){ left:45%; }
+.particle:nth-child(16){ left:60%; }
+.particle:nth-child(17){ left:75%; }
+.particle:nth-child(18){ left:90%; }
+.particle:nth-child(19){ left:25%; }
+.particle:nth-child(20){ left:55%; }
+.particle:nth-child(21){ left:85%; }
+.particle:nth-child(22){ left:10%; }
+.particle:nth-child(23){ left:40%; }
+.particle:nth-child(24){ left:70%; }
+.particle:nth-child(25){ left:95%; }
+.particle:nth-child(26){ left:35%; }
+.particle:nth-child(27){ left:65%; }
+.particle:nth-child(28){ left:96%}
+.particle:nth-child(29){ left:50%; }
+.particle:nth-child(30){ left:80%; }
+.particle:nth-child(31){ left:97%}
+.particle:nth-child(32){ left:100%}
+
+/* ================= FLOAT ================= */
+
+@keyframes floatUp {
+
+  0% {
+    transform: translateY(0) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-60vh) translateX(30px) scale(1);
+  }
+
+  100% {
+    transform: translateY(-120vh) translateX(-30px) scale(0.8);
+    opacity: 0;
+  }
+
+}
+
+/* ================= TWINKLE ================= */
+
+@keyframes twinkle {
+
+  0%, 100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+/* ================= LAYOUT ================= */
+#container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 28px;
+}
+
+/* ================= HUB ================= */
+.hub {
+  position: relative;
+  width: min(92vw, 500px);
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  
+
+  
+}
+
+/* ================= CENTER ================= */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: clamp(90px, 20vw, 120px);
+  height: clamp(90px, 20vw, 120px);
+  border-radius: 50%;
+
+  background: radial-gradient(circle, #b88a2d 0%, #7a5c1a 60%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  font-weight: 600;
+
+  letter-spacing: 0.6px;
+  color: #1b1405;
+
+  z-index: 5;
+
+  box-shadow:
+    0 0 42px rgba(255,210,122,0.55),
+    0 0 70px rgba(255,210,122,0.18),
+    inset 0 0 22px rgba(0,0,0,0.35);
+}
+
+.center::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+
+  background: conic-gradient(
+    transparent 0%,
+    #ffd27a 25%,
+    transparent 50%
+  );
+
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= NODES ================= */
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: clamp(120px, 36vw, 170px);
+  max-width: 80vw;
+
+  padding: 12px 14px;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.07);
+
+  border: 1px solid rgba(255,255,255,0.18);
+
+  backdrop-filter: blur(12px);
+
+  color: #f2f6ff;
+
+  font-size: clamp(0.72rem, 2.5vw, 0.88rem);
+  font-weight: 500;
+
+  letter-spacing: 0.35px;
+  line-height: 1.35;
+
+  text-align: center;
+
+  z-index: 10;
+
+  transition: 
+    background 0.25s ease,
+    border 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.node:hover {
+  transform: translate(-50%, -55%) scale(1.05);
+
+  background: rgba(255,255,255,0.12);
+
+  border: 1px solid rgba(0,234,255,0.45);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.35),
+    0 0 12px rgba(0,234,255,0.35);
+}
+
+/* ================= POSITIONS ================= */
+.about    { top: 25%; left: 20%; }
+.team     { top: 25%; left: 80%; }
+.gallery  { top: 75%; left: 20%; }
+.schedule { top: 75%; left: 80%; }
+.games    { top: 92%; left: 50%; }
+
+/* ================= CONNECTIONS ================= */
+.connections {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.connections path {
+  fill: none;
+
+  stroke: rgba(255,255,255,0.28);
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 80;
+
+  animation: flow 6s linear infinite;
+}
+
+@keyframes flow {
+  to { stroke-dashoffset: -160; }
+}
+
+/* ================= WELCOME ================= */
+.welcome {
+  text-align: center;
+  z-index: 10;
+}
+
+.welcome h1 {
+  margin: 0;
+
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,0.5);
+}
+
+.welcome p {
+  margin-top: 6px;
+
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+
+  color: #ffd27a;
+
+  letter-spacing: 0.45px;
+
+  opacity: 0.95;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  position: absolute;
+
+  color: rgba(255,255,255,0.65);
+
+  bottom: 30px;
+
+  text-align: center;
+
+  font-size: 0.85rem;
+
+  letter-spacing: 0.4px;
+
+  opacity: 0.7;
+}
+
+.heart {
+  display: inline-block;
+
+  color: #ff5c7a;
+
+  font-weight: 600;
+
+  animation: floatGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+  0% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 600px) {
+
+  /* 1) Body fix */
+  body {
+    overflow-y: hidden;
+  }
+
+  /* 2) Container height fix */
+  #container {
+    min-height: 100dvh;
+    padding-bottom: 80px;
+  }
+
+  /* 3) Hub ko stable banao */
+  .hub {
+    width: 95vw;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    margin-top: 40px;
+  }
+
+  /* 4) Center circle */
+  .center {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
+  }
+
+  /* 5) Nodes (IMPORTANT) */
+  .node {
+    width: 110px;
+    font-size: 0.7rem;
+    padding: 10px;
+  }
+
+  /* 6) Positions ko adjust karo */
+  .about    { top: 20%; left: 25%; }
+  .team     { top: 20%; left: 75%; }
+
+  .gallery  { top: 75%; left: 25%; }
+  .schedule { top: 75%; left: 75%; }
+
+  .games    { top: 100%; left: 50%; }
+
+  /* 7) Footer fix */
+  footer {
+    position: static;
+    margin-top: 120px;
+  }
+
+}
+
+.venue-wrapper {
+  position: relative;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Thread (rope) */
+.thread {
+  width: 2px;
+  height: 40px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.1)
+  );
+
+  margin-bottom: -2px;
+}
+
+/* Venue tag */
+.venue-line {
+
+
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  color: #e6edf3;
+  font-size: 15px;
+  font-weight: 500;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.4),
+    inset 0 0 12px rgba(255,255,255,0.05);
+
+  text-align: center;
+
+  /* floating animation */
+  animation: floatTag 3s ease-in-out infinite;
+}
+
+/* Floating motion */
+@keyframes floatTag {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+.venue-wrapper{
+
+  margin: 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freshers Login</title>
+    <link rel="stylesheet" href="register.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style></style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Step Into the Freshers Arena ✨</h2>
+
+      <form>
+        <input type="text" placeholder="Full Name" class="name" required />
+
+        <input
+          type="text"
+          placeholder="College Registration No"
+          class="registration"
+          required
+        />
+
+        <input type="email" placeholder="Email" class="email" required />
+        <p class="emailValid" ></p>
+
+        <div class="password-container">
+          <input
+            type="password"
+            class="password"
+            placeholder="Enter password"
+          />
+
+     <i class="fa-solid fa-eye eye"></i>
+        </div>
+
+        <div class="password-rules">
+         <p   class="password_message"></p>
+          <p><strong>Password must contain:</strong></p>
+          <ul>
+            <li>At least 8 characters</li>
+            <li>One uppercase letter (A–Z)</li>
+            <li>One lowercase letter (a–z)</li>
+            <li>One number (0–9)</li>
+            <li>One special character (@, #, $, etc.)</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="button">Submit</button>
+      </form>
+    </div>
+    <script src="./register.js"></script>
+  </body>
+</html>
