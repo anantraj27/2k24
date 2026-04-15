@@ -2,7 +2,7 @@ const API = "/api";
 
 const email = document.querySelector(".email")
 const password =document.querySelector(".password")
-
+const login = document.querySelector(".login")
 login.addEventListener('click', async (e) => {
     e.preventDefault(); // 👈 Sabse important! Page ko reload hone se rokta hai
 
