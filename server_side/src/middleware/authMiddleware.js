@@ -6,7 +6,19 @@ export const authenticateUser = (req, res, next) => {
     });
 
 };
+export const checkAuth = (req, res) => {
 
+  if (req.session.user) {
+    return res.status(200).json({
+      success: true,
+      name : req.session.user.name,
+    });
+  }
 
+  return res.status(200).json({
+    success: false
+  });
+
+};
 
 // send response or call next never both

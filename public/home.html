@@ -1,113 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Freshers</title>
-<link rel="stylesheet" href="home.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freshers</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
 
-<body>
+  <body>
+    <div class="bg"></div>
 
-<div class="bg"></div>
+    <div id="container">
+      <!-- particles -->
+      <div class="particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+      </div>
 
-<div id="container">
+      <!-- welcome -->
+      <div class="welcome">
+        <h1 id="greeting"></h1>
+        <p>  Freshers Party ✨2024</p>
 
-  <!-- particles -->
-  <div class="particles">
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-    <span class="particle"></span>
-  </div>
+        <p class="venue-line voting_status">
+          📍 <strong>Venue:</strong> live votting will start soon..
+        </p>
+      </div>
 
-  <!-- welcome -->
-  <div class="welcome">
-    <h1>Welcome, Anant</h1>
-    <p>Freshers Party 2024</p>
- 
+      <!-- HUB -->
+      <div class="hub">
+        <!-- SVG -->
+        <svg
+          class="connections"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path d="M50 50 Q30 25, 15 25" />
+          <path d="M50 50 Q70 25, 85 25" />
+          <path d="M50 50 Q30 75, 15 75" />
+          <path d="M50 50 Q70 75, 85 75" />
+          <path d="M50 50 Q50 85, 50 95" />
+        </svg>
 
+        <!-- center -->
+        <div class="center">2K24</div>
 
+        <!-- nodes -->
+        <div class="node about">📅 <span>Event Scheduled</span></div>
+        <div class="node team">
+          <span class="king"> 👑 </span> <span>know your Mr/Ms Candidates</span>
+        </div>
+        <div class="node gallery">
+          🗳 <span>Vote your Mr/Ms Candidates</span>
+        </div>
+        <div class="node schedule">
+          📝 <span>Register yourself in an Event</span>
+        </div>
+        <div class="node games">🤝 <span>Meet to Coordinators 🧑‍💻</span></div>
+      </div>
+      <footer>
+        Engineered with <span class="heart">❤️</span>and precision
+        <br />Contact: tech@college.edu<br />Version: 1.0
+      </footer>
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io()
+    console.log(socket)
+    let vote_status = document.querySelector(".voting_status")
+    console.log(vote_status)
 
-
-  <p class="venue-line voting_status">
-    📍 <strong >Venue:</strong> live votting will start soon..
-  </p>
-
-
-
-  </div>
-
-  <!-- HUB -->
-  <div class="hub">
-
-    <!-- SVG -->
-    <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-
-   <path d="M50 50 Q30 25, 15 25" />
-<path d="M50 50 Q70 25, 85 25" />
-<path d="M50 50 Q30 75, 15 75" />
-<path d="M50 50 Q70 75, 85 75" />
-<path d="M50 50 Q50 85, 50 95" />
-
-    </svg>
-
-    <!-- center -->
-    <div class="center">2K24</div>
-
-    <!-- nodes -->
-    <div class="node about">📅 <span>Event Scheduled</span></div>
-    <div class="node team"> <span class="king">  👑 </span> <span>know your Mr/Ms Candidates</span></div>
-    <div class="node gallery">🗳 <span>Vote your Mr/Ms Candidates</span></div>
-    <div class="node schedule">📝 <span>Register yourself in an Event</span></div>
-    <div class="node games">🤝 <span>Meet to Coordinators 🧑‍💻</span></div>
-
-  </div>
-<footer>Engineered with <span class="heart">❤️</span>and precision <br>Contact: tech@college.edu<br>Version: 1.0 </footer>
-</div>
-
-
-
-</body>
- <script src="/socket.io/socket.io.js"></script>
-<script >
-
-const socket =io();
-console.log(socket)
-let vote_status = document.querySelector(".voting_status");
-console.log(vote_status)
-
- socket.on('announcment',(msg)=>{
-  vote_status.innerHTML=msg
- })
-
-</script>
+    socket.on("announcment", (msg) => {
+      vote_status.innerHTML = msg
+    })
+  </script>
+  <script src="home.js"></script>
 </html>

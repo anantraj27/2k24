@@ -13,16 +13,17 @@ router.use("/", pageRoutes)
 router.use("/home", pageRoutes)
 router.use("/chat", pageRoutes)
 router.use("/auth", authRoutes)
-router.post(
-  "/verification",
 
-  (req, res) => {
-    res.status(200).json({
-      success: false,
-      message: "Authenticated",
-    })
-  },
-)
+// router.post(
+//   "/verification",
+
+//   (req, res) => {
+//     res.status(200).json({
+//       success: false,
+//       message: "Authenticated",
+//     })
+//   },
+// )
 export default router
 //Or more clearly:
 // “Attach the authRoutes router so that any request

@@ -148,14 +148,14 @@ clearInterval(countdown);
 
 
 const login = document.querySelector(".register-btn")
-
+const API = "/api";
 login.addEventListener('click', async (e) => {
 
   
     try {
-        const  data  = await axios.post(
-            '/verification',
-            {},
+        const  {data}  = await axios.get(
+            `${API}/auth/checkAuth`,
+         
             {
                 withCredentials: true
             }
@@ -163,8 +163,8 @@ login.addEventListener('click', async (e) => {
        
    
         if (data.data.success) {
-            alert(data.data.message);
-            window.location.href = "/home";
+           sessionStorage.setItem("username", data.name);
+            window.location.href = "home.html";
         } else {
             window.location.href ='login.html'
             alert("Hey user 🤗 we couldn't find your account. Please log in. If you're new, go back 🔙 and register first.");

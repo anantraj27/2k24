@@ -1,9 +1,17 @@
 import express from "express"
-
+import { checkAuth } from "../middleware/authMiddleware.js"
 import { signupController } from "../controller/authController.js"
 import passport from "passport"
-const router = express.Router()
-router.post("/signup", signupController)
+const router = express.Router();
+
+// |-----------------------------------------------------------------------
+//auth routes ...................
+
+router.post("/signup", signupController);
+router.post("/checkAuth",checkAuth);
+
+
+// |-----------------------------------------------------------------------
 router.post("/signin", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
