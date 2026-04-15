@@ -4,47 +4,40 @@ const email = document.querySelector(".email")
 const password =document.querySelector(".password")
 
 login.addEventListener('click', async (e) => {
-    e.preventDefault();   
-      const emailValue=email.value.trim();
-      const passwordValue= password.value.trim();
-  
+    e.preventDefault(); // 👈 Sabse important! Page ko reload hone se rokta hai
+
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+
     try {
-        const  {data}  = await axios.post(
+        const response = await axios.post(
             `${API}/auth/signin`,
-                    {
-        Email: emailValue,
-        password: passwordValue
-      },
-         
             {
-                withCredentials: true
-            }
+                Email: emailValue, // Match backend usernameField
+                password: passwordValue
+            },
+            { withCredentials: true }
         );
-       
-   
-        if (data.success) {
-           sessionStorage.setItem("username", data.name);
-            window.location.href = "/home.html";
+
+        // Axios response data ko 'data' property mein rakhta hai
+        const result = response.data;
+
+        if (result.success) {
+            console.log("Login Success!");
+            sessionStorage.setItem("username", result.name);
+            window.location.href = "/home.html"; // Redirect to home
         } else {
-            window.location.href ='/login.html'
-            alert("Hey user 🤗 we couldn't find your account. Please log in. If you're new, go back 🔙 and register first.");
+            // Yeh tab chalega jab success: false ho
+            alert("Login failed: " + result.message);
+            window.location.href = '/login.html';
         }
 
     } catch (error) {
-            if (error.response) {
-        // Server responded with error status (4xx / 5xx)
-        console.log("Status:", error.response.status);
-        console.log("Data:", error.response.data);
-
-        alert(error.response.data.message || "Server error");
-
-    } else if (error.request) {
-        // Request sent but no response received
-        alert("Server not responding");
-
-    } else {
-        // Something wrong in frontend code
-        alert("Unexpected error: " + error.message);
-    }
+        // Agar status 401 (Unauthorized) aata hai toh error block mein jayega
+        if (error.response) {
+            alert(error.response.data.message || "Invalid Email or Password");
+        } else {
+            alert("Server not responding");
+        }
     }
 });
