@@ -8,7 +8,7 @@ const router = express.Router();
 //auth routes ...................
 
 router.post("/signup", signupController);
-router.post("/checkAuth",checkAuth);
+router.get("/checkAuth",checkAuth);
 
 
 // |-----------------------------------------------------------------------
