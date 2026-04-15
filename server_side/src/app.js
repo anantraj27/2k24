@@ -26,9 +26,9 @@ const server = createServer(app);
 
 app.use(
   cors({
-    origin: true,
+    origin: "https://fresher-2k24.vercel.app",
     credentials: true,
-    methods :['PUT', 'PATCH', 'DELETE']
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
   })
 );
 
@@ -97,11 +97,11 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true,
-      secure: true,
-     
-    }
+  maxAge: 1000 * 60 * 60 * 24 * 7,
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+}
   })
 );
 
