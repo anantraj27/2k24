@@ -21,7 +21,7 @@ login.addEventListener('click', async (e) => {
 
         // Axios response data ko 'data' property mein rakhta hai
         const result = response.data;
-
+         console.log(result);
         if (result.success) {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
