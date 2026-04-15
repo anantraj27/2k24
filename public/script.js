@@ -155,10 +155,7 @@ login.addEventListener('click', async (e) => {
     try {
         const  {data}  = await axios.get(
             `${API}/auth/checkAuth`,
-            {
-        Email: emailValue,
-        password: passwordValue
-      },
+    
          
             {
                 withCredentials: true

@@ -1,10 +1,19 @@
 const API = "/api";
-login.addEventListener('click', async (e) => {
 
+const email = document.querySelector(".email")
+const password =document.querySelector(".password")
+
+login.addEventListener('click', async (e) => {
+      const emailValue=email.value.trim();
+      const passwordValue= password.value.trim();
   
     try {
         const  {data}  = await axios.post(
             `${API}/auth/signin`,
+                    {
+        Email: emailValue,
+        password: passwordValue
+      },
          
             {
                 withCredentials: true
