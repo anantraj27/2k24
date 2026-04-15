@@ -162,7 +162,7 @@ login.addEventListener('click', async (e) => {
         );
        
    
-        if (data.data.success) {
+        if (data.success) {
            sessionStorage.setItem("username", data.name);
             window.location.href = "home.html";
         } else {
