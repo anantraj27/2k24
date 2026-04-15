@@ -26,7 +26,7 @@ const server = createServer(app);
 
 app.use(
   cors({
-    origin: "https://fresher-2k24.vercel.app",
+    origin: "https://2k24-five.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
   })
