@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://personalwebsite-1-9nzz.onrender.com/:path*"
+      "destination": "https://twok24.onrender.com/:path*"
     }
   ]
 }

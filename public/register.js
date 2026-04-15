@@ -45,7 +45,7 @@ password1.addEventListener("input", () => {
 const emailvalid = document.querySelector(".emailValid")
 
 
-
+const API = "/api";
 button.addEventListener("click", async (e) => {
   e.preventDefault()
   button.disabled = true
@@ -63,7 +63,7 @@ button.addEventListener("click", async (e) => {
       emailvalid.style.display = "none"
       try {
         const { data } = await axios.post(
-          '/api/auth/signup',
+          `{API}/api/auth/signup,
           
           {
             Name: name,

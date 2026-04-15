@@ -11,7 +11,7 @@ import { createServer } from "http";
 import { Server } from 'socket.io';
 import { RedisStore } from "connect-redis";
 import { createClient } from "redis";
-
+import cors from "cors";
 // Node.js → runtime
 // http.createServer → actual server
 // Express → request handler
@@ -23,6 +23,14 @@ dotenv.config();
 
 const app = express();
 const server = createServer(app);
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods :['PUT', 'PATCH', 'DELETE']
+  })
+);
 
 const io = new Server(server);
 //socket.io
@@ -84,7 +92,7 @@ const redisStore = new RedisStore({
 app.set("trust proxy", 1);
 app.use(
   session({
-   
+    store: redisStore,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
