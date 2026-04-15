@@ -4,6 +4,7 @@ const email = document.querySelector(".email")
 const password =document.querySelector(".password")
 
 login.addEventListener('click', async (e) => {
+    e.preventDefault();   
       const emailValue=email.value.trim();
       const passwordValue= password.value.trim();
   
