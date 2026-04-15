@@ -39,6 +39,7 @@ router.post("/signin", (req, res, next) => {
       return res.json({
         success: true,
         message: "Login successful",
+        name: req.user.name
       })
     })
   })(req, res, next)
