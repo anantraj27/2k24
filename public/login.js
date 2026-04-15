@@ -3,7 +3,7 @@ login.addEventListener('click', async (e) => {
 
   
     try {
-        const  {data}  = await axios.get(
+        const  {data}  = await axios.post(
             `${API}/auth/signin`,
          
             {
@@ -14,9 +14,9 @@ login.addEventListener('click', async (e) => {
    
         if (data.success) {
            sessionStorage.setItem("username", data.name);
-            window.location.href = "home.html";
+            window.location.href = "/home.html";
         } else {
-            window.location.href ='login.html'
+            window.location.href ='/login.html'
             alert("Hey user 🤗 we couldn't find your account. Please log in. If you're new, go back 🔙 and register first.");
         }
 
