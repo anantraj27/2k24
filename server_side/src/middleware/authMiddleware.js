@@ -8,15 +8,19 @@ export const authenticateUser = (req, res, next) => {
 };
 export const checkAuth = (req, res) => {
 
-  if (req.session.user) {
+//   console.log("isAuthenticated:", req.isAuthenticated());
+//   console.log("User:", req.user);
+
+  if (req.isAuthenticated()) {
     return res.status(200).json({
       success: true,
-      name : req.session.user.name,
+      name: req.user.name,
     });
   }
 
   return res.status(200).json({
-    success: false
+    success: false,
+    message: "Not authenticated"
   });
 
 };

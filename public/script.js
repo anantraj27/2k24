@@ -168,7 +168,6 @@ login.addEventListener('click', async (e) => {
             window.location.href = "home.html";
         } else {
             window.location.href ='login.html'
-            alert("Hey user 🤗 we couldn't find your account. Please log in. If you're new, go back 🔙 and register first.");
         }
 
     } catch (error) {
