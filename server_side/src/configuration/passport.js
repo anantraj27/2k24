@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy } from 'passport-local'; ///  importing local
 
 import env from 'dotenv'; /// library for usieng process.env.  name
-// import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 dotenv.config();
 import  db  from './db.js';
@@ -28,16 +28,16 @@ passport.use(
                     const user = result.rows[0];
                     const storedPassword = result.rows[0].password;
 
-                    bcrypt.compare(password, storedPassword, (err, result) => {
+                    bcrypt.compare(password, storedPassword, (err, ismatch) => {
                         if (err) {
                             return cb(err);
                         } else {
-                            if (!result) {
+                            if (!ismatch) {
                                 return cb(null, false, {
                                     message: 'Wrong password',
                                 });
                             }
-                            if (result) {
+                            if (ismatch) {
                                 return cb(null, user);
                             } else {
                                 return cb(null, false);
