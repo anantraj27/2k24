@@ -4,7 +4,7 @@ const email = document.querySelector(".email")
 const password =document.querySelector(".password")
 const login = document.querySelector(".login")
 login.addEventListener('click', async (e) => {
-    e.preventDefault(); // 👈 Sabse important! Page ko reload hone se rokta hai
+    e.preventDefault(); // 
     console.log("login button click")
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();

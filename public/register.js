@@ -77,13 +77,25 @@ button.addEventListener("click", async (e) => {
           },
         )
        console.log(data)
-        if (data.success) {
+
+       if(!data.success){
+        const err =  new Error(data.message);
+        err.galti = "REGISTRATION_ERROR";  // because JS me objects dynamic hote hain.
+         throw err;
+       }
+       /*
+       dynamic behaviour rokna  ka liya .. 
+       - Object.freeze() // no edit no add .... 
+       -  Object.seal()  // you can edit but not add ...
+        
+       */
           alert(data.message)
           window.location.href = "/login.html"
-        } else {
-          alert(data.message)
-        }
+       
       } catch (error) {
+        if(error.galti==="REGISTRATION_ERROR"){
+          console.log("Failed to add data in database .....")
+        }
         if (error.response) {
           // Server responded with error status (4xx / 5xx)
           console.log("Status:", error.response.status)

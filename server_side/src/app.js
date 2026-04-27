@@ -28,7 +28,8 @@ app.use(
   cors({
     origin: "https://2k24-five.vercel.app",
     credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+   
   })
 );
 

@@ -40,84 +40,84 @@ form.reset();
 
 /* ================= PARTICLES BACKGROUND ================= */
 
-// particlesJS("particles-js",{
-// particles:{
+particlesJS("particles-js",{
+particles:{
 
-// number:{
-// value:80,
-// density:{
-// enable:true,
-// value_area:800
-// }
-// },
+number:{
+value:80,
+density:{
+enable:true,
+value_area:800
+}
+},
 
-// color:{
-// value:"#00eaff"
-// },
+color:{
+value:"#00eaff"
+},
 
-// shape:{
-// type:"circle"
-// },
+shape:{
+type:"circle"
+},
 
-// opacity:{
-// value:0.5
-// },
+opacity:{
+value:0.5
+},
 
-// size:{
-// value:3,
-// random:true
-// },
+size:{
+value:3,
+random:true
+},
 
-// line_linked:{
-// enable:true,
-// distance:150,
-// color:"#00eaff",
-// opacity:0.4,
-// width:1
-// },
+line_linked:{
+enable:true,
+distance:150,
+color:"#00eaff",
+opacity:0.4,
+width:1
+},
 
-// move:{
-// enable:true,
-// speed:2,
-// direction:"none",
-// random:false,
-// straight:false,
-// out_mode:"out"
-// }
+move:{
+enable:true,
+speed:2,
+direction:"none",
+random:false,
+straight:false,
+out_mode:"out"
+}
 
-// },
+},
 
-// interactivity:{
+interactivity:{
 
-// detect_on:"canvas",
+detect_on:"canvas",
 
-// events:{
-// onhover:{
-// enable:true,
-// mode:"grab"
-// },
-// onclick:{
-// enable:true,
-// mode:"push"
-// }
-// },
+events:{
+onhover:{
+enable:true,
+mode:"grab"
+},
+onclick:{
+enable:true,
+mode:"push"
+}
+},
 
-// modes:{
-// grab:{
-// distance:140,
-// line_linked:{
-// opacity:1
-// }
-// },
-// push:{
-// particles_nb:4
-// }
-// }
+modes:{
+grab:{
+distance:140,
+line_linked:{
+opacity:1
+}
+},
+push:{
+particles_nb:4
+}
+}
 
-// },
+},
 
-// retina_detect:true
-// });
+retina_detect:true
+});
 
 /* ================= COUNTDOWN TIMER ================= */
 
