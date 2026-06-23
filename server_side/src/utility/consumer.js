@@ -1,9 +1,12 @@
 import { Worker } from 'bullmq';
 import nodemailer from "nodemailer"
-import { transporter } from './EmailVerificationService.js';
+
 import crypto from "crypto";
 import { bullConnection } from './producer.js';
+import { Resend } from 'resend';
 
+
+const resend = new Resend(process.env.RESEND_KEY);
 console.log("worker hii ")
 console.log("SMTP_USER =", process.env.SMTP_USER);
 console.log("SMTP_FROM =", process.env.SMTP_FROM);
@@ -20,8 +23,8 @@ console.log("APP_URL =", process.env.APP_URL);
      console.log("verification url-->",verificationUrl)
     try {
             console.log("BEFORE EMAIL SEND ...")
-            const info = await transporter.sendMail({
-            from: `${process.env.SMTP_FROM}`, // sender address
+           await resend.emails.send({
+            from: 'onboarding@resend.dev', // sender address
             to: job.data.email, // list of recipients
             subject: "Verify your email address..✨ ", // subject line
             // plain text body
@@ -33,10 +36,7 @@ console.log("APP_URL =", process.env.APP_URL);
             `
         , // HTML body
         });
-          console.log("AFTER EMAIL SEND ...");
-            console.log("Message sent: %s", info.messageId);
-
-            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        
   }
   catch (err) {
          console.error("Error while sending mail:", err);
