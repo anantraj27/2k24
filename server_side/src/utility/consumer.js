@@ -1,6 +1,6 @@
 import { Worker } from 'bullmq';
 import nodemailer from "nodemailer"
-import { transporter } from './index.js';
+import { transporter } from './EmailVerificationService.js';
 import IORedis from "ioredis";
 
 export const bullConnection = new IORedis(
@@ -23,7 +23,7 @@ console.log("worker hii ")
     
     try {
             const info = await transporter.sendMail({
-            from: '"happy578727@gmail.com"', // sender address
+            from: `"My App" <${process.env.SMTP_FROM}>`, // sender address
             to: job.data.email, // list of recipients
             subject: "Verify your email address..✨ ", // subject line
             // plain text body
