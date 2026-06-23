@@ -59,14 +59,13 @@ export const VerifyEmail = async (req,res) =>{
 const {token} = req.query;
 
                 try {
-                  const user=  await db.query('SELECT id FROM  users  WHERE token=$1 AND is_verified=$2',[token,false]);
-                
-                  const userId =user.rows[0].id 
-                  if(userId){
-                   
-                    return res.status(400).json({ error: 'Invalid or already used token' })
-                    
-                  }
+                  const user=  await db.query('SELECT id FROM  users  WHERE verification_token=$1 AND is_verified=$2',[token,false]);
+                 
+                  if (user.rows.length === 0) {
+                      return res.status(400).json({
+                          error: "Invalid or already used token"
+                      });
+                    }
 
                   if( user.rows[0].verification_expires_at && user.rows[0].verification_expires_at <new Date()){
 
