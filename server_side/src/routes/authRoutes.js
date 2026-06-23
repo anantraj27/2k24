@@ -1,5 +1,5 @@
 import express from "express"
-// import { checkAuth } from "../middleware/authMiddleware.js"
+import { checkAuth } from "../middleware/authMiddleware.js"
 import { signupController ,signinController  } from "../controller/authController.js"
 // import { signinController } from "../controller/authController.js"
 import passport from "passport"
@@ -13,7 +13,7 @@ const authRoutes = express.Router();
 
 
 authRoutes .post("/signup", signupController)
-// authRoutes .get("/checkAuth",checkAuth);
+authRoutes .get("/checkAuth",checkAuth);
 authRoutes .post("/signin", signinController)
 authRoutes.get('/verify-email',VerifyEmail)
 export default authRoutes
