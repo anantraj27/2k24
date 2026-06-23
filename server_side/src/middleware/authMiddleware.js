@@ -19,6 +19,7 @@ export const checkAuth = (req, res) => {
   });
 
 };
+}
 export const checkAdminPermission = (req, res, next) => {
 
     if (!req.isAuthenticated()) {
