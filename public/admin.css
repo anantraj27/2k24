@@ -1,0 +1,329 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+}
+
+.topbar{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  padding:15px;
+  background:#222;
+  color:white;
+}
+
+#menuBtn{
+  font-size:24px;
+  cursor:pointer;
+}
+
+.container{
+  display:flex;
+}
+
+#sidebar{
+  width:250px;
+  background:#333;
+  min-height:100vh;
+}
+
+#sidebar ul{
+  list-style:none;
+}
+
+#sidebar li{
+  padding:15px;
+  color:white;
+  cursor:pointer;
+}
+
+#sidebar li:hover{
+  background:#444;
+}
+
+main{
+  flex:1;
+  padding:20px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.card{
+  padding:20px;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:10px;
+}
+
+.accept{
+  background-color:#22C55E;
+  color:white;
+}
+
+.reject{
+  background-color:#EF4444;
+  color:white;
+}
+
+button{
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  #sidebar{
+    position:fixed;
+    left:-250px;
+    top:0;
+    transition:.3s;
+    z-index:1000;
+  }
+
+  #sidebar.show{
+    left:0;
+  }
+
+  .container{
+    display:block;
+  }
+}
+/* =========================
+   EVENT SCHEDULE SECTION
+========================= */
+
+#events{
+    padding:20px;
+}
+
+#events h2{
+    margin-bottom:20px;
+}
+
+.event-form{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.event-form input,
+.event-form select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.event-form input:focus,
+.event-form select:focus{
+    border-color:#2563eb;
+}
+
+#createEventBtn{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+
+#createEventBtn:hover{
+    background:#1d4ed8;
+}
+#createEventBtn:disabled{
+    cursor:not-allowed;
+    opacity: 0.5;
+}
+
+#events hr{
+    margin:30px 0;
+    border:none;
+    border-top:1px solid #ddd;
+}
+
+/* =========================
+   EVENT CARDS
+========================= */
+
+#scheduledEvents{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.event-card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.event-card h4{
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.event-card p{
+    margin:8px 0;
+    line-height:1.5;
+}
+
+.status{
+    font-weight:600;
+}
+
+.upcoming{
+    color:#f59e0b;
+}
+
+.live{
+    color:#22c55e;
+}
+
+.completed{
+    color:#2563eb;
+}
+
+.cancelled{
+    color:#ef4444;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.start-btn,
+.complete-btn,
+.delete-btn{
+    border:none;
+    border-radius:8px;
+    padding:10px 15px;
+    cursor:pointer;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+.start-btn{
+    background:#22c55e;
+}
+
+.start-btn:hover{
+    background:#16a34a;
+}
+
+.complete-btn{
+    background:#2563eb;
+}
+
+.complete-btn:hover{
+    background:#1d4ed8;
+}
+
+.delete-btn{
+    background:#ef4444;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:768px){
+
+    #events{
+        padding:15px;
+    }
+
+    .event-form{
+        grid-template-columns:1fr;
+    }
+
+    #scheduledEvents{
+        grid-template-columns:1fr;
+    }
+
+    .event-card{
+        padding:16px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .start-btn,
+    .complete-btn,
+    .delete-btn,
+    #createEventBtn{
+        width:100%;
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+    #events h2{
+        font-size:22px;
+    }
+
+    .event-card h4{
+        font-size:18px;
+    }
+
+    .event-card p{
+        font-size:14px;
+    }
+
+    .event-form input,
+    .event-form select{
+        font-size:14px;
+    }
+
+}

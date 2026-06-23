@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshers Admin Dashboard</title>
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <button id="menuBtn">☰</button>
+  <h2>Freshers Admin Dashboard</h2>
+</nav>
+
+<div class="container">
+
+  <aside id="sidebar">
+    <ul>
+      <li data-page="dashboard">Dashboard</li>
+      <li data-page="participants">Participants</li>
+      <li data-page="events">Event Schedule</li>
+      <li data-page="voting">Voting Control</li>
+      <li data-page="results">Results</li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <section id="dashboard" class="page active">
+      <h2>Dashboard</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Total Participants</h3>
+          <p id ="total_user" ></p>
+        </div>
+
+        <div class="card">
+          <h3>Pending</h3>
+          <p id ="pending_user"></p>
+        </div>
+
+        <div class="card">
+          <h3>Approved</h3>
+          <p id="approved_user"></p>
+        </div>
+
+        <div class="card">
+          <h3>Rejected</h3>
+          <p id ="rejected_user"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="participants" class="page">
+      <h2>Participants</h2>
+
+      <select id="userCategory">
+        <option value="">
+            Select Status
+        </option>
+        <option value="1">
+            Pending users   
+        </option>
+        <option value="2">
+            Approved users
+        </option>
+        <option value="3">
+            Rejected users
+        </option>
+         <option value="4">
+            All users
+        </option>
+      </select>
+
+      <table class="user-data">
+        
+      </table>
+    </section>
+
+    <section id="events" class="page">
+
+    <h2>Event Schedule</h2>
+
+    <div class="event-form">
+              <select id="eventCategory" required>
+            <option value="">
+                Select Category
+            </option>
+
+            <!-- Backend se load honge -->
+
+            <option value="1">
+                Team
+            </option>
+
+            <option value="2">
+                Solo
+            </option>
+
+        </select>
+
+        <select id="eventSelect" required>
+            
+
+            <!-- Backend se  evnts jo hai  -->
+
+            
+
+        </select>
+        
+        <select id="teamA" required>
+            
+
+            <!-- Backend se  Team-A ka  naam   -->
+
+            
+
+        </select>
+        <select id="teamB"  required>
+            
+
+            <!-- Backend se  Team-B ka  naam   -->
+
+            
+
+        </select>
+        <input
+            type="date"
+            id="eventDate"
+            required
+        >
+
+        <input
+            type="time"
+            id="eventTime"
+            required
+        >
+
+        <input
+            type="text"
+            id="venue"
+            placeholder="Venue"
+            required
+        >
+      
+
+        <button id="createEventBtn"  disabled>
+            Schedule Event
+        </button>
+
+    </div>
+
+    <hr>
+
+    <h3>Scheduled Events</h3>
+
+    <div id="scheduledEvents">
+
+        <!-- Dynamic Card Example -->
+
+           
+           
+    </div>
+
+</section>
+
+    <section id="voting" class="page">
+      <h2>Voting Control</h2>
+
+      <p>Status: <span id="voteStatus">OFF</span></p>
+
+      <button id="startVote">Start Voting</button>
+      <button id="stopVote">Stop Voting</button>
+    </section>
+
+    <section id="results" class="page">
+      <h2>Results</h2>
+
+      <ul>
+        <li>Anant - 45 votes</li>
+        <li>Rahul - 39 votes</li>
+        <li>Aman - 28 votes</li>
+      </ul>
+    </section>
+
+  </main>
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/pages/admin.js" type ="module"></script>
+
+</body>
+</html>

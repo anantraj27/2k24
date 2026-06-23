@@ -6,3 +6,12 @@ window.addEventListener("DOMContentLoaded", () => {
     `Hello, ${name} 👋`;
 
 });
+
+const scheduledEvent = document.querySelector(".scheduled-events");
+
+
+scheduledEvent.addEventListener("click",()=>{
+   
+  window.location.href="/scheduled-events.html"
+
+})
