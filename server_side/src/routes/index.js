@@ -3,16 +3,17 @@ import express from "express"
 // import notesRoutes from './noteRoutes.js';
 import pageRoutes from "./pageRoutes.js"
 import authRoutes from "./authRoutes.js"
+import adminRoutes from "./adminRoutes.js"
+import dashboardRoutes from "./dashboardRoutes.js"
 // import { authenticateUser } from "../middleware/authMiddleware.js"
-
 
 
 const router = express.Router()
 
-router.use("/", pageRoutes)
-router.use("/home", pageRoutes)
-router.use("/chat", pageRoutes)
+router.use("/page", pageRoutes)
 router.use("/auth", authRoutes)
+router.use("/user",dashboardRoutes)
+router.use("/admin" , adminRoutes)
 
 // router.post(
 //   "/verification",

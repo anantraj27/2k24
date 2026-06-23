@@ -1,47 +1,18 @@
 import express from "express"
-import { checkAuth } from "../middleware/authMiddleware.js"
-import { signupController } from "../controller/authController.js"
+// import { checkAuth } from "../middleware/authMiddleware.js"
+import { signupController ,signinController  } from "../controller/authController.js"
+// import { signinController } from "../controller/authController.js"
 import passport from "passport"
-const router = express.Router();
+import adminRoutes from "./adminRoutes.js"
+const authRoutes = express.Router();
 
 // |-----------------------------------------------------------------------
 //auth routes ...................
 
-router.post("/signup", signupController);
-router.get("/checkAuth",checkAuth);
 
 
-// |-----------------------------------------------------------------------
-router.post("/signin", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        message: "Server error",
-      })
-    }
+authRoutes .post("/signup", signupController)
+// authRoutes .get("/checkAuth",checkAuth);
+authRoutes .post("/signin", signinController)
+export default authRoutes
 
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: info.message || "Invalid credentials",
-      })
-    }
-
-    req.logIn(user, (err) => {
-      if (err) {
-        return res.status(500).json({
-          success: false,
-          message: "Login failed",
-        })
-      }
-
-      return res.json({
-        success: true,
-        message: "Login successful",
-        name: req.user.name
-      })
-    })
-  })(req, res, next)
-})
-export default router

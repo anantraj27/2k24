@@ -23,17 +23,18 @@ dotenv.config();
 
 const app = express();
 const server = createServer(app);
-
+console.log("NAME -->", process.env.NAME)
+console.log("process id -->",process.pid)
 app.use(
   cors({
-    origin: "https://2k24-five.vercel.app",
+    origin: "https://2k24-five.vercel.app", // origin scheme(protocol)+domain+port, same sit domain  
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
    
   })
 );
 
-const io = new Server(server);
+export const io = new Server(server);
 //socket.io
 
 io.on("connection",(socket)=>{
@@ -41,7 +42,7 @@ io.on("connection",(socket)=>{
   
 
 
-   socket.on("typing", () => {
+  socket.on("typing", () => {
   socket.broadcast.emit("type_message",{
 
       message :'user is typing',
@@ -72,7 +73,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     express.static(
-        path.join(__dirname, '../public')
+        path.join(__dirname, '../../public')
     )
 )
 /* ------------------ SESSION ------------------ */
@@ -90,6 +91,11 @@ await redisClient.connect();
 const redisStore = new RedisStore({
   client: redisClient
 });
+await redisClient.set("name",'anant')
+
+await redisClient.expire("name",60)
+
+
 app.set("trust proxy", 1);
 app.use(
   session({

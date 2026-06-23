@@ -6,23 +6,25 @@ export const authenticateUser = (req, res, next) => {
     });
 
 };
-export const checkAuth = (req, res) => {
+export const checkAdminPermission = (req, res, next) => {
 
-//   console.log("isAuthenticated:", req.isAuthenticated());
-//   console.log("User:", req.user);
+    if (!req.isAuthenticated()) {
+        return res.status(401).json({
+            success: false,
+            message: "Not authenticated"
+        });
+    }
 
-  if (req.isAuthenticated()) {
-    return res.status(200).json({
-      success: true,
-      name: req.user.name,
-    });
-  }
+    if (req.user.role !== "admin") {
+        return res.status(403).json({
+            success: false,
+            message: "Access denied"
+        });
+    }
 
-  return res.status(200).json({
-    success: false,
-    message: "Not authenticated"
-  });
-
+    next();
 };
+
+
 
 // send response or call next never both
