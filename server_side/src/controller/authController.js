@@ -29,6 +29,12 @@ export const signupController = async (req, res) => {
                         expiresAt
                     ]);
                     await pushEmailToQueue(email,token)
+                    
+
+                    return res.status(201).json({
+                      success: true,
+                      message: "Verification email sent"
+                    });
                 } catch (error) {
                     return res.status(409).json({
                         success: false,
