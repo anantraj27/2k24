@@ -14,3 +14,4 @@ export const transporter = nodemailer.createTransport({
 });
 
 
+console.log("passs aatya hai",process.env.SMTP_PASS)
