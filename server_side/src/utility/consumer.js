@@ -5,6 +5,9 @@ import crypto from "crypto";
 import { bullConnection } from './producer.js';
 
 console.log("worker hii ")
+console.log("SMTP_USER =", process.env.SMTP_USER);
+console.log("SMTP_FROM =", process.env.SMTP_FROM);
+console.log("APP_URL =", process.env.APP_URL);
  const worker = new Worker(
   'email_send',
   async job => {
