@@ -18,36 +18,29 @@ console.log("APP_URL =", process.env.APP_URL);
     console.log("----------------------")
     const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${job.data.token}`
      console.log("verification url-->",verificationUrl)
-             
-               console.log("BEFORE VERIFY");
+    try {
+            console.log("BEFORE EMAIL SEND ...")
+            const info = await transporter.sendMail({
+            from: `${process.env.SMTP_FROM}`, // sender address
+            to: job.data.email, // list of recipients
+            subject: "Verify your email address..✨ ", // subject line
+            // plain text body
+            html: `
+            <h2>Verify your email</h2>
+            <p>Click the link below to verify your email address. This link expires in 24 hours.</p>
+            <a href="${verificationUrl}" style="...">Verify Email</a>
+            <p>If you didn't create an account, you can safely ignore this email.</p>
+            `
+        , // HTML body
+        });
+          console.log("AFTER EMAIL SEND ...");
+            console.log("Message sent: %s", info.messageId);
 
-              await transporter.verify();
-
-              console.log("AFTER VERIFY");
-
-  //   try {
-  //           console.log("BEFORE EMAIL SEND ...")
-  //           const info = await transporter.sendMail({
-  //           from: `"My App" <${process.env.SMTP_FROM}>`, // sender address
-  //           to: job.data.email, // list of recipients
-  //           subject: "Verify your email address..✨ ", // subject line
-  //           // plain text body
-  //           html: `
-  //           <h2>Verify your email</h2>
-  //           <p>Click the link below to verify your email address. This link expires in 24 hours.</p>
-  //           <a href="${verificationUrl}" style="...">Verify Email</a>
-  //           <p>If you didn't create an account, you can safely ignore this email.</p>
-  //           `
-  //       , // HTML body
-  //       });
-  //         console.log("AFTER EMAIL SEND ...");
-  //           console.log("Message sent: %s", info.messageId);
-
-  //           console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // }
-  // catch (err) {
-  //        console.error("Error while sending mail:", err);
-  //  }
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  }
+  catch (err) {
+         console.error("Error while sending mail:", err);
+   }
 },
   { connection: bullConnection }
 );
