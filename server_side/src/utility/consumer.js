@@ -11,7 +11,9 @@ console.log("APP_URL =", process.env.APP_URL);
  const worker = new Worker(
   'email_send',
   async job => {
+     console.log("job data aayega aab ")
     console.log(job.data)
+    console.log("----------------------")
     const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${job.data.token}`
      console.log("verification url-->",verificationUrl)
     try {
@@ -40,3 +42,10 @@ console.log("APP_URL =", process.env.APP_URL);
 },
   { connection: bullConnection }
 );
+worker.on("failed", (job, err) => {
+   console.error("JOB FAILED:", err);
+});
+
+worker.on("error", (err) => {
+   console.error("WORKER ERROR:", err);
+});
