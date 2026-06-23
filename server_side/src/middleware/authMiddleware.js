@@ -7,7 +7,7 @@ export const checkAuth = (req, res) => {
   if (req.isAuthenticated()) {
     return res.status(200).json({
       success: true,
-      name : req.session.user.name,
+      
       name: req.user.name,
     });
   }
