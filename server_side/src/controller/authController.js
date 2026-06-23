@@ -8,7 +8,7 @@ const saltRound = 10;
 export const signupController = async (req, res) => {
     try {
         const name = req.body.Name;
-       export const email = req.body.Email; // exporting the email to utility-->EmailVerificationService 
+       const email = req.body.Email; // exporting the email to utility-->EmailVerificationService 
         const password = req.body.password;
        
 
