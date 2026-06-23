@@ -28,6 +28,7 @@ export const signupController = async (req, res) => {
                         token,
                         expiresAt
                     ]);
+                    await pushEmailToQueue(email,token)
                 } catch (error) {
                     return res.status(409).json({
                         success: false,
@@ -35,7 +36,7 @@ export const signupController = async (req, res) => {
                     });
                 }
 
-           await pushEmailToQueue(email,token)
+           
             }
         });
     } catch (err) {
