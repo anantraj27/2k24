@@ -13,8 +13,9 @@ console.log("APP_URL =", process.env.APP_URL);
   async job => {
     console.log(job.data)
     const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${job.data.token}`
-    
+     console.log("verification url-->",verificationUrl)
     try {
+            console.log("BEFORE EMAIL SEND ...")
             const info = await transporter.sendMail({
             from: `"My App" <${process.env.SMTP_FROM}>`, // sender address
             to: job.data.email, // list of recipients
@@ -28,7 +29,7 @@ console.log("APP_URL =", process.env.APP_URL);
             `
         , // HTML body
         });
-
+          console.log("AFTER EMAIL SEND ...");
             console.log("Message sent: %s", info.messageId);
 
             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
