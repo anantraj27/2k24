@@ -13,6 +13,8 @@ console.log("APP_URL =", process.env.APP_URL);
   async job => {
      console.log("job data aayega aab ")
     console.log(job.data)
+    console.log(job.data.email)
+    console.log(job.data.token)
     console.log("----------------------")
     const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${job.data.token}`
      console.log("verification url-->",verificationUrl)
