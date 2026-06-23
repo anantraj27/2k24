@@ -51,3 +51,6 @@ worker.on("failed", (job, err) => {
 worker.on("error", (err) => {
    console.error("WORKER ERROR:", err);
 });
+worker.on("ready", () => {
+  console.log("WORKER IS READY AND LISTENING!");
+});
