@@ -1,25 +1,15 @@
 import { Worker } from 'bullmq';
 import nodemailer from "nodemailer"
 import { transporter } from './EmailVerificationService.js';
-import IORedis from "ioredis";
+import crypto from "crypto";
+import { bullConnection } from './producer.js';
 
-export const bullConnection = new IORedis(
-  process.env.REDIS_URL,
-  {
-    maxRetriesPerRequest: null
-  }
-);
-
-export const token = crypto.randomBytes(32).toString('hex');
-export const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
-
-
-const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${token}`
 console.log("worker hii ")
  const worker = new Worker(
   'email_send',
   async job => {
     console.log(job.data)
+    const verificationUrl = `${process.env.APP_URL}/auth/verify-email?token=${job.data.token}`
     
     try {
             const info = await transporter.sendMail({

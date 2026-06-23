@@ -11,6 +11,8 @@ import { createServer } from "http";
 import { Server } from 'socket.io';
 import { RedisStore } from "connect-redis";
 import { createClient } from "redis";
+import "./utility/consumer.js";
+
 import cors from "cors";
 // Node.js → runtime
 // http.createServer → actual server
@@ -77,8 +79,9 @@ app.use(
     )
 )
 /* ------------------ SESSION ------------------ */
-const redisClient = createClient({
-  url: process.env.REDIS_URL
+export const redisClient = createClient({
+  url: process.env.REDIS_URL,
+  
 });
 
 

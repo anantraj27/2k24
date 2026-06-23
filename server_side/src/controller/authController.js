@@ -1,11 +1,12 @@
 import db from '../configuration/db.js';
 import bcrypt from 'bcrypt';
-import { token } from '../utility/consumer.js';
-import { expiresAt } from '../utility/consumer.js';
-import { pushEmailToQueue } from '../utility/EmailVerificationService.js';
+
+import { pushEmailToQueue } from '../utility/producer.js';
 const saltRound = 10;
 
 export const signupController = async (req, res) => {
+           const token = crypto.randomBytes(32).toString('hex');
+           const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
     try {
         const name = req.body.Name;
        const email = req.body.Email; // exporting the email to utility-->EmailVerificationService 
@@ -34,7 +35,7 @@ export const signupController = async (req, res) => {
                     });
                 }
 
-            pushEmailToQueue(email)
+           await pushEmailToQueue(email,token)
             }
         });
     } catch (err) {

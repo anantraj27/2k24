@@ -1,15 +1,5 @@
-import crypto from "crypto";
+
 import nodemailer from "nodemailer"
-
-import { myQueue } from "./producer.js";
-
-export async function pushEmailToQueue(email){
-
-
-    await myQueue.add("user:email", {
-  email: email
-});
-}
 
 
 export const transporter = nodemailer.createTransport({
