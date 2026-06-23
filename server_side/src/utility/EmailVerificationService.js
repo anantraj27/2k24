@@ -4,7 +4,7 @@ import { transporter } from './index.js';
 
 import { myQueue } from "./producer.js";
 
-export function  pushEmailToQueue(email){
+export async function pushEmailToQueue(email){
 
 
     await myQueue.add("user:email", {
@@ -13,6 +13,14 @@ export function  pushEmailToQueue(email){
 }
 
 
-
+export const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // use STARTTLS (upgrade connection to TLS after connecting)
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 
