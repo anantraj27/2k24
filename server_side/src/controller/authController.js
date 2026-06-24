@@ -66,7 +66,7 @@ const {token} = req.query;
                           error: "Invalid or already used token"
                       });
                     }
-
+                const userId =user.rows[0].id; 
                   if( user.rows[0].verification_expires_at && user.rows[0].verification_expires_at <new Date()){
 
                     return res.status(400).json({ error: 'Token expired. Request a new verification email.' })
