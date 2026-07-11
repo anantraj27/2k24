@@ -1,9 +1,9 @@
 
-window.onload = function () {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-  }, 4000);   // 2 seconds
-};
+// window.onload = function () {
+//   setTimeout(() => {
+//     document.getElementById("loader").style.display = "none";
+//   }, 4000);   // 2 seconds
+// };
 
 /* ================= TYPING ANIMATION ================= */
 
