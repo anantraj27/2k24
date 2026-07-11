@@ -35,8 +35,7 @@ passport.use(
           // if(!result.rows[0].is_verified){
 
           //   throw new Error("first verify you account by clicking the send link in email..")
-          // }
-
+          // 
           const ismatch = await bcrypt.compare(password, storedPassword)
 
           if (!ismatch) {
