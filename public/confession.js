@@ -87,7 +87,7 @@ postBtn.addEventListener("click", async () => {
             avatar
 
         });
-        await loadConfessions();
+       createCard(data.data, true);
 
         
         textarea.value = "";
@@ -108,7 +108,7 @@ postBtn.addEventListener("click", async () => {
 });
 
 // Create Card
-function createCard(confession) {
+function createCard(confession, isNew = false) {
 
     const card = document.createElement("article");
 
@@ -119,16 +119,14 @@ function createCard(confession) {
         <div class="top">
 
             <div class="profile">
-
                 ${confession.avatar}
-
             </div>
 
             <div>
 
                 <h3>Anonymous</h3>
 
-                <span>Just now</span>
+                <span>${timeAgo(confession.created_at)}</span>
 
             </div>
 
@@ -168,24 +166,35 @@ function createCard(confession) {
                 😂 <span>${confession.laugh_count}</span>
 
             </button>
+
             <button
-        class="report-btn"
-        data-id="${confession.id}">
+                class="report-btn"
+                data-id="${confession.id}">
 
-        ⚠️ Report
+                ⚠️ Report
 
-      </button>
+            </button>
 
         </div>
 
     `;
 
-    feed.prepend(card);
+    if (isNew) {
+
+        feed.prepend(card);
+
+    } else {
+
+        feed.append(card);
+
+    }
 
     attachReaction(card);
 
 }
 function attachReaction(card) {
+
+    // ❤️ 🔥 😂
 
     const buttons = card.querySelectorAll(".reaction-btn");
 
@@ -229,8 +238,6 @@ function attachReaction(card) {
 
             } catch (err) {
 
-                console.error(err);
-
                 alert(err.response?.data?.message || "Unable to react.");
 
             }
@@ -239,43 +246,78 @@ function attachReaction(card) {
 
     });
 
-}
+    // 🚩 REPORT
 
-const reportBtn = card.querySelector(".report-btn");
+    const reportBtn = card.querySelector(".report-btn");
 
-reportBtn.addEventListener("click", async () => {
+    reportBtn.addEventListener("click", async () => {
 
-    const confirmReport = confirm(
-        "Report this confession?\n\nFalse reports are discouraged."
-    );
+        const ok = confirm(
 
-    if (!confirmReport) return;
-
-    try {
-
-        await axios.patch(
-
-            `${API}/${reportBtn.dataset.id}/report`,
-
-            {
-                sessionId
-            }
+            "Report this confession?\n\nFalse reports are discouraged."
 
         );
 
-        reportBtn.disabled = true;
+        if (!ok) return;
 
-        reportBtn.textContent = "✅ Reported";
+        try {
 
-    } catch (err) {
+            await axios.patch(
 
-        alert(err.response?.data?.message);
+                `${API}/${reportBtn.dataset.id}/report`,
 
-    }
+                {
 
-});
+                    sessionId
+
+                }
+
+            );
+
+            reportBtn.disabled = true;
+
+            reportBtn.textContent = "✅ Reported";
+
+        } catch (err) {
+
+            alert(
+
+                err.response?.data?.message ||
+
+                "Unable to report."
+
+            );
+
+        }
+
+    });
+
+}
 // Reaction
+function timeAgo(date) {
 
+    const seconds = Math.floor((Date.now() - new Date(date)) / 1000);
+
+    if (seconds < 60)
+        return "Just now";
+
+    const minutes = Math.floor(seconds / 60);
+
+    if (minutes < 60)
+        return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+
+    const hours = Math.floor(minutes / 60);
+
+    if (hours < 24)
+        return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+
+    const days = Math.floor(hours / 24);
+
+    if (days < 7)
+        return `${days} day${days > 1 ? "s" : ""} ago`;
+
+    return new Date(date).toLocaleDateString();
+}
 
 // Escape HTML
 function escapeHTML(text){
