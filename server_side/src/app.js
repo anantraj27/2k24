@@ -62,13 +62,13 @@ io.on("connection",(socket)=>{
   })
 })
 /* ------------------ BASIC MIDDLEWARE ------------------ */
-// app.use(
-//   cors({
-//     origin: true,
-//     credentials: true,
-//     methods :[PUT, PATCH, DELETE]
-//   })
-// );
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods :[PUT, PATCH, DELETE]
+  })
+);
 const __dirname = dirname(
     fileURLToPath(import.meta.url)
 )
