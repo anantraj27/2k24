@@ -534,7 +534,7 @@ footer {
     font-size:34px;
 }
 
-@media(max-width:768px){
+@media(max-width:660px){
 
 .welcome-card{
     height:auto;
