@@ -8,7 +8,7 @@ import { get } from "../src/service/api.js";
 const API = "/api";
 const menuItems =
 document.querySelectorAll(".menu-item");
-
+  const name = sessionStorage.getItem("username");
 const views =
 document.querySelectorAll(".view");
   document.getElementById("greeting").innerText =
