@@ -403,7 +403,9 @@ footer {
 
 /* ================= MOBILE FIX ================= */
 @media (max-width: 600px) {
-
+.venue-line{
+  width: 85%;
+}
   /* 1) Body fix */
   body {
     overflow-y: hidden;
@@ -502,6 +504,7 @@ footer {
 
 /* Floating motion */
 @keyframes floatTag {
+ 
   0% {
     transform: translateY(0px);
   }
@@ -514,6 +517,7 @@ footer {
     transform: translateY(0px);
   }
 }
+@media q
 .venue-wrapper{
 
   margin: 0;
