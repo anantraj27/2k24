@@ -1,1 +1,1 @@
-export const socket = io();
+export const socket = io("https://twok24.onrender.com");

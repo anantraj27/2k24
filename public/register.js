@@ -1,3 +1,7 @@
+
+import { showLoader, hideLoader } from "./loader.js";
+
+
 const button = document.querySelector(".button")
 const password1 = document.querySelector(".password")
 const password_rules = document.querySelector(".password-rules")
@@ -65,6 +69,7 @@ button.addEventListener("click", async (e) => {
     } else {
       emailvalid.style.display = "none"
       try {
+        showLoader()
         const { data } = await axios.post(
           `${API}/auth/signup`,
           
@@ -112,6 +117,7 @@ button.addEventListener("click", async (e) => {
         }
       } finally {
         button.disabled = false // unlock button
+        hideLoader()
       }
     }
   } else {
