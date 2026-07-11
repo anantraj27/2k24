@@ -404,7 +404,7 @@ footer {
 /* ================= MOBILE FIX ================= */
 @media (max-width: 600px) {
 .venue-line{
-  width: 85%;
+  width: 97%;
 }
   /* 1) Body fix */
   body {
