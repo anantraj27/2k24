@@ -5,15 +5,18 @@ import pageRoutes from "./pageRoutes.js"
 import authRoutes from "./authRoutes.js"
 import adminRoutes from "./adminRoutes.js"
 import dashboardRoutes from "./dashboardRoutes.js"
+import confessionRoutes from "./confessionRoutes.js"
 // import { authenticateUser } from "../middleware/authMiddleware.js"
 
 
-const router = express.Router()
+
+const router = express.Router();
 
 router.use("/page", pageRoutes)
 router.use("/auth", authRoutes)
 router.use("/user",dashboardRoutes)
 router.use("/admin" , adminRoutes)
+router.use("/confession" , confessionRoutes)
 
 // router.post(
 //   "/verification",

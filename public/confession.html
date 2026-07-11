@@ -2,14 +2,18 @@
 <html>
 
 <head>
+
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Anonymous Confession Wall</title>
 
     <link rel="stylesheet" href="./confession.css">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
 
 </head>
 
@@ -27,8 +31,6 @@
         </p>
 
     </header>
-
-    <!-- POST BOX -->
 
     <section class="post-box">
 
@@ -55,94 +57,8 @@
 
     </section>
 
-    <!-- FEED -->
-
-    <section
-        class="feed"
-        id="feed">
-
-        <!-- CARD -->
-
-        <article
-            class="card">
-
-            <div class="top">
-
-                <div class="profile">
-
-                    👻
-
-                </div>
-
-                <div>
-
-                    <h3>
-
-                        Anonymous
-
-                    </h3>
-
-                    <span>
-
-                        2 mins ago
-
-                    </span>
-
-                </div>
-
-            </div>
-
-            <p class="message">
-
-                I think I have a crush on someone from CSE...
-                but confidence 404 not found 😂
-
-            </p>
-
-            <div class="reaction">
-
-                <button
-                    class="love">
-
-                    ❤️
-
-                    <span>
-
-                        24
-
-                    </span>
-
-                </button>
-
-                <button
-                    class="fire">
-
-                    🔥
-
-                    <span>
-
-                        9
-
-                    </span>
-
-                </button>
-
-                <button
-                    class="laugh">
-
-                    😂
-
-                    <span>
-
-                        41
-
-                    </span>
-
-                </button>
-
-            </div>
-
-        </article>
+    <!-- Confessions will be loaded here -->
+    <section class="feed" id="feed">
 
     </section>
 
@@ -150,9 +66,9 @@
 
 <script src="/socket.io/socket.io.js"></script>
 
-<script
-type="module"
-src="./confession.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="module" src="./confession.js"></script>
 
 </body>
 

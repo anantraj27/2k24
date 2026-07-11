@@ -2,62 +2,110 @@ const textarea = document.getElementById("confession");
 const counter = document.getElementById("count");
 const postBtn = document.getElementById("postBtn");
 const feed = document.getElementById("feed");
+const API = "/confession";
+window.addEventListener("DOMContentLoaded", loadConfessions);
+
+async function loadConfessions() {
+
+    try {
+
+        const { data } = await axios.get(API);
+
+        feed.innerHTML = "";
+
+        data.data.forEach(confession => {
+
+            createCard(confession);
+
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Unable to load confessions.");
+
+    }
+
+}
+let sessionId = localStorage.getItem("confessionSession");
+
+if(!sessionId){
+
+    sessionId = crypto.randomUUID();
+
+    localStorage.setItem(
+        "confessionSession",
+        sessionId
+    );
+
+}
 
 const avatars = [
-    "👻",
-    "🐼",
-    "🐱",
-    "🦊",
-    "🐸",
-    "🐧",
-    "🐻",
-    "🐨",
-    "🐼",
-    "🦁",
-    "🐯",
-    "🐰"
+    "👻","🐼","🐱","🦊","🐸",
+    "🐧","🐻","🐨","🦁","🐯","🐰"
 ];
 
 // Character Counter
 textarea.addEventListener("input", () => {
 
-    counter.textContent =
-        `${textarea.value.length} / 250`;
+    const len = textarea.value.length;
+
+    counter.textContent = `${len} / 250`;
+
+    if (len < 50) {
+        counter.style.color = "#ff4d4d";
+    } else {
+        counter.style.color = "#22c55e";
+    }
 
 });
 
-// Post Confession
-postBtn.addEventListener("click", () => {
+// Post Button
+postBtn.addEventListener("click", async () => {
 
     const text = textarea.value.trim();
 
-    if (text === "") {
-
-        alert("Write something first 😊");
-
+    if (text.length < 50) {
+        alert("⚠️ Confession must contain at least 50 characters.");
         return;
     }
 
     if (text.length > 250) {
-
-        alert("Maximum 250 characters.");
-
+        alert("⚠️ Maximum 250 characters allowed.");
         return;
     }
 
-    createCard(text);
+    try {
 
-    textarea.value = "";
+        const avatar =
+            avatars[Math.floor(Math.random() * avatars.length)];
 
-    counter.textContent = "0 / 250";
+        const { data } = await axios.post(API, {
+
+            message: text,
+            avatar
+
+        });
+
+        createCard(data.data);
+
+        textarea.value = "";
+        counter.textContent = "0 / 250";
+        counter.style.color = "#999";
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Unable to post confession.");
+
+    }
 
 });
 
 // Create Card
-function createCard(message) {
-
-    const avatar =
-        avatars[Math.floor(Math.random() * avatars.length)];
+function createCard(confession) {
 
     const card = document.createElement("article");
 
@@ -68,7 +116,9 @@ function createCard(message) {
         <div class="top">
 
             <div class="profile">
-                ${avatar}
+
+                ${confession.avatar}
+
             </div>
 
             <div>
@@ -83,27 +133,105 @@ function createCard(message) {
 
         <p class="message">
 
-            ${escapeHTML(message)}
+            ${escapeHTML(confession.message)}
 
         </p>
 
         <div class="reaction">
 
-            <button class="love">
+            <button
+                class="reaction-btn love"
+                data-id="${confession.id}"
+                data-type="love">
 
-                ❤️ <span>0</span>
-
-            </button>
-
-            <button class="fire">
-
-                🔥 <span>0</span>
+                ❤️ <span>${confession.love_count}</span>
 
             </button>
 
-            <button class="laugh">
+            <button
+                class="reaction-btn fire"
+                data-id="${confession.id}"
+                data-type="fire">
 
-                😂 <span>0</span>
+                🔥 <span>${confession.fire_count}</span>
+
+            </button>
+
+            <button
+                class="reaction-btn laugh"
+                data-id="${confession.id}"
+                data-type="laugh">
+
+                😂 <span>${confession.laugh_count}</span>
+
+            </button>
+
+        </div>
+
+    `;
+
+    feed.prepend(card);
+
+    attachReaction(card);
+
+}function createCard(confession) {
+
+    const card = document.createElement("article");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+        <div class="top">
+
+            <div class="profile">
+
+                ${confession.avatar}
+
+            </div>
+
+            <div>
+
+                <h3>Anonymous</h3>
+
+                <span>Just now</span>
+
+            </div>
+
+        </div>
+
+        <p class="message">
+
+            ${escapeHTML(confession.message)}
+
+        </p>
+
+        <div class="reaction">
+
+            <button
+                class="reaction-btn love"
+                data-id="${confession.id}"
+                data-type="love">
+
+                ❤️ <span>${confession.love_count}</span>
+
+            </button>
+
+            <button
+                class="reaction-btn fire"
+                data-id="${confession.id}"
+                data-type="fire">
+
+                🔥 <span>${confession.fire_count}</span>
+
+            </button>
+
+            <button
+                class="reaction-btn laugh"
+                data-id="${confession.id}"
+                data-type="laugh">
+
+                😂 <span>${confession.laugh_count}</span>
 
             </button>
 
@@ -117,40 +245,15 @@ function createCard(message) {
 
 }
 
-// Reactions
-function attachReaction(card) {
+// Reaction
 
-    const buttons =
-        card.querySelectorAll(".reaction button");
 
-    buttons.forEach(button => {
+// Escape HTML
+function escapeHTML(text){
 
-        button.addEventListener("click", () => {
+    const div=document.createElement("div");
 
-            if (button.classList.contains("clicked"))
-                return;
-
-            const span =
-                button.querySelector("span");
-
-            span.textContent =
-                Number(span.textContent) + 1;
-
-            button.classList.add("clicked");
-
-        });
-
-    });
-
-}
-
-// Prevent HTML Injection
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.innerText = text;
+    div.innerText=text;
 
     return div.innerHTML;
 
