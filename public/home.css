@@ -502,24 +502,148 @@ footer {
   animation: floatTag 3s ease-in-out infinite;
 }
 
-/* Floating motion */
-@keyframes floatTag {
- 
-  0% {
-    transform: translateY(0px);
-  }
+.hero-card{
 
-  50% {
-    transform: translateY(6px);
-  }
+    width:100%;
 
-  100% {
-    transform: translateY(0px);
-  }
+    min-height:170px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed,#ec4899);
+
+    border-radius:22px;
+
+    padding:28px 35px;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+    margin-bottom:25px;
+
+    box-shadow:0 15px 35px rgba(37,99,235,.25);
+
 }
-@media q
-.venue-wrapper{
 
-  margin: 0;
-  box-sizing: border-box;
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    right:-70px;
+    top:-70px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.hero-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    left:-30px;
+    bottom:-40px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    padding:7px 15px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+    margin-bottom:15px;
+
+}
+
+#greeting{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    margin:0;
+
+}
+
+#personal-message{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    color:rgba(255,255,255,.92);
+
+    max-width:650px;
+
+    line-height:1.6;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero-card{
+
+    padding:22px;
+
+    min-height:150px;
+
+}
+
+#greeting{
+
+    font-size:26px;
+
+}
+
+#personal-message{
+
+    font-size:14px;
+
+}
+
+.hero-badge{
+
+    font-size:12px;
+
+}
+
 }
