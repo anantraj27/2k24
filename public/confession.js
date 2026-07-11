@@ -96,11 +96,14 @@ postBtn.addEventListener("click", async () => {
 
     } catch (err) {
 
-        console.error(err);
+    console.error(err);
 
-        alert("Unable to post confession.");
+    const message =
+        err.response?.data?.message || "Unable to post confession.";
 
-    }
+    alert(message);
+
+}
 
 });
 
@@ -165,7 +168,7 @@ function createCard(confession) {
                 😂 <span>${confession.laugh_count}</span>
 
             </button>
-              <button
+            <button
         class="report-btn"
         data-id="${confession.id}">
 
@@ -237,6 +240,40 @@ function attachReaction(card) {
     });
 
 }
+
+const reportBtn = card.querySelector(".report-btn");
+
+reportBtn.addEventListener("click", async () => {
+
+    const confirmReport = confirm(
+        "Report this confession?\n\nFalse reports are discouraged."
+    );
+
+    if (!confirmReport) return;
+
+    try {
+
+        await axios.patch(
+
+            `${API}/${reportBtn.dataset.id}/report`,
+
+            {
+                sessionId
+            }
+
+        );
+
+        reportBtn.disabled = true;
+
+        reportBtn.textContent = "✅ Reported";
+
+    } catch (err) {
+
+        alert(err.response?.data?.message);
+
+    }
+
+});
 // Reaction
 
 

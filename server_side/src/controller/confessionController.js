@@ -297,3 +297,139 @@ export const reactConfession = async (req, res) => {
     }
 
 };
+export const reportConfession = async (req, res) => {
+
+    const client = await db.connect();
+
+    try{
+
+        const { id } = req.params;
+
+        const { sessionId } = req.body;
+
+        await client.query("BEGIN");
+
+        const check = await client.query(
+
+            `
+            SELECT id
+
+            FROM confession_reports
+
+            WHERE confession_id=$1
+
+            AND session_id=$2
+            `,
+
+            [
+                id,
+                sessionId
+            ]
+
+        );
+
+        if(check.rows.length){
+
+            await client.query("ROLLBACK");
+
+            return res.status(409).json({
+
+                success:false,
+
+                message:"You already reported this confession."
+
+            });
+
+        }
+
+        await client.query(
+
+            `
+            INSERT INTO confession_reports
+            (
+                confession_id,
+                session_id
+            )
+
+            VALUES($1,$2)
+            `,
+
+            [
+                id,
+                sessionId
+            ]
+
+        );
+
+        const updated = await client.query(
+
+            `
+            UPDATE confessions
+
+            SET report_count = report_count + 1
+
+            WHERE id=$1
+
+            RETURNING report_count
+            `,
+
+            [
+                id
+            ]
+
+        );
+
+        const reportCount =
+            updated.rows[0].report_count;
+
+        if(reportCount >= 5){
+
+            await client.query(
+
+                `
+                UPDATE confessions
+
+                SET is_hidden = TRUE
+
+                WHERE id=$1
+                `,
+
+                [
+                    id
+                ]
+
+            );
+
+        }
+
+        await client.query("COMMIT");
+
+        return res.json({
+
+            success:true,
+
+            message:"Report submitted."
+
+        });
+
+    }catch(error){
+
+        await client.query("ROLLBACK");
+
+        console.error(error);
+
+        return res.status(500).json({
+
+            success:false,
+
+            message:"Internal Server Error"
+
+        });
+
+    }finally{
+
+        client.release();
+
+    }
+
+};
