@@ -17,7 +17,7 @@ const API = "/api";
 
     const data = await get(`${API}/admin/api/v1/dashboard-data`);
     const dashboard = document.getElementById("dashboard");
-
+     console.log(data)
 
     for(const [keys , value] of Object.entries(data.user)){
 
