@@ -11,7 +11,8 @@ import { createServer } from "http";
 import { Server } from 'socket.io';
 import { RedisStore } from "connect-redis";
 import { createClient } from "redis";
-import "./utility/consumer.js";
+// import "./utility/consumer.js";
+import { errorHandler } from './middleware/errorHandler.js';
 
 import cors from "cors";
 // Node.js → runtime
@@ -123,6 +124,7 @@ app.use(passport.session());
 /* ------------------ ROUTES ------------------ */
 
 app.use('/', routes);
+app.use(errorHandler);
 
 export { app, server };
 

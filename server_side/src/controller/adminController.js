@@ -3,6 +3,7 @@ import db from "../configuration/db.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { io } from "../app.js";
+import { appError } from "../utility/appError.js";
 // import { dirname } from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -11,7 +12,7 @@ export const dashboardPage = (req, res) => {
   res.sendFile(path.join(__dirname, "../../../public/admin.html"));
 };
 
-export const dashboardData = async (req, res) => {
+export const dashboardData = async (req, res,next) => {
   let result;
 
   try {
@@ -31,52 +32,82 @@ export const dashboardData = async (req, res) => {
       user: result.rows[0],
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    next(error);
   }
 };
 
-export const event = async (req, res) => {
+export const event = async (req, res, next) => {
 
+    try {
 
+        const { category, all } = req.query;
 
-  const category = req.query.category;
+        let result;
 
-  let result;
+        // 👇 Registration page ke liye
+        if (all === "true") {
 
-  try {
-    if (category === "2") {
-      result = await db.query(
-        `SELECT * FROM events
-          WHERE type IN ($1 ,$2)`,
-        ["solo", "team/solo"],
-      );
-    } else if (category === "1") {
-      result = await db.query(
-        `SELECT * FROM events
-          WHERE type IN ($1 ,$2)`,
-        ["team", "team/solo"],
-      );
+            result = await db.query(`
+                SELECT id, name
+                FROM events
+                ORDER BY name
+            `);
+
+        }
+
+        // Team Events
+        else if (category === "1") {
+
+            result = await db.query(
+                `
+                SELECT *
+                FROM events
+                WHERE type IN ($1,$2)
+                `,
+                ["team", "team/solo"]
+            );
+
+        }
+
+        // Solo Events
+        else if (category === "2") {
+
+            result = await db.query(
+                `
+                SELECT *
+                FROM events
+                WHERE type IN ($1,$2)
+                `,
+                ["solo", "team/solo"]
+            );
+
+        }
+
+        else {
+
+            return res.status(400).json({
+                success:false,
+                message:"Invalid category"
+            });
+
+        }
+
+        return res.status(200).json({
+            success:true,
+            data:result.rows
+        });
+
+    } catch(error){
+
+        next(error);
+
     }
 
-    return res.status(200).json({
-      success: true,
-      data: result.rows,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+}
 
 
 
-
-export const user = async (req, res) => {
+export const user = async (req, res,next) => {
   const category = req.query.category;
 
   let result;
@@ -111,34 +142,53 @@ export const user = async (req, res) => {
       data: result.rows,
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    next(error);
   }
 };
-export const teams = async (req, res) => {
+export const teams = async (req, res,next) => {
   const category = req.query.category;
   console.log("category", category);
   const participation_type = category == "2" ? "solo" : "team";
-  const sport = Number(req.query.sport);
-  console.log(participation_type, sport);
+ const eventId = Number(req.query["event-id"]);
+  // console.log(participation_type, sport);
   let result;
   try {
-    result = await db.query(
-      `SELECT * FROM event_registrations
-          WHERE participation_type = $1 AND event_id = $2`,
-      [participation_type, sport],
-    );
+    const result = await db.query(
+    `
+    SELECT
+        er.id,
+        er.event_id,
+        er.participation_type,
+
+        CASE
+            WHEN er.participation_type = 'solo'
+            THEN u.name
+            ELSE er.team_name
+        END AS name,
+
+        u.name AS captain_name,
+        er.team_name,
+        er.captain_phone,
+        er.captain_registration_no,
+        er.gender
+
+    FROM event_registrations er
+
+    INNER JOIN users u
+    ON er.captain_id = u.id
+
+    WHERE er.participation_type = $1
+    AND er.event_id = $2
+`,
+[participation_type, eventId]
+);
+console.log(result)
     return res.status(200).json({
       success: true,
       data: result.rows,
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+   next(error);
   }
 };
 
@@ -149,53 +199,67 @@ A single query . for scheduled_events_database
 
  const  query = 
  `
-            SELECT
-                se.id AS scheduled_id,
-                e.id AS event_id,
-                e.name,
-                se.event_date,
-                se.event_time,
-                teamA.team_name AS team_a,
-                se.participant_a_id As team_a_id ,
-                teamB.team_name AS team_b,
-                se.participant_b_id As team_b_id ,
-                se.venue,
-                se.status,
-                se.winner,
-                se.participation_type AS participation_type
+              SELECT
+        se.id AS scheduled_id,
+        e.name,
+        e.id AS event_id,
+        se.event_date,
+        se.event_time,
 
-            FROM scheduled_events se
-            INNER JOIN events e
-            ON se.event_id = e.id
+        CASE
+            WHEN se.participation_type = 'solo'
+            THEN ua.name
+            ELSE teamA.team_name
+        END AS team_a,
 
-            INNER JOIN event_registrations teamA
-            ON se.participant_a_id = teamA.id
+        CASE
+            WHEN se.participation_type = 'solo'
+            THEN ub.name
+            ELSE teamB.team_name
+        END AS team_b,
 
-            INNER JOIN event_registrations teamB
-            ON se.participant_b_id = teamB.id
+        se.venue,
+        se.status,
+        se.winner,
+        se.participation_type
+
+    FROM scheduled_events se
+
+    INNER JOIN events e
+    ON se.event_id = e.id
+
+    INNER JOIN event_registrations teamA
+    ON se.participant_a_id = teamA.id
+
+    INNER JOIN event_registrations teamB
+    ON se.participant_b_id = teamB.id
+
+    INNER JOIN users ua
+    ON teamA.captain_id = ua.id
+
+    INNER JOIN users ub
+    ON teamB.captain_id = ub.id
 
             `
 
 
 
-export const getAllScheduledEvents =  async (rq, res)=>{
+export const getAllScheduledEvents =  async (rq, res,next)=>{
          
   let result ;
   let sql = query
 
   try {
         result = await db.query(sql);
+        console.log("result",result.rows)
             return res.status(200).json({
             success: true,
             data:result.rows,
           });
 
   } catch (error) {
-            result = await db.query(sql);
-            return res.status(500).json({
-            success:false,
-            data:null,
-          });
+            
+      next(error);
   }
  
 }
@@ -203,7 +267,7 @@ export const getAllScheduledEvents =  async (rq, res)=>{
 
 ///--------------------------------------------------------------    
 
-export const scheduledEvent = async (req, res) => {
+export const scheduledEvent = async (req, res,next) => {
   const body = req.body;
   console.log(body);
   const scheduleDateTime = new Date(`${body.date}T${body.time}+05:30`);
@@ -243,10 +307,8 @@ console.log('verification ---->',Number(body.event_id), Number(body.team_A), Num
 
   console.log("verify ---------->",verify.rows)
   if (Number(verify.rows.length) !== 2) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid team selection",
-    });
+    throw new  appError("Invalid team selection",400);
+
   }
   let result;
 
@@ -309,16 +371,12 @@ console.log('verification ---->',Number(body.event_id), Number(body.team_A), Num
 
      we dont need it right now 
     ===========================*/
-      return res.status(500).json({
-      success: false,
-      message: error.message,
-      data: null,
-    });
+      next(error)
   }
 };
 //------------------------------------------------------------------
 
-export const editScheduledEvent = async (req, res) => {
+export const editScheduledEvent = async (req, res,next) => {
   const { event_date, event_time } = req.body;
 
   const editDate = new Date(`${event_date}T${event_time}+05:30`);
@@ -329,11 +387,8 @@ export const editScheduledEvent = async (req, res) => {
     });
   }
   if (editDate <= new Date()) {
-    return res.status(400).json({
-      success: false,
-      message: "scheduled time can't be in past",
-      data: null,
-    });
+    throw appError("scheduled time can't be in past",400)
+ 
   }
 
   const id = req.params.id;
@@ -353,77 +408,70 @@ export const editScheduledEvent = async (req, res) => {
       data: result.rows[0],
     });
   } catch (error) {
-    return res.status(400).json({
-      success: false,
-      message: error.message,
-      data: null,
-    });
+     next(error)
   }
 };
 
-export const declearWinner = async (req, res) => {
-  const winnerId = Number(req.body.winner) || 0;
+export const declearWinner = async (req, res, next) => {
 
-  const id = req.params.id;
-  console.log("id -->", id);
+    const winnerId = Number(req.body.winner);
+    const winnerName = req.body.winner_name;
+console.log("winner", winnerName);
+console.log(req.body);
 
-  try {
-    const verify = await db.query(
-      ` SELECT
-            participant_a_id,
-            participant_b_id
+    const id = req.params.id;
+
+    try {
+
+        const verify = await db.query(
+            `
+            SELECT
+                participant_a_id,
+                participant_b_id
             FROM scheduled_events
-            WHERE id = $1`,
-      [id],
-    );
-    if (
-      winnerId !== verify.rows[0].participant_a_id &&
-      winnerId !== verify.rows[0].participant_b_id
-    ) {
-      throw new Error("Winner is not a participant");
+            WHERE id = $1
+            `,
+            [id]
+        );
+
+        if (verify.rows.length === 0) {
+            throw new appError("Event not found", 404);
+        }
+
+        if (
+            winnerId !== verify.rows[0].participant_a_id &&
+            winnerId !== verify.rows[0].participant_b_id
+        ) {
+            throw new appError("Winner is not a participant", 400);
+        }
+
+        const result = await db.query(
+            `
+            UPDATE scheduled_events
+            SET winner = $1
+            WHERE id = $2
+            RETURNING id, winner
+            `,
+            [winnerName, id]
+        );
+
+        io.emit("declareWinner", result.rows[0]);
+
+        return res.status(200).json({
+            success: true,
+            message: "Winner declared successfully",
+            data: result.rows[0]
+        });
+
+    } catch (error) {
+
+        next(error);
+
     }
-    const result = await db.query(
-      `UPDATE scheduled_events 
-                
-               SET winner = $1 
-               WHERE id = $2
-               RETURNING  winner , id
-               `,
-      [winnerId, id],
-    );
-    if (result.rows.length == 0) {
-      throw new Error("Event not found");
-    }
-    console.log("result", result.rows[0].winner, result.rows[0]);
-    const winner = await db.query(
-      `
-           SELECT team_name,id 
-           FROM event_registrations
-           WHERE id = $1 
-           
-           `,
-      [result.rows[0].winner],
-    );
-    if (winner.rows.length == 0) {
-      throw new Error("Event not found");
-    }
-    console.log("winner", winner.rows[0]);
-    io.emit("declareWinner", winner.rows[0]);
-    return res.status(200).json({
-      success: true,
-      message: "successfully update",
-      data: winner.rows[0],
-    });
-  } catch (error) {
-    return res.status(400).json({
-      success: false,
-      message: error.message,
-      data: null,
-    });
-  }
+
 };
 
-export const statusScheduledEvent = async (req, res) => {
+export const statusScheduledEvent = async (req, res,next) => {
   const id = Number(req.params.id);
 
   const { status } = req.body;
@@ -443,7 +491,7 @@ export const statusScheduledEvent = async (req, res) => {
                 `,
       [status, id],
     );
-    io.emit(statusSheduledEvent, result.rows[0]);
+    io.emit("statusSheduledEvent", result.rows[0]);
     if (result.rows.length != 0) {
       return res.status(200).json({
         success: true,
@@ -463,7 +511,7 @@ export const statusScheduledEvent = async (req, res) => {
 };
 
 
-export const deleteScheduledEvent = async (req, res) => {
+export const deleteScheduledEvent = async (req, res,next) => {
   const id = req.params.id;
 
   try {
@@ -482,10 +530,77 @@ export const deleteScheduledEvent = async (req, res) => {
       data: result.rows[0],
     });
   } catch (error) {
-    return res.status(400).json({
-      success: false,
-      message: error.message,
-      data: null,
-    });
+     next(error)
   }
+};
+export const checkRegistration = async (req, res, next) => {
+
+    const eventId = Number(req.query.event_id);
+
+    try {
+
+        const result = await db.query(
+            `
+            SELECT
+
+                er.id,
+
+                er.team_name,
+
+                captain.name AS captain_name,
+
+                er.captain_phone,
+
+                er.captain_registration_no,
+
+                er.gender,
+
+                STRING_AGG(
+                    CASE
+                        WHEN tm.role = 'captain'
+                        THEN u.name || ' (Captain)'
+                        ELSE u.name
+                    END,
+                    ', '
+                    ORDER BY tm.role DESC, u.name
+                ) AS players
+
+            FROM event_registrations er
+
+            INNER JOIN users captain
+            ON captain.id = er.captain_id
+
+            INNER JOIN team_members tm
+            ON tm.registration_id = er.id
+
+            INNER JOIN users u
+            ON u.id = tm.user_id
+
+            WHERE er.event_id = $1
+
+            GROUP BY
+
+                er.id,
+                er.team_name,
+                captain.name,
+                er.captain_phone,
+                er.captain_registration_no,
+                er.gender
+
+            ORDER BY er.team_name
+            `,
+            [eventId]
+        );
+
+        return res.status(200).json({
+            success: true,
+            data: result.rows
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
 };

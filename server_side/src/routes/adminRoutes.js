@@ -8,21 +8,25 @@ import { teams } from "../controller/adminController.js";
 import { scheduledEvent } from "../controller/adminController.js";
 import { getAllScheduledEvents } from "../controller/adminController.js";
 import { editScheduledEvent ,declearWinner,statusScheduledEvent,deleteScheduledEvent } from "../controller/adminController.js";
-
+import { checkRegistration } from "../controller/adminController.js";
 const adminRoutes = express.Router()
-// adminRoutes.use(checkAdminPermission);
+adminRoutes.use(checkAdminPermission);
 
-adminRoutes.get("/dashboard" , dashboardPage);
+adminRoutes.get("/api/v1/dashboard" , dashboardPage);
 
-adminRoutes.get("/events" , event);
-adminRoutes.get("/user" , user);
-adminRoutes.get("/dashboardData" , dashboardData);
-adminRoutes.get("/teams" , teams);
-adminRoutes.get("/scheduled-events/all",getAllScheduledEvents)
-adminRoutes.post("/scheduled-events/add" , scheduledEvent);
-adminRoutes.patch("/scheduled-events/:id/edit/date-time", editScheduledEvent);// data & time 
-adminRoutes.patch("/scheduled-events/:id/winner",declearWinner);
-adminRoutes.patch("/scheduled-events/:id/edit/status", statusScheduledEvent);// start & complete match
-adminRoutes.delete("/scheduled-events/delete:id", deleteScheduledEvent);
+adminRoutes.get("/api/v1/events" , event);
+adminRoutes.get("/api/v1/users" , user);
+adminRoutes.get("/api/v1/dashboard-data" , dashboardData);
+adminRoutes.get("/api/v1/teams" , teams);
+adminRoutes.get("/api/v1/scheduled-events",getAllScheduledEvents)
+adminRoutes.post("/api/v1/scheduled-events" , scheduledEvent);
+adminRoutes.patch("/api/v1/scheduled-events/:id/date-time", editScheduledEvent);// data & time 
+adminRoutes.patch("/api/v1/scheduled-events/:id/winner",declearWinner);
+adminRoutes.patch("/api/v1/scheduled-events/:id/status", statusScheduledEvent);// start & complete match
+adminRoutes.delete("/api/v1/scheduled-events/:id", deleteScheduledEvent);
+adminRoutes.get(
+    "/api/v1/check-registration",
+    checkRegistration
+);
 
 export  default adminRoutes;

@@ -1,12 +1,12 @@
 import db from '../configuration/db.js';
 import bcrypt from 'bcrypt';
-import crypto from "crypto"
+// import crypto from "crypto"
 import { pushEmailToQueue } from '../utility/producer.js';
 const saltRound = 10;
 
 export const signupController = async (req, res) => {
-           const token = crypto.randomBytes(32).toString('hex');
-           const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
+          //  const token = crypto.randomBytes(32).toString('hex');
+          //  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
     try {
         const name = req.body.Name;
        const email = req.body.Email; // exporting the email to utility-->EmailVerificationService 
@@ -21,18 +21,17 @@ export const signupController = async (req, res) => {
                 });
             } else {
                 try {
-                    await db.query('INSERT INTO users (name,email,password,verification_token,verification_expires_at) VALUES ($1,$2,$3,$4,$5)', [
+                    await db.query('INSERT INTO users (name,email,password) VALUES ($1,$2,$3)', [
                         name,
                         email,
-                        hash,
-                        token,
-                        expiresAt
+                        hash
+
                     ]);
-                    await pushEmailToQueue(email,token)
-                    return res.status(201).json({
-                      success: true,
-                      message: "Verification email sent"
-                    });
+                    // await pushEmailToQueue(email,token)
+                    // return res.status(201).json({
+                    //   success: true,
+                    //   message: "Verification email sent"
+                    // });
                 } catch (error) {
                     return res.status(409).json({
                         success: false,
@@ -54,36 +53,41 @@ export const signupController = async (req, res) => {
 // VERIFYING THE EMAIL 
 
 
-export const VerifyEmail = async (req,res) =>{
+// export const VerifyEmail = async (req,res) =>{
 
-const {token} = req.query;
+// const {token} = req.query;
 
-                try {
-                  const user=  await db.query('SELECT id FROM  users  WHERE verification_token=$1 AND is_verified=$2',[token,false]);
+//                 try {
+//                   const user = await db.query(
+//                         `SELECT id, verification_expires_at
+//                         FROM users
+//                         WHERE verification_token=$1 AND is_verified=false`,
+//                         [token]
+//                       );
                  
-                  if (user.rows.length === 0) {
-                      return res.status(400).json({
-                          error: "Invalid or already used token"
-                      });
-                    }
-                const userId =user.rows[0].id; 
-                  if( user.rows[0].verification_expires_at && user.rows[0].verification_expires_at <new Date()){
+//                   if (user.rows.length === 0) {
+//                       return res.status(400).json({
+//                           error: "Invalid or already used token"
+//                       });
+//                     }
+//                 const userId =user.rows[0].id; 
+//                   if( user.rows[0].verification_expires_at && user.rows[0].verification_expires_at <new Date()){
 
-                    return res.status(400).json({ error: 'Token expired. Request a new verification email.' })
-                  }
-                  await db.query('UPDATE users SET is_verified=true , verification_token =NULL , verification_expires_at =NULL  WHERE id=$1 ',[userId,false]);
-                   res.json({ message: 'Email verified successfully. You can now log in.' })
+//                     return res.status(400).json({ error: 'Token expired. Request a new verification email.' })
+//                   }
+//                   await db.query('UPDATE users SET is_verified=true , verification_token =NULL , verification_expires_at =NULL  WHERE id=$1 ',[userId]);
+//                   return res.redirect("https://2k24-five.vercel.app/login.html");
 
-                } catch (error) {
-                    return res.status(409).json({
-                        success: false,
-                        message: error.message,
-                    });
-                }
+//                 } catch (error) {
+//                     return res.status(409).json({
+//                         success: false,
+//                         message: error.message,
+//                     });
+//                 }
 
 
 
-}
+// }
 
 
 
