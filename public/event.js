@@ -13,6 +13,7 @@ const getPosts = async () => {
   withCredentials: true
 }
     )
+    console.log("result",result.data)
     
     events=result.data.data.events
     console.log(events)
