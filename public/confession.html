@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Anonymous Confession Wall</title>
+
+    <link rel="stylesheet" href="./confession.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>💌 Anonymous Confession Wall</h1>
+
+        <p>
+            No names. No judgments.
+            Just your thoughts ❤️
+        </p>
+
+    </header>
+
+    <!-- POST BOX -->
+
+    <section class="post-box">
+
+        <textarea
+            id="confession"
+            maxlength="250"
+            placeholder="Confess something... Nobody will know it's you 😌"></textarea>
+
+        <div class="bottom">
+
+            <span id="count">
+                0 / 250
+            </span>
+
+            <button id="postBtn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Post
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- FEED -->
+
+    <section
+        class="feed"
+        id="feed">
+
+        <!-- CARD -->
+
+        <article
+            class="card">
+
+            <div class="top">
+
+                <div class="profile">
+
+                    👻
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        Anonymous
+
+                    </h3>
+
+                    <span>
+
+                        2 mins ago
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p class="message">
+
+                I think I have a crush on someone from CSE...
+                but confidence 404 not found 😂
+
+            </p>
+
+            <div class="reaction">
+
+                <button
+                    class="love">
+
+                    ❤️
+
+                    <span>
+
+                        24
+
+                    </span>
+
+                </button>
+
+                <button
+                    class="fire">
+
+                    🔥
+
+                    <span>
+
+                        9
+
+                    </span>
+
+                </button>
+
+                <button
+                    class="laugh">
+
+                    😂
+
+                    <span>
+
+                        41
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script
+type="module"
+src="./confession.js"></script>
+
+</body>
+
+</html>
