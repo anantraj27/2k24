@@ -5,31 +5,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://twok24.onrender.com/:path*"
-    },
-    {
-      
-      "destination": "/admin.html"
-    },
-    {
-      
-      "destination": "/home.html"
-    },
-    {
-      
-      "destination": "/scheduled-events.html"
-    },
-    {
-     
-      "destination": "/login.html"
-    },
-    {
-    
-      "destination": "/register.html"
-    },
-        {
-      
-      "destination": "/events_.html"
     }
-  
   ]
 }
