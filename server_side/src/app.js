@@ -66,7 +66,7 @@ app.use(
   cors({
     origin: true,
     credentials: true,
-    methods :[PUT, PATCH, DELETE]
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
   })
 );
 const __dirname = dirname(
