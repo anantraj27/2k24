@@ -37,13 +37,13 @@ passport.use(
           //   throw new Error("first verify you account by clicking the send link in email..")
           // }
 
-          // const ismatch = await bcrypt.compare(password, storedPassword)
+          const ismatch = await bcrypt.compare(password, storedPassword)
 
-          // if (!ismatch) {
-          //   return cb(null, false, {
-          //     message: "Wrong password",
-          //   })
-          // }
+          if (!ismatch) {
+            return cb(null, false, {
+              message: "Wrong password",
+            })
+          }
 
           return cb(null, user)
         }
