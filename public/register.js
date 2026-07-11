@@ -1,5 +1,5 @@
 
-import { showLoader, hideLoader } from "./loader.js";
+import { showLoader, hideLoader } from "./spiner.js";
 
 
 const button = document.querySelector(".button")
