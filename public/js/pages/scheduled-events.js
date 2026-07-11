@@ -180,3 +180,23 @@ liveEvents.addEventListener("click",async()=>{
     }
 
 })
+
+/*======================================
+       socket.io()
+  =======================================
+*/
+const socket = io("https://twok24.onrender.com");
+socket.on("connect", () => {
+   console.log("Connected:", socket.id);
+});
+
+
+
+// Newly created Events ..........
+
+socket.on("eventScheduled", (event) => {
+
+   // Naya event card add karo
+   scheduledEvents.prepend(
+    eventCard(event)
+);})

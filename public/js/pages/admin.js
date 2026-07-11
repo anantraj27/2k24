@@ -453,7 +453,7 @@ form.addEventListener("change", validate);
        socket.io()
   =======================================
 */
-
+const socket = io("https://twok24.onrender.com");
 socket.on("connect", () => {
    console.log("Connected:", socket.id);
 });
