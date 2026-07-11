@@ -10,6 +10,9 @@ export const checkAuth = (req, res, next) => {
     next();
 };
 export const checkAdminPermission = (req, res, next) => {
+    console.log("Authenticated:", req.isAuthenticated());
+    console.log("User:", req.user);
+    console.log("Role:", req.user?.role);
 
     if (!req.isAuthenticated()) {
         return res.status(401).json({
@@ -27,7 +30,6 @@ export const checkAdminPermission = (req, res, next) => {
 
     next();
 };
-
 
 
 // send response or call next never both
