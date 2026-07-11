@@ -13,7 +13,14 @@ const authRoutes = express.Router();
 
 
 authRoutes .post("/signup", signupController)
-authRoutes .get("/checkAuth",checkAuth);
+authRoutes.get("/checkAuth", checkAuth, (req, res) => {
+
+    res.json({
+        success: true,
+        name: req.user.name
+    });
+
+});
 authRoutes .post("/signin", signinController)
 // authRoutes.get('/verify-email',VerifyEmail)
 export default authRoutes
