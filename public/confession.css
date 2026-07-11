@@ -235,12 +235,35 @@ textarea{
 
 }
 .warning-box{
-    background:#2b1e12;
-    color:#ffd166;
-    border-left:4px solid #ffb703;
-    padding:12px;
-    border-radius:8px;
-    margin-bottom:15px;
+
+    background:#1a1d29;
+
+    border:1px solid #303548;
+
+    color:#d1d5db;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
     font-size:14px;
-    line-height:1.5;
+
+    line-height:1.7;
+
+}
+
+.warning-box strong{
+
+    color:#ffffff;
+
+}
+
+.warning-box span{
+
+    color:#60a5fa;
+
+    font-weight:600;
+
 }
