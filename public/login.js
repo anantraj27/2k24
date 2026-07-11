@@ -26,11 +26,11 @@ login.addEventListener('click', async (e) => {
         if (result.success) {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
-            window.location.href = "/home.html"; // Redirect to home
+            window.location.href = "/home"; // Redirect to home
         } else {
             // Yeh tab chalega jab success: false ho
             alert("Login failed: " + result.message);
-            window.location.href = '/login.html';
+            window.location.href = '/login';
         }
 
     } catch (error) {

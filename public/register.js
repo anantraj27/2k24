@@ -96,7 +96,7 @@ button.addEventListener("click", async (e) => {
         
        */
           alert(data.message)
-          window.location.href = "/login.html"
+          window.location.href = "/login"
        
       } catch (error) {
         if(error.galti==="REGISTRATION_ERROR"){

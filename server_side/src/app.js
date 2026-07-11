@@ -37,7 +37,13 @@ app.use(
   })
 );
 
-export const io = new Server(server);
+export const io = new Server(server, {
+  cors: {
+    origin: "https://2k24-five.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 //socket.io
 
 io.on("connection",(socket)=>{
@@ -62,13 +68,13 @@ io.on("connection",(socket)=>{
   })
 })
 /* ------------------ BASIC MIDDLEWARE ------------------ */
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
-  })
-);
+// app.use(
+//   cors({
+//     origin: true,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+//   })
+// );
 const __dirname = dirname(
     fileURLToPath(import.meta.url)
 )

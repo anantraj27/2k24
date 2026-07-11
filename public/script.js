@@ -174,7 +174,7 @@ login.addEventListener('click', async (e) => {
            sessionStorage.setItem("username", data.name);
             window.location.href = "home.html";
         } else {
-            window.location.href ='login.html'
+            window.location.href ='login'
         }
 
     } catch (error) {

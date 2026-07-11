@@ -12,11 +12,11 @@ const scheduledEvent = document.querySelector(".scheduled-events");
 
 scheduledEvent.addEventListener("click",()=>{
    
-  window.location.href="/scheduled-events.html"
+  window.location.href="/dashboard"
 
 })
 document.querySelector(".event-registration").addEventListener("click",()=>{
    
-  window.location.href="/events_.html"
+  window.location.href="/events"
 
 })
