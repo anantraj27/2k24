@@ -8,10 +8,8 @@ let events;
 const getPosts = async () => {
   try {
     const result = await axios.get(
-      `${API}/user/api/v1/events`,
-       {
-  withCredentials: true
-}
+      `${API}/user/api/v1/events`
+
     )
     console.log("result",result.data)
     
