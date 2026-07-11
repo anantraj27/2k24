@@ -2,7 +2,7 @@ const textarea = document.getElementById("confession");
 const counter = document.getElementById("count");
 const postBtn = document.getElementById("postBtn");
 const feed = document.getElementById("feed");
-const API = "/confession";
+const API = "/api/confession";
 window.addEventListener("DOMContentLoaded", loadConfessions);
 
 async function loadConfessions() {
