@@ -2,18 +2,21 @@ import db from "../configuration/db.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { io } from "../app.js";
-
+import { moderateConfession } from "../utility/moderator.js";
 export const getConfessions = async (req, res) => {
 
     try {
 
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
-
+        const page = Math.max(parseInt(req.query.page) || 1, 1);
+        const limit = 10;
         const offset = (page - 1) * limit;
 
         const totalResult = await db.query(
-            `SELECT COUNT(*) FROM confessions`
+            `
+            SELECT COUNT(*)
+            FROM confessions
+            WHERE is_hidden = FALSE
+            `
         );
 
         const totalConfessions = Number(totalResult.rows[0].count);
@@ -29,6 +32,7 @@ export const getConfessions = async (req, res) => {
                 laugh_count,
                 created_at
             FROM confessions
+            WHERE is_hidden = FALSE
             ORDER BY created_at DESC
             LIMIT $1
             OFFSET $2
@@ -37,12 +41,19 @@ export const getConfessions = async (req, res) => {
         );
 
         return res.status(200).json({
+
             success: true,
+
             message: "Confessions fetched successfully.",
+
             currentPage: page,
+
             totalPages: Math.ceil(totalConfessions / limit),
+
             totalConfessions,
+
             data: result.rows
+
         });
 
     } catch (error) {
@@ -50,8 +61,11 @@ export const getConfessions = async (req, res) => {
         console.error(error);
 
         return res.status(500).json({
+
             success: false,
+
             message: "Internal Server Error"
+
         });
 
     }
@@ -80,6 +94,17 @@ export const addConfession = async (req, res) => {
             });
 
         }
+        if (!moderation.allowed) {
+
+    return res.status(400).json({
+
+        success: false,
+
+        message: moderation.reason
+
+    });
+
+}
 
         const result = await db.query(
 
