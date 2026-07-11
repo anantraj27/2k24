@@ -506,27 +506,37 @@ footer {
 
     width:100%;
 
-    min-height:170px;
+    min-height:125px;
 
-    background:linear-gradient(135deg,#2563eb,#7c3aed,#ec4899);
-
-    border-radius:22px;
-
-    padding:28px 35px;
-
-    color:white;
+    padding:22px 28px;
 
     display:flex;
 
+    justify-content:space-between;
+
     align-items:center;
+
+    background:rgba(20,24,35,.82);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+    margin-bottom:22px;
 
     overflow:hidden;
 
     position:relative;
 
-    margin-bottom:25px;
-
-    box-shadow:0 15px 35px rgba(37,99,235,.25);
+    box-sizing:border-box;
 
 }
 
@@ -537,38 +547,18 @@ footer {
     position:absolute;
 
     width:220px;
+
     height:220px;
 
-    right:-70px;
-    top:-70px;
+    background:radial-gradient(circle,#3b82f640 0%,transparent 70%);
 
-    border-radius:50%;
+    right:-100px;
 
-    background:rgba(255,255,255,.08);
-
-}
-
-.hero-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:140px;
-    height:140px;
-
-    left:-30px;
-    bottom:-40px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.06);
+    top:-100px;
 
 }
 
 .hero-content{
-
-    position:relative;
 
     z-index:2;
 
@@ -578,59 +568,93 @@ footer {
 
     display:inline-block;
 
-    background:rgba(255,255,255,.18);
-
-    backdrop-filter:blur(8px);
-
-    padding:7px 15px;
+    padding:6px 14px;
 
     border-radius:999px;
 
-    font-size:14px;
+    background:rgba(59,130,246,.15);
 
-    margin-bottom:15px;
+    color:#60a5fa;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:14px;
+
+    border:1px solid rgba(96,165,250,.25);
 
 }
 
 #greeting{
-
-    font-size:34px;
-
-    font-weight:800;
 
     margin:0;
 
+    color:#fff;
+
+    font-size:30px;
+
+    font-weight:700;
+
 }
 
 #personal-message{
 
-    margin-top:12px;
+    margin-top:10px;
 
-    font-size:16px;
+    color:#b8c1d1;
 
-    color:rgba(255,255,255,.92);
-
-    max-width:650px;
+    font-size:15px;
 
     line-height:1.6;
 
+    max-width:620px;
+
 }
 
-/* Responsive */
+.hero-icon{
 
-@media(max-width:768px){
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    font-size:32px;
+
+    flex-shrink:0;
+
+    box-shadow:0 0 25px rgba(59,130,246,.35);
+
+}
+
+@media (max-width:768px){
 
 .hero-card{
 
-    padding:22px;
+    flex-direction:column;
 
-    min-height:150px;
+    align-items:flex-start;
+
+    gap:18px;
+
+    padding:18px;
+
+    min-height:auto;
 
 }
 
 #greeting{
 
-    font-size:26px;
+    font-size:24px;
 
 }
 
@@ -638,11 +662,19 @@ footer {
 
     font-size:14px;
 
+    max-width:100%;
+
 }
 
-.hero-badge{
+.hero-icon{
 
-    font-size:12px;
+    width:58px;
+
+    height:58px;
+
+    font-size:26px;
+
+    align-self:flex-end;
 
 }
 

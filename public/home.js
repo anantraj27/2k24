@@ -3,31 +3,27 @@ window.addEventListener("DOMContentLoaded", () => {
     const name = sessionStorage.getItem("username") || "Guest";
 
     document.getElementById("greeting").textContent =
-        `Hello, ${name} 👋`;
+        `Welcome back, ${name} 👋`;
 
     const hour = new Date().getHours();
 
-    let message = "";
+    let msg = "";
 
     if(hour < 12){
 
-        message =
-        "🌅 A new day, new opportunities. Make today's events unforgettable.";
+        msg = "🌅 Good morning! Your events are waiting. Let's make today a success.";
 
     }else if(hour < 18){
 
-        message =
-        "🚀 You're doing great. Keep registrations and live events running smoothly.";
+        msg = "🚀 Stay focused. Registrations, schedules and live events are under your control.";
 
     }else{
 
-        message =
-        "🌙 Great work today. Finish strong and keep everything under control.";
+        msg = "🌙 Great work today. Take one final look before wrapping up the event.";
 
     }
 
-    document.getElementById("personal-message").textContent =
-        message;
+    document.getElementById("personal-message").textContent = msg;
 
 });
 const scheduledEvent = document.querySelector(".scheduled-events");
