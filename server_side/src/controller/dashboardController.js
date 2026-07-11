@@ -201,99 +201,107 @@ export const  geteventByStatus = async (req,res)=>{
     }
 }
 
-export const getEvents = async(req,res)=>{
+export const getEvents = async (req, res) => {
+    console.log("🔥 GET EVENTS HIT");
 
-    console.log("Get event Hit hua ");
+    return res.json({
+        test: "GET EVENTS"
+    });
+};
 
-try {
-const result =await db.query(` SELECT json_agg(
-    json_build_object(
-          'id' ,e.id,
-        'Active', e.active,
-        'name', e.name,
-        'type', e.type,
-        'category', e.category,
-        'image_link', e.image_link,
-        'min_players', e.min_players,
-        'max_players', e.max_players,
+// export const getEvents = async(req,res)=>{
 
-        'fields',
+//     console.log("Get event Hit hua ");
 
-        CASE
-            WHEN e.type = 'team/solo' THEN
-            json_build_object(
+// try {
+// const result =await db.query(` SELECT json_agg(
+//     json_build_object(
+//           'id' ,e.id,
+//         'Active', e.active,
+//         'name', e.name,
+//         'type', e.type,
+//         'category', e.category,
+//         'image_link', e.image_link,
+//         'min_players', e.min_players,
+//         'max_players', e.max_players,
 
-                'team',
-                (
-                    SELECT json_agg(
-                        json_build_object(
-                            'type', ef.field_type,
-                            'placeholder', ef.placeholder,
-                            'field_name',ef.field_name
-                        )
-                        ORDER BY ef.display_order
-                    )
-                    FROM event_fields ef
-                    WHERE ef.event_id = e.id
-                    AND ef.field_group = 'team'
-                ),
+//         'fields',
 
-                'solo',
-                (
-                    SELECT json_agg(
-                        json_build_object(
-                            'type', ef.field_type,
-                            'placeholder', ef.placeholder,
-                            'field_name',ef.field_name
-                        )
-                        ORDER BY ef.display_order
-                    )
-                    FROM event_fields ef
-                    WHERE ef.event_id = e.id
-                    AND ef.field_group = 'solo'
-                )
+//         CASE
+//             WHEN e.type = 'team/solo' THEN
+//             json_build_object(
 
-            )
+//                 'team',
+//                 (
+//                     SELECT json_agg(
+//                         json_build_object(
+//                             'type', ef.field_type,
+//                             'placeholder', ef.placeholder,
+//                             'field_name',ef.field_name
+//                         )
+//                         ORDER BY ef.display_order
+//                     )
+//                     FROM event_fields ef
+//                     WHERE ef.event_id = e.id
+//                     AND ef.field_group = 'team'
+//                 ),
 
-            ELSE
-            (
-                SELECT json_agg(
-                    json_build_object(
-                        'type', ef.field_type,
-                        'placeholder', ef.placeholder,
-                        'field_name',ef.field_name
-                    )
-                    ORDER BY ef.display_order
-                )
-                FROM event_fields ef
-                WHERE ef.event_id = e.id
-            )
+//                 'solo',
+//                 (
+//                     SELECT json_agg(
+//                         json_build_object(
+//                             'type', ef.field_type,
+//                             'placeholder', ef.placeholder,
+//                             'field_name',ef.field_name
+//                         )
+//                         ORDER BY ef.display_order
+//                     )
+//                     FROM event_fields ef
+//                     WHERE ef.event_id = e.id
+//                     AND ef.field_group = 'solo'
+//                 )
 
-        END
+//             )
 
-    )
-) AS events
-FROM events e
-WHERE e.active = TRUE;`
-)
+//             ELSE
+//             (
+//                 SELECT json_agg(
+//                     json_build_object(
+//                         'type', ef.field_type,
+//                         'placeholder', ef.placeholder,
+//                         'field_name',ef.field_name
+//                     )
+//                     ORDER BY ef.display_order
+//                 )
+//                 FROM event_fields ef
+//                 WHERE ef.event_id = e.id
+//             )
 
-  return res.status(200).json({
-            success:true,
-            message:"data delivered",
-            data:result.rows[0]
-        });    
-    } catch (error) {
-         return res.status(500).json({
-            success:false,
-            message:error.message,
-            data:null
-        })
+//         END
+
+//     )
+// ) AS events
+// FROM events e
+// WHERE e.active = TRUE;`
+// )
+
+//   return res.status(200).json({
+//             success:true,
+//             message:"data delivered",
+//             data:result.rows[0]
+//         });    
+//     } catch (error) {
+//          return res.status(500).json({
+//             success:false,
+//             message:error.message,
+//             data:null
+//         })
 
         
-    }
+//     }
 
 
-}
+// }
 
 export const searchUsers= async(req,res)=>{
 
