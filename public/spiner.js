@@ -3,25 +3,7 @@ let loaderTitle;
 let loaderStatus;
 let interval;
 
-async function initLoader(){
-
-    const html = await fetch("/spiner.html")
-        .then(r=>r.text());
-
-    document.body.insertAdjacentHTML(
-        "beforeend",
-        html
-    );
-
-    loader = document.getElementById("loader");
-    loaderTitle = document.getElementById("loader-title");
-    loaderStatus = document.getElementById("loader-status");
-}
-
-await initLoader();
-
 const messages = [
-
     "TCP Three-Way Handshake...",
     "Sending SYN Packet...",
     "Receiving SYN-ACK...",
@@ -30,33 +12,73 @@ const messages = [
     "Authenticating Session...",
     "Fetching Database...",
     "Receiving Response..."
-
 ];
 
-export function showLoader(title="Loading"){
+async function initLoader() {
+
+    // Spinner pehle se load hai kya?
+    if (document.getElementById("loader")) {
+
+        loader = document.getElementById("loader");
+        loaderTitle = document.getElementById("loader-title");
+        loaderStatus = document.getElementById("loader-status");
+
+        return;
+    }
+
+    // HTML load karo
+    const response = await fetch("/components/spinner.html");
+
+    if (!response.ok) {
+        throw new Error("spinner.html not found");
+    }
+
+    const html = await response.text();
+
+    document.body.insertAdjacentHTML("beforeend", html);
+
+    loader = document.getElementById("loader");
+    loaderTitle = document.getElementById("loader-title");
+    loaderStatus = document.getElementById("loader-status");
+
+    // Initial state hidden
+    loader.classList.add("hidden");
+}
+
+await initLoader();
+
+export function showLoader(title = "Connecting To Freshers Arena") {
+
+    if (!loader) return;
 
     loaderTitle.textContent = title;
-
-    let i=0;
 
     loaderStatus.textContent = messages[0];
 
     loader.classList.remove("hidden");
 
-    interval = setInterval(()=>{
+    clearInterval(interval);
 
-        i=(i+1)%messages.length;
+    let i = 0;
 
-        loaderStatus.textContent=messages[i];
+    interval = setInterval(() => {
 
-    },900);
+        i++;
 
+        if (i >= messages.length) {
+            i = 0;
+        }
+
+        loaderStatus.textContent = messages[i];
+
+    }, 900);
 }
 
-export function hideLoader(){
+export function hideLoader() {
+
+    if (!loader) return;
 
     clearInterval(interval);
 
     loader.classList.add("hidden");
-
 }

@@ -69,7 +69,7 @@ button.addEventListener("click", async (e) => {
     } else {
       emailvalid.style.display = "none"
       try {
-        showLoader()
+        showLoader("Creating Account");
         const { data } = await axios.post(
           `${API}/auth/signup`,
           
