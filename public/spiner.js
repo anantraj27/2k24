@@ -5,7 +5,7 @@ let interval;
 
 async function initLoader(){
 
-    const html = await fetch("/spinner.html")
+    const html = await fetch("/spiner.html")
         .then(r=>r.text());
 
     document.body.insertAdjacentHTML(
