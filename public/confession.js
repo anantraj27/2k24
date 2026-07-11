@@ -165,6 +165,13 @@ function createCard(confession) {
                 😂 <span>${confession.laugh_count}</span>
 
             </button>
+              <button
+        class="report-btn"
+        data-id="${confession.id}">
+
+        🚩 Report
+
+      </button>
 
         </div>
 

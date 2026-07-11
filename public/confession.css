@@ -234,3 +234,13 @@ textarea{
 }
 
 }
+.warning-box{
+    background:#2b1e12;
+    color:#ffd166;
+    border-left:4px solid #ffb703;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:14px;
+    line-height:1.5;
+}
