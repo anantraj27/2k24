@@ -51,10 +51,10 @@ button.addEventListener("click", async (e) => {
 
   const name = document.querySelector(".name").value.trim()
   const email = document.querySelector(".email").value.trim()
-  const registration = document.querySelector(".registration").value.trim()
+  // const registration = document.querySelector(".registration").value.trim()
   const Password = document.querySelector(".password").value.trim()
 
-  if (name && email && registration && Password) {
+  if (name && email  && Password) {
       button.disabled = true
     if (!emailRegex.test(email)) {
       emailvalid.style.display = "block"
