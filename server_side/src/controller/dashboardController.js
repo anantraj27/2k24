@@ -203,6 +203,8 @@ export const  geteventByStatus = async (req,res)=>{
 
 export const getEvents = async(req,res)=>{
 
+    console.log("Get event Hit hua ");
+
 try {
 const result =await db.query(` SELECT json_agg(
     json_build_object(
