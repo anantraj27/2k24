@@ -6,49 +6,41 @@ import { pushEmailToQueue } from '../utility/producer.js';
 const saltRound = 10;
 
 export const signupController = async (req, res) => {
-          //  const token = crypto.randomBytes(32).toString('hex');
-          //  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
+
     try {
-        const name = req.body.Name;
-       const email = req.body.Email; // exporting the email to utility-->EmailVerificationService 
-        const password = req.body.password;
-       
 
-        bcrypt.hash(password, saltRound, async (err, hash) => {
-            if (err) {
-                return res.status(500).json({
-                    success: false,
-                    message: 'internal error occured ....',
-                });
-            } else {
-                try {
-                    await db.query('INSERT INTO users (name,email,password) VALUES ($1,$2,$3)', [
-                        name,
-                        email,
-                        hash
+        const { Name, Email, password } = req.body;
 
-                    ]);
-                    // await pushEmailToQueue(email,token)
-                    // return res.status(201).json({
-                    //   success: true,
-                    //   message: "Verification email sent"
-                    // });
-                } catch (error) {
-                    return res.status(409).json({
-                        success: false,
-                        message: 'Email already exits ..(Already signup with this email) ',
-                    });
-                }
+        const hash = await bcrypt.hash(password, saltRound);
 
-           
-            }
+        await db.query(
+            "INSERT INTO users(name,email,password) VALUES($1,$2,$3)",
+            [Name, Email, hash]
+        );
+
+        return res.status(201).json({
+            success: true,
+            message: "Account created successfully"
         });
-    } catch (err) {
-        return res.status(404).json({
+
+    } catch (error) {
+
+        if (error.code === "23505") { // PostgreSQL unique violation
+
+            return res.status(409).json({
+                success: false,
+                message: "Email already exists."
+            });
+
+        }
+
+        return res.status(500).json({
             success: false,
-            message: 'All field required..',
+            message: error.message
         });
+
     }
+
 };
 
 // VERIFYING THE EMAIL 
