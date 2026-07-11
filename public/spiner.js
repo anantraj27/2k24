@@ -27,7 +27,7 @@ async function initLoader() {
     }
 
     // HTML load karo
-    const response = await fetch("/components/spinner.html");
+    const response = await fetch("/spiner.html");
 
     if (!response.ok) {
         throw new Error("spinner.html not found");
