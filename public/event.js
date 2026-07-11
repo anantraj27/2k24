@@ -3,12 +3,12 @@ const literallyContainer = document.querySelector(".literally-container");
 const culturalContainer = document.querySelector(".cultural-container");
 const technicalContainer = document.querySelector(".technical-container");
 
-;
+const API = "/api";
 let events;
 const getPosts = async () => {
   try {
     const result = await axios.get(
-      "/user/api/v1/events",
+      `${API}/user/api/v1/events`,
     )
     
     events=result.data.data.events
@@ -161,7 +161,7 @@ return ;}
             return;
         }
 
-        const res = await fetch(`/user/api/v1/search-users?q=${q}`);
+        const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`);
         const data = await res.json();
 
         dropdown.innerHTML = "";
@@ -325,7 +325,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         const { data } = await axios.post(
-            "/user/api/v1/register-event",
+            `${API}/user/api/v1/register-event`,
             payload
         );
 
