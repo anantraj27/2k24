@@ -1,22 +1,13 @@
-const loader = document.getElementById("loader");
-const title = document.getElementById("loader-title");
-const status = document.getElementById("loader-status");
+export function showLoader(title, message){
 
-export function showLoader(
-    heading = "Creating Account",
-    message = "Please wait..."
-){
+    document.getElementById("loader-title").textContent = title;
+    document.getElementById("loader-status").textContent = message;
 
-    title.textContent = heading;
-    status.textContent = message;
-
-    loader.classList.remove("hidden");
+    document.getElementById("loader").classList.remove("hidden");
 }
 
 export function hideLoader(){
 
-    loader.classList.add("hidden");
+    document.getElementById("loader").classList.add("hidden");
 
-    title.textContent = "";
-    status.textContent = "";
 }
