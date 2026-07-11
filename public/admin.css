@@ -327,3 +327,62 @@ button{
     }
 
 }
+
+.registration-container{
+
+    margin-top:20px;
+
+}
+
+.registration-container select{
+
+    width:250px;
+
+    padding:10px;
+
+    margin-bottom:20px;
+
+}
+
+.registration-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+}
+
+.registration-table th,
+.registration-table td{
+
+    border:1px solid #ddd;
+
+    padding:12px;
+
+    text-align:left;
+
+    vertical-align:top;
+
+}
+
+.registration-table th{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+.registration-table tr:nth-child(even){
+
+    background:#f5f5f5;
+
+}
+
+.registration-table td:last-child{
+
+    white-space:pre-line;
+
+}

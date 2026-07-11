@@ -3,342 +3,27 @@ const literallyContainer = document.querySelector(".literally-container");
 const culturalContainer = document.querySelector(".cultural-container");
 const technicalContainer = document.querySelector(".technical-container");
 
-const events = [
-  {
-    Active: true,
-    name: "Cricket",
-    type: "Team",
-    category: "sports",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779185732/Cricket_olzutg.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Team Name ",
-      },
-      {
-        type: "text",
-        placeholder: "Caption Name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Caption phone_no ",
-      },
-      {
-        type: "tel",
-        placeholder: "caption_registration_no(college)",
-      },
-      {
-        type: "textarea",
-        placeholder: "Player Names ",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "VollyBall",
-    type: "Team",
-    category: "sports",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779185731/vollyball_alobcl.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Team Name ",
-      },
-      {
-        type: "text",
-        placeholder: "Caption Name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Caption phone_no ",
-      },
-      {
-        type: "tel",
-        placeholder: "caption_registration_no(college)",
-      },
-      {
-        type: "textarea",
-        placeholder: "Player Names ",
-      },
-    ],
-  },
- 
-  {
-    Active: true,
-    name: "Badminton",
-    type: "Team / Solo",
-    category: "sports",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779188380/badminton_bz15sy.png",
-
-    fields: {
-      team: [
-        {
-          type: "text",
-          placeholder: "Team Name",
-        },
-        {
-          type: "text",
-          placeholder: "Captain Name",
-        },
-        {
-          type: "tel",
-          placeholder: "Captain Phone No",
-        },
-        {
-          type: "tel",
-          placeholder: "Captain Registration No (College)",
-        },
-        {
-          type: "textarea",
-          placeholder: "Player Names",
-        },
-      ],
-
-      solo: [
-        {
-          type: "text",
-          placeholder: "Enter Player Name",
-        },
-        {
-          type: "tel",
-          placeholder: "Enter Your Phone No",
-        },
-        {
-          type: "tel",
-          placeholder: "Enter Your Registration No (College)",
-        },
-      ],
-    },
-  },
-    {
-    Active: true,
-    name: "Chess",
-    type: "Solo",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779366617/Chess_psu9o6.png",
-    category: "sports",
-
-    fields: [
-      {
-        type: "text",
-        placeholder: "Enter player name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Phone NO",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Registration_No(college)",
-      },
-    ],
-  },
-
-  {
-    Active: true,
-    name: "WebDevelopment )",
-    type: "Solo",
-    category: "Technical",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779182828/webdevelopment_jdouof.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Enter player name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Phone NO",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Registration_No(college)",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "TechnicalQuizz",
-    type: "Team",
-    category: "Technical",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779182827/TEchnicalquizz_zsqlmk.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Team Name ",
-      },
-      {
-        type: "text",
-        placeholder: "Caption Name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Caption phone_no ",
-      },
-      {
-        type: "tel",
-        placeholder: "caption_registration_no(college)",
-      },
-      {
-        type: "textarea",
-        placeholder: "Player Names ",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "Debugger",
-    type: "Solo",
-    category: "Technical",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779182837/DEbugger_t1pw4w.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Enter player name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Phone NO",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Registration_No(college)",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "OpenHackaThon",
-    type: "Team",
-    category: "Technical",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779182836/openhackathone_unhxjc.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Team Name ",
-      },
-      {
-        type: "text",
-        placeholder: "Caption Name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Caption phone_no ",
-      },
-      {
-        type: "tel",
-        placeholder: "caption_registration_no(college)",
-      },
-      {
-        type: "textarea",
-        placeholder: "Player Names ",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "Singing",
-    type: "Solo",
-    category: "Cultural",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779355409/Singing_jszy1c.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Enter player name ",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Phone NO",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Registration_No(college)",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "RampWalk",
-    type: "Solo",
-    category: "Cultural",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779355460/Rampwalk_p1jaad.png",
-    fields: [
-      {
-        type: "text",
-        placeholder: "Enter your name ",
-      },
-      {
-        type: "text",
-        placeholder: "Enter your Gender(M/F) ",
-      },
-
-      {
-        type: "tel",
-        placeholder: "Enter your Phone NO",
-      },
-      {
-        type: "tel",
-        placeholder: "Enter your Registration_No(college)",
-      },
-    ],
-  },
-  {
-    Active: true,
-    name: "Dance",
-    type: "Team / Solo",
-    category: "Cultural",
-    image_link:
-      "https://res.cloudinary.com/dwq2rdoke/image/upload/v1779356228/Dance_sh2yuk.png",
-     fields: {
-      team: [
-        {
-          type: "text",
-          placeholder: "Team Name",
-        },
-        {
-          type: "text",
-          placeholder: "Captain Name",
-        },
-        {
-          type: "tel",
-          placeholder: "Captain Phone No",
-        },
-        {
-          type: "tel",
-          placeholder: "Captain Registration No (College)",
-        },
-        {
-          type: "textarea",
-          placeholder: "Player Names",
-        },
-      ],
-
-      solo: [
-        {
-          type: "text",
-          placeholder: "Enter Player Name",
-        },
-        {
-          type: "tel",
-          placeholder: "Enter Your Phone No",
-        },
-        {
-          type: "tel",
-          placeholder: "Enter Your Registration No (College)",
-        },
-      ],
-    },
-  },
-];
-
+;
+let events;
+const getPosts = async () => {
+  try {
+    const result = await axios.get(
+      "/user/api/v1/events",
+    )
+    
+    events=result.data.data.events
+    console.log(events)
+    renderEvents(result.data.data.events)
+    
+  } catch (error) {
+    console.error(error);
+  } finally {
+    console.log("Request completed");
+  }
+};
+getPosts()
+let selectedPlayers = [];
+function renderEvents(events){
 events.forEach((event, index) => {
   if (!event.Active) {
     return;
@@ -346,6 +31,7 @@ events.forEach((event, index) => {
 
   let card = document.createElement("div");
   card.classList.add("card");
+  card.dataset.id=event.id;
 
   card.innerHTML = `
         <img src="${event.image_link}">
@@ -356,23 +42,24 @@ events.forEach((event, index) => {
 
         <p class="event-type">${event.type}</p>
 
-        <button onclick="openForm(${index})">
+        <button data-id =${event.id} onclick="openForm(${index})">
             Register
         </button>
 
     </div>
 
        `;
-  if (event.category.toLowerCase().trim() === "technical") {
+  if (event.category.toLowerCase().trim() === "tech") {
     technicalContainer.appendChild(card);
   } else if (event.category.toLowerCase().trim() === "sports") {
     sportsContainer.appendChild(card);
   } else if (event.category.toLowerCase().trim() === "literary") {
-    literaryContainer.appendChild(card);
+    literallyContainer.appendChild(card);
   } else if (event.category.toLowerCase().trim() === "cultural") {
     culturalContainer.appendChild(card);
   }
 });
+}
 
 const formPopup = document.querySelector(".form-popup");
 
@@ -380,25 +67,185 @@ const formContent = document.querySelector(".form-content");
 
 const closeBtn = document.querySelector(".close-btn");
 const sportsName = document.querySelector(".sportsName");
+
 closeBtn.addEventListener("click", () => {
+  selectedPlayers = [];
   formPopup.style.display = "none";
 });
+
+
 function openForm(index) {
+ selectedPlayers = [];
   const event = events[index];
+   let participationType = event.type; 
 
   function renderFields(fields, selectedValue = "team") {
     formContent.innerHTML = "";
 
     const event = events[index];
 
-    if (event.type === "Team / Solo") {
+    if (event.type === "team/solo") {
       optionRender(selectedValue);
     }
 
     const form = document.createElement("form");
     sportsName.innerText = `${event.name}  (${event.type})`;
     // displaying sports name
+    //--------------------------------
     fields.forEach((field) => {
+      if (field.type === "radio") {
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "radio-group";
+
+    wrapper.innerHTML = `
+        <p>${field.placeholder}</p>
+
+        <div class="radio-options">
+
+            <label>
+                <input
+                    type="radio"
+                    name="${field.field_name}"
+                    value="Male"
+                    required
+                >
+                Male
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="${field.field_name}"
+                    value="Female"
+                >
+                Female
+            </label>
+
+        </div>
+    `;
+
+    form.appendChild(wrapper);
+
+return ;}
+     if (field.type === "player_picker") {
+
+    
+    const wrapper = document.createElement("div");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = field.placeholder;
+    input.name = field.field_name; 
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "player-dropdown";
+
+    const selectedBox = document.createElement("div");
+    selectedBox.className = "selected-players";
+
+    const count = document.createElement("p");
+    count.className = "player-count";
+
+    wrapper.append(input, dropdown, selectedBox, count);
+    form.appendChild(wrapper);
+
+    updateCount();
+
+    input.addEventListener("input", async () => {
+
+        const q = input.value.trim();
+
+        if (!q) {
+            dropdown.innerHTML = "";
+            return;
+        }
+
+        const res = await fetch(`/user/api/v1/search-users?q=${q}`);
+        const data = await res.json();
+
+        dropdown.innerHTML = "";
+
+        data.users.forEach(user => {
+
+            const option = document.createElement("div");
+
+            option.innerText = user.name;
+
+            option.addEventListener("click", () => {
+
+                // duplicate
+                if (selectedPlayers.some(p => p.id === user.id))
+                    return;
+
+                // max players
+                if (selectedPlayers.length >= event.max_players) {
+                    alert(`Maximum ${event.max_players} players allowed`);
+                    return;
+                }
+
+                selectedPlayers.push(user);
+
+                renderPlayers();
+
+                input.value = "";
+                dropdown.innerHTML = "";
+
+            });
+
+            dropdown.appendChild(option);
+
+        });
+
+    });
+
+    function updateCount() {
+
+        count.textContent =
+            `Current: ${selectedPlayers.length} | Min: ${event.min_players} | Max: ${event.max_players}`;
+
+        if (selectedPlayers.length < event.min_players) {
+            count.style.color = "red";
+        } else {
+            count.style.color = "green";
+        }
+
+    }
+
+    function renderPlayers() {
+
+        selectedBox.innerHTML = "";
+
+        selectedPlayers.forEach(player => {
+
+            const chip = document.createElement("span");
+
+            chip.innerHTML = `
+                ${player.name}
+                <button type="button">✕</button>
+            `;
+
+            chip.querySelector("button").addEventListener("click", () => {
+
+                selectedPlayers = selectedPlayers.filter(
+                    p => p.id !== player.id
+                );
+
+                renderPlayers();
+
+            });
+
+            selectedBox.appendChild(chip);
+
+        });
+
+        updateCount();
+
+    }
+
+    return;
+}
+      
       let input;
       if (field.type == "textarea") {
         input = document.createElement("textarea");
@@ -408,17 +255,101 @@ function openForm(index) {
         input.type = field.type;
       }
       input.placeholder = field.placeholder;
+      input.name = field.field_name;    
+
+      
       form.appendChild(input);
     });
 
-    const submitBtn = document.createElement("button");
+const submitBtn = document.createElement("button");
+submitBtn.type = "submit";
+submitBtn.innerText = "Submit";
 
-    submitBtn.innerText = "Submit";
+form.appendChild(submitBtn);
+formContent.appendChild(form);
+formPopup.style.display = "flex";
 
-    form.appendChild(submitBtn);
+form.addEventListener("submit", async (e) => {
 
-    formContent.appendChild(form);
-    formPopup.style.display = "flex";
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData);
+
+    // Team Validation
+    if (participationType === "team") {
+
+        if (!payload.team_name?.trim()) {
+            alert("Enter Team Name");
+            return;
+        }
+
+        if (selectedPlayers.length < event.min_players) {
+            alert(`Minimum ${event.min_players} players required`);
+            return;
+        }
+
+    }
+
+    // Captain Name
+    if (!payload.captain_name?.trim()) {
+        alert("Enter Name");
+        return;
+    }
+
+    // Phone Validation
+    if (
+        !payload.captain_phone ||
+        !/^[6-9]\d{9}$/.test(payload.captain_phone)
+    ) {
+        alert("Enter valid 10 digit phone number");
+        return;
+    }
+
+    // Registration Validation
+    if (!payload.captain_registration_no?.trim()) {
+        alert("Enter Registration Number");
+        return;
+    }
+
+    payload.event_id = event.id;
+    payload.participation_type = participationType;
+    payload.event_name = event.name;
+
+    if (selectedPlayers.length > 0) {
+        payload.player_ids = selectedPlayers.map(player => player.id);
+    }
+
+    console.log(payload);
+
+    try {
+
+        const { data } = await axios.post(
+            "/user/api/v1/register-event",
+            payload
+        );
+
+        alert(data.message);
+
+        form.reset();
+
+        selectedPlayers = [];
+
+        formPopup.style.display = "none";
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert(
+            err.response?.data?.message ||
+            "Something went wrong"
+        );
+
+    }
+
+});
+    
   }
 
   function optionRender(selectedValue) {
@@ -444,11 +375,12 @@ function openForm(index) {
 
     select.value = selectedValue;
     select.addEventListener("change", () => {
+      participationType = select.value; 
       renderFields(event.fields[select.value], select.value);
     });
   }
 
-  if (event.type === "Team / Solo") {
+  if (event.type === "team/solo") {
     optionRender("team");
     renderFields(event.fields.team);
   } else {
@@ -456,4 +388,8 @@ function openForm(index) {
   }
 
   console.log(event);
+  
 }
+
+
+    

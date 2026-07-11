@@ -15,3 +15,8 @@ scheduledEvent.addEventListener("click",()=>{
   window.location.href="/scheduled-events.html"
 
 })
+document.querySelector(".event-registration").addEventListener("click",()=>{
+   
+  window.location.href="/events_.html"
+
+})

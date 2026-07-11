@@ -4,12 +4,15 @@ import { userDetails } from "../src/service/eventService.js";
 import { usersTable } from "../src/componenet/_UsersDetailCard.js";
 import { eventCard } from "../src/componenet/_eventScheduledCard.js";
 import { get } from "../src/service/api.js";
+
+const API = "/api";
 const menuItems =
 document.querySelectorAll(".menu-item");
 
 const views =
 document.querySelectorAll(".view");
-
+  document.getElementById("greeting").innerText =
+    `Hello, ${name} 👋`;
 menuItems.forEach(item => {
 
     item.addEventListener("click", () => {
@@ -41,7 +44,7 @@ let statsResult ;
 window.onload = async()=>{
     console.log("hello")
     try {
-      let response = await fetch("/user/dashboard-stats");
+      let response = await fetch(`${API }/user/api/v1/dashboard-stats`);
      
        
       if(!response.ok){
@@ -94,35 +97,57 @@ function stats(data){
 
 }
 
-function userStats(data){
-        
-    let html = ''
+function userStats(data) {
 
-    data.forEach(item =>{
+    let html = "";
 
-        html += `<div id=${item.event_id}>
-             <p><span >Participaticipation : </span> ${item.event_name}</p>
-             <p><span>Role : </span> ${item.role}</p>
-             
+    if (data.length === 0) {
+        html = `
+            <div class="activity-card">
+                <p>No events registered yet.</p>
+            </div>
+        `;
+    } else {
 
-        </div>`
-    })
+        data.forEach(item => {
 
-    myEvents.innerHTML=html;
+            html += `
+                <div class="activity-card">
+                    <h4>${item.event_name}</h4>
 
+                    <div class="activity-row">
+                        <span>Participation</span>
+                        <strong>${item.event_name}</strong>
+                    </div>
+
+                    <div class="activity-row">
+                        <span>Role</span>
+                        <strong>${item.role}</strong>
+                    </div>
+                </div>
+            `;
+        });
+
+    }
+
+    myEvents.innerHTML = html;
 }
 const scheduledEvents = document.querySelector('[data-view="scheduled-view"]')
-const liveEvents = document.querySelector('[data-view="live-view"]')
+
 
 scheduledEvents.addEventListener("click",async()=>{
 
     try {
-        const data = await get('/user/dashboard-stats/get/status?status=upcoming');
-        const result =eventCard(data.data)
-        console.log("card--->",result)
+    const data = await get(`${API}/user/api/v1/scheduled-events?status=upcoming`);
+        console.log("data---->",data.data)
+        // const result =eventCard(data.data)
+        // console.log("card--->",result)
         const container = document.querySelector(".event-grid");
+        container.innerHTML = "";   // ⭐ Purane cards hata do
 
         data.data.forEach(event => {
+            console.log("events-->",event)
+            console.log("eventcard",eventCard(event))
             container.appendChild(eventCard(event));
         });
                 
@@ -130,11 +155,28 @@ scheduledEvents.addEventListener("click",async()=>{
         
     }
 
-    
-     
-
-    
 })
 
+//--------- LIVE EVENT ---------------------
+const liveEvents = document.querySelector('[data-view="live-view"]')
+liveEvents.addEventListener("click",async()=>{
 
+    try {
+        const data = await get(`${API}/user/api/v1/scheduled-events?status=live`);
+        console.log("data---->",data.data)
+        // const result =eventCard(data.data)
+        // console.log("card--->",result)
+        const container = document.querySelector(".event-grid1");
+        container.innerHTML = "";   // ⭐ Purane cards hata do
 
+        data.data.forEach(event => {
+            console.log("events-->",event)
+            console.log("eventcard",eventCard(event))
+            container.appendChild(eventCard(event));
+        });
+                
+    } catch (error) {
+        
+    }
+
+})

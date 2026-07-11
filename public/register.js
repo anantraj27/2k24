@@ -48,13 +48,14 @@ const emailvalid = document.querySelector(".emailValid")
 const API = "/api";
 button.addEventListener("click", async (e) => {
   e.preventDefault()
-  button.disabled = true
+
   const name = document.querySelector(".name").value.trim()
   const email = document.querySelector(".email").value.trim()
   const registration = document.querySelector(".registration").value.trim()
   const Password = document.querySelector(".password").value.trim()
 
   if (name && email && registration && Password) {
+      button.disabled = true
     if (!emailRegex.test(email)) {
       emailvalid.style.display = "block"
       emailvalid.innerHTML = "🔴 Email is not valid"

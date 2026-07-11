@@ -115,14 +115,16 @@ h1{
 .form-box input,
 .form-box textarea{
 
-    width: 100%;
+    width: 80%;
 
     padding: 12px;
-    margin-bottom: 9px;
+    margin-top: 2px;
+    margin-bottom: 7px;
 
     border-radius: 8px;
 
     border: none;
+    margin-left: 5px;
 
     color: white;
     background-color: #111;
@@ -179,4 +181,168 @@ select{
     padding: 4px;
     word-spacing: 2;
     
+}
+
+.player-dropdown{
+
+    width:85%;
+    max-height:180px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-top:5px;
+    background:black;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+
+    scrollbar-width: thin;          /* Firefox */
+    scrollbar-color: #555 #000;
+}
+
+/* Chrome, Edge, Safari */
+
+.player-dropdown::-webkit-scrollbar{
+    width:6px;
+}
+
+.player-dropdown::-webkit-scrollbar-track{
+    background:#000;
+    border-radius:10px;
+}
+
+.player-dropdown::-webkit-scrollbar-thumb{
+    background:#555;
+    border-radius:10px;
+}
+
+.player-dropdown::-webkit-scrollbar-thumb:hover{
+    background:#888;
+}
+
+.player-dropdown div{
+
+    padding:10px;
+    cursor:pointer;
+    transition:.2s;
+    border-bottom:1px solid #eee;
+
+}
+
+.player-dropdown div:hover{
+
+    background:#111;
+
+}
+
+.selected-players{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+
+}
+
+.selected-players span{
+
+    display:flex;
+    align-items:center;
+    gap:2px;
+
+    padding:1px 2px;
+
+    background:#0b51ba;
+    color:white;
+
+    border-radius:12px;
+
+}
+
+.selected-players button{
+
+    border:none;
+    background-color:rgba(0, 0, 0, 0.792);
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+.player-count{
+
+    margin-top:12px;
+    font-weight:600;
+
+}
+
+.form-box{
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;      /* Firefox */
+    scrollbar-color: #c51414 #000;
+
+}
+
+/* Chrome, Edge, Safari */
+
+.form-box::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.form-box::-webkit-scrollbar-track{
+
+    background:purple;
+    border-radius:10px;
+
+}
+
+.form-box::-webkit-scrollbar-thumb{
+
+    background:rgba(210, 142, 15, 0.519);
+    border-radius:10px;
+
+}
+
+.form-box::-webkit-scrollbar-thumb:hover{
+
+    background:#888;
+
+}
+
+
+.radio-group{
+    width:100%;
+    margin:15px 0;
+}
+
+.radio-group p{
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.radio-options{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.radio-options label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+    font-weight:500;
+}
+
+/* Global input CSS ko override karega */
+.radio-options input[type="radio"]{
+    all: revert;
+    accent-color:#0f65f1;
+    cursor:pointer;
 }

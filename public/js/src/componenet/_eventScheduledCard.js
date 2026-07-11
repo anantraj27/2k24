@@ -59,21 +59,25 @@ export function featureEventCard(data){
             </p>
             <div class="winner-box">
 
-        <select class="winner-select">
+       <select class="winner-select">
 
-            <option value="">
-                Select Winner
-            </option>
+    <option value="">Select Winner</option>
 
-            <option value=${data.team_a_Id}>
-                ${data.team_a}
-            </option>
+    <option
+        value="${data.team_a_id}"
+        data-name="${data.team_a}"
+    >
+        ${data.team_a}
+    </option>
 
-            <option value=${data.team_b_Id}>
-                ${data.team_b}
-            </option>
+    <option
+        value="${data.team_b_id}"
+        data-name="${data.team_b}"
+    >
+        ${data.team_b}
+    </option>
 
-        </select>
+</select>
 
         <button class="save-winner">
             Save Winner
@@ -102,6 +106,7 @@ return card;
 export function eventCard(event) {
 
     const card = document.createElement("div");
+    console.log("render event ",event)
 
     card.className = "event-card";
     card.dataset.eventId = event.scheduled_id;
