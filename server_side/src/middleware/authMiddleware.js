@@ -1,7 +1,7 @@
 export const checkAuth = (req, res, next) => {
 
     if (!req.isAuthenticated()) {
-        return res.status(401).json({
+        return res.status(200).json({
             success: false,
             message: "Not authenticated"
         });
