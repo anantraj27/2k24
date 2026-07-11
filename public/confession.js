@@ -87,9 +87,9 @@ postBtn.addEventListener("click", async () => {
             avatar
 
         });
+        await loadConfessions();
 
-        createCard(data.data);
-
+        
         textarea.value = "";
         counter.textContent = "0 / 250";
         counter.style.color = "#999";
@@ -175,7 +175,61 @@ function createCard(confession) {
     attachReaction(card);
 
 }
+function attachReaction(card) {
 
+    const buttons = card.querySelectorAll(".reaction-btn");
+
+    buttons.forEach(btn => {
+
+        btn.addEventListener("click", async () => {
+
+            if (btn.classList.contains("clicked"))
+                return;
+
+            try {
+
+                const id = btn.dataset.id;
+
+                const reaction = btn.dataset.type;
+
+                await axios.patch(
+
+                    `${API}/${id}/react`,
+
+                    {
+
+                        reaction,
+
+                        sessionId
+
+                    }
+
+                );
+
+                const span = btn.querySelector("span");
+
+                span.textContent =
+                    Number(span.textContent) + 1;
+
+                btn.classList.add("clicked");
+
+                btn.style.background = "#2563eb";
+
+                btn.style.color = "#fff";
+
+            } catch (err) {
+
+                console.error(err);
+
+                alert(err.response?.data?.message || "Unable to react.");
+
+            }
+
+        });
+
+    });
+
+}
 // Reaction
 
 
