@@ -1,16 +1,13 @@
-export const checkAuth = (req, res) => {
+export const checkAuth = (req, res, next) => {
 
-  if (req.isAuthenticated()) {
-    return res.status(200).json({
-      success: true,
-      name: req.user.name,
-    });
-  }
+    if (!req.isAuthenticated()) {
+        return res.status(401).json({
+            success: false,
+            message: "Not authenticated"
+        });
+    }
 
-  return res.status(200).json({
-    success: false,
-    message: "Not authenticated"
-  });
+    next();
 };
 export const checkAdminPermission = (req, res, next) => {
 
