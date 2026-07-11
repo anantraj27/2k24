@@ -169,7 +169,7 @@ function createCard(confession) {
         class="report-btn"
         data-id="${confession.id}">
 
-        🚩 Report
+        ⚠️ Report
 
       </button>
 
