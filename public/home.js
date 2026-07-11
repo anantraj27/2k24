@@ -118,3 +118,8 @@ document.querySelector(".event-registration").addEventListener("click",()=>{
   window.location.href="/events_.html"
 
 })
+document.querySelector(".confession-wall").addEventListener("click",()=>{
+   
+  window.location.href="/confession.html"
+
+})
