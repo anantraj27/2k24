@@ -1,6 +1,6 @@
 import db from '../configuration/db.js';
 import bcrypt from 'bcrypt';
-import  Passport  from 'passport';
+import  passport  from 'passport';
 // import crypto from "crypto"
 import { pushEmailToQueue } from '../utility/producer.js';
 const saltRound = 10;
