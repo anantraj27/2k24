@@ -502,180 +502,55 @@ footer {
   animation: floatTag 3s ease-in-out infinite;
 }
 
-.hero-card{
-
-    width:100%;
-
-    min-height:125px;
-
-    padding:22px 28px;
+.welcome-card{
+    height:90px;
+    padding:0 20px;
+    margin:15px 0;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    background:rgba(20,24,35,.82);
-
+    background:#151b26;
     border:1px solid rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.05);
-
-    margin-bottom:22px;
-
-    overflow:hidden;
-
-    position:relative;
-
-    box-sizing:border-box;
-
-}
-
-.hero-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-
-    height:220px;
-
-    background:radial-gradient(circle,#3b82f640 0%,transparent 70%);
-
-    right:-100px;
-
-    top:-100px;
-
-}
-
-.hero-content{
-
-    z-index:2;
-
-}
-
-.hero-badge{
-
-    display:inline-block;
-
-    padding:6px 14px;
-
-    border-radius:999px;
-
-    background:rgba(59,130,246,.15);
-
-    color:#60a5fa;
-
-    font-size:13px;
-
-    font-weight:600;
-
-    margin-bottom:14px;
-
-    border:1px solid rgba(96,165,250,.25);
-
-}
-
-#greeting{
-
-    margin:0;
+    border-radius:14px;
 
     color:#fff;
-
-    font-size:30px;
-
-    font-weight:700;
-
-}
-
-#personal-message{
-
-    margin-top:10px;
-
-    color:#b8c1d1;
-
-    font-size:15px;
-
-    line-height:1.6;
-
-    max-width:620px;
-
-}
-
-.hero-icon{
-
-    width:70px;
-
-    height:70px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-
-    font-size:32px;
-
-    flex-shrink:0;
-
-    box-shadow:0 0 25px rgba(59,130,246,.35);
-
-}
-
-@media (max-width:768px){
-
-.hero-card{
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:18px;
-
-    padding:18px;
-
-    min-height:auto;
-
 }
 
 #greeting{
-
+    margin:0;
     font-size:24px;
-
+    font-weight:700;
 }
 
 #personal-message{
-
-    font-size:14px;
-
-    max-width:100%;
-
+    margin-top:4px;
+    font-size:13px;
+    color:#a8b3cf;
 }
 
-.hero-icon{
+.welcome-card span{
+    font-size:34px;
+}
 
-    width:58px;
+@media(max-width:768px){
 
-    height:58px;
+.welcome-card{
+    height:auto;
+    padding:15px;
+}
 
-    font-size:26px;
+#greeting{
+    font-size:20px;
+}
 
-    align-self:flex-end;
+#personal-message{
+    font-size:12px;
+}
 
+.welcome-card span{
+    display:none;
 }
 
 }
