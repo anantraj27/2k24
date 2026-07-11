@@ -27,7 +27,7 @@
       "destination": "/register.html"
     },
         {
-      "source": "/event",
+      "source": "/events",
       "destination": "/events_.html"
     }
   
