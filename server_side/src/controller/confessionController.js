@@ -94,6 +94,7 @@ export const addConfession = async (req, res) => {
             });
 
         }
+        const moderation = await moderateConfession(message);
         if (!moderation.allowed) {
 
     return res.status(400).json({
