@@ -9,6 +9,9 @@ const getPosts = async () => {
   try {
     const result = await axios.get(
       `${API}/user/api/v1/events`,
+       {
+  withCredentials: true
+}
     )
     
     events=result.data.data.events
@@ -161,7 +164,9 @@ return ;}
             return;
         }
 
-        const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`);
+        const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`, {
+        credentials: "include"
+        });
         const data = await res.json();
 
         dropdown.innerHTML = "";
@@ -326,7 +331,10 @@ form.addEventListener("submit", async (e) => {
 
         const { data } = await axios.post(
             `${API}/user/api/v1/register-event`,
-            payload
+            payload,
+            {
+        withCredentials: "include"
+        }
         );
 
         alert(data.message);

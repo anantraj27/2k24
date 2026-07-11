@@ -1,6 +1,6 @@
 export async function  get(api){
         try {
-            const response = await fetch(api);
+            const response = await fetch(api,{ credentials: "include"});
 
                 if(!response.ok){
             
@@ -27,9 +27,12 @@ export async function  post(api,data){
                 "headers":{
                     "Content-Type" :"application/json"
                 },
-                body:JSON.stringify(data)
+                body:JSON.stringify(data),
+                credentials: "include"
+                
 
-            });
+            },
+        );
 
                 if(!response.ok){
             
