@@ -167,7 +167,15 @@
 
 </div> -->
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
-<script src="/js/pages/scheduled-events.js" type="module"></script>
 
+<script>
+    alert("Normal script");
+</script>
+
+<script type="module">
+    alert("Module works");
+</script>
+
+<script type="module" src="/js/pages/scheduled-events.js"></script>
 </body>
 </html>
