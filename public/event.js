@@ -36,7 +36,15 @@ events.forEach((event, index) => {
   card.dataset.id=event.id;
 
   card.innerHTML = `
-        <img src="${event.image_link}">
+        <img
+  src="${event.image_link.replace('/upload/', '/upload/f_auto,q_auto,w_500/')}"
+  loading="lazy"
+  decoding="async"
+  alt="${event.name}"><img
+  src="${event.image_link.replace('/upload/', '/upload/f_auto,q_auto,w_500/')}"
+  loading="lazy"
+  decoding="async"
+  alt="${event.name}">
 
     <h3>${event.name}</h3>
 
