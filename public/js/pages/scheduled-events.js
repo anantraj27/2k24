@@ -1,5 +1,6 @@
+alert("socket.js loaded top");
 import { socket } from "../src/service/socket.js";
-alert("socket.js loaded");
+alert("socket.js loaded bottom");
 import { createEvent } from "../src/service/eventService.js";
 import { userDetails } from "../src/service/eventService.js";
 import { usersTable } from "../src/componenet/_UsersDetailCard.js";
