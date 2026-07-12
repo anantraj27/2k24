@@ -1,10 +1,12 @@
 import { socket } from "../src/service/socket.js";
+alert("socket.js loaded");
 import { createEvent } from "../src/service/eventService.js";
 import { userDetails } from "../src/service/eventService.js";
 import { usersTable } from "../src/componenet/_UsersDetailCard.js";
 import { eventCard } from "../src/componenet/_eventScheduledCard.js";
 import { get } from "../src/service/api.js";
-
+alert("JS Loaded");
+console.log("JS Loaded");
 const API = "/api";
 const menuItems =
 document.querySelectorAll(".menu-item");
@@ -13,6 +15,7 @@ const views =
 document.querySelectorAll(".view");
   document.getElementById("greeting").innerText =
     `Hello, ${name} 👋`;
+    alert(greeting ? "Greeting Found" : "Greeting Missing")
 menuItems.forEach(item => {
 
     item.addEventListener("click", () => {
@@ -41,6 +44,7 @@ menuItems.forEach(item => {
 let userTrackResult;
 let statsResult ;
 document.addEventListener("DOMContentLoaded", async () => {
+     alert("DOMContentLoaded");
     try {
         const data = await get(`${API}/user/api/v1/dashboard-stats`);
 
