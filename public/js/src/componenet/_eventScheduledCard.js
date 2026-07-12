@@ -76,6 +76,10 @@ export function featureEventCard(data){
     >
         ${data.team_b}
     </option>
+    <p class="event-scheduled-by">
+    👤 Scheduled By :
+    <strong>${data.scheduled_by ?? "Unknown"}</strong>
+</p>
 
 </select>
 

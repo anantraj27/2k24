@@ -456,3 +456,13 @@ h1 {
         gap:5px;
     }
 }
+.event-scheduled-by{
+    margin:6px 0;
+    font-size:14px;
+    color:#555;
+}
+
+.event-scheduled-by strong{
+    color:#1e293b;
+    font-weight:600;
+}

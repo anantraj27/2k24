@@ -21,7 +21,7 @@ export const checkAdminPermission = (req, res, next) => {
         });
     }
 
-    if (req.user.role.trim() !== "admin" ) {
+    if (req.user.role.trim() !== "admin" || req.user.role.trim() !== "super_admin" ) {
         return res.status(403).json({
             success: false,
             message: "Access denied"

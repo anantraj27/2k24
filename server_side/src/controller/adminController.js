@@ -199,48 +199,52 @@ A single query . for scheduled_events_database
 
  const  query = 
  `
-              SELECT
-        se.id AS scheduled_id,
-        e.name,
-        e.id AS event_id,
-        se.event_date,
-        se.event_time,
+        SELECT
+          se.id AS scheduled_id,
+          e.name,
+          e.id AS event_id,
+          se.event_date,
+          se.event_time,
 
-        CASE
-            WHEN se.participation_type = 'solo'
-            THEN ua.name
-            ELSE teamA.team_name
-        END AS team_a,
+          CASE
+              WHEN se.participation_type = 'solo'
+              THEN ua.name
+              ELSE teamA.team_name
+          END AS team_a,
 
-        CASE
-            WHEN se.participation_type = 'solo'
-            THEN ub.name
-            ELSE teamB.team_name
-        END AS team_b,
+          CASE
+              WHEN se.participation_type = 'solo'
+              THEN ub.name
+              ELSE teamB.team_name
+          END AS team_b,
 
-        se.venue,
-        se.status,
-        se.winner,
-        se.participation_type
+          se.venue,
+          se.status,
+          se.winner,
+          se.participation_type,
 
-    FROM scheduled_events se
+          scheduler.name AS scheduled_by
 
-    INNER JOIN events e
-    ON se.event_id = e.id
+      FROM scheduled_events se
 
-    INNER JOIN event_registrations teamA
-    ON se.participant_a_id = teamA.id
+      INNER JOIN events e
+      ON se.event_id = e.id
 
-    INNER JOIN event_registrations teamB
-    ON se.participant_b_id = teamB.id
+      INNER JOIN event_registrations teamA
+      ON se.participant_a_id = teamA.id
 
-    INNER JOIN users ua
-    ON teamA.captain_id = ua.id
+      INNER JOIN event_registrations teamB
+      ON se.participant_b_id = teamB.id
 
-    INNER JOIN users ub
-    ON teamB.captain_id = ub.id
+      INNER JOIN users ua
+      ON teamA.captain_id = ua.id
 
-            `
+      INNER JOIN users ub
+      ON teamB.captain_id = ub.id
+
+      LEFT JOIN users scheduler
+      ON scheduler.id = se.scheduled_by
+ `
 
 
 
@@ -319,18 +323,19 @@ console.log('verification ---->',Number(body.event_id), Number(body.team_A), Num
     we dont need it right now ...
     =========================*/
     result = await db.query(
-      `INSERT INTO   scheduled_events
-          (
+      `INSERT INTO scheduled_events
+      (
           participation_type,
           event_id,
           participant_a_id,
           participant_b_id,
           event_date,
           event_time,
-          venue
-          )
-          VALUES($1,$2,$3,$4,$5,$6,$7)
-          RETURNING *`,
+          venue,
+          scheduled_by
+      )
+      VALUES($1,$2,$3,$4,$5,$6,$7,$8)
+      RETURNING *`,
       [
         body.participation_type,
         Number(body.event_id) ,
@@ -339,6 +344,7 @@ console.log('verification ---->',Number(body.event_id), Number(body.team_A), Num
         body.date,
         body.time,
         body.venue,
+        req.user.id  
       ],
     );
    
