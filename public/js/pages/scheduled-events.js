@@ -1,4 +1,4 @@
-alert("socket.js loaded top");
+
 import { socket } from "../src/service/socket.js";
 alert("socket.js loaded bottom");
 import { createEvent } from "../src/service/eventService.js";
