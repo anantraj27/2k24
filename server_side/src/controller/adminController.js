@@ -543,6 +543,8 @@ export const checkRegistration = async (req, res, next) => {
 
     const eventId = Number(req.query.event_id);
 
+    console.log("event id ---->",eventId)
+
     try {
 
         const result = await db.query(
@@ -597,6 +599,7 @@ export const checkRegistration = async (req, res, next) => {
             `,
             [eventId]
         );
+        console.log("data --->",result.rows)
 
         return res.status(200).json({
             success: true,
