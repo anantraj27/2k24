@@ -21,15 +21,16 @@ export const checkAdminPermission = (req, res, next) => {
         });
     }
 
-  if (role !== "admin" && role !== "super_admin") {
-    return res.status(403).json({
-        success: false,
-        message: "Access denied"
-    });
-}
+    const role = req.user.role.trim();   // 👈 Ye line add karo
+
+    if (role !== "admin" && role !== "super_admin") {
+        return res.status(403).json({
+            success: false,
+            message: "Access denied"
+        });
+    }
 
     next();
 };
-
 
 // send response or call next never both
