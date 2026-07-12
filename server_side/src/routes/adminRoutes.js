@@ -18,7 +18,7 @@ adminRoutes.get("/api/v1/dashboard" , dashboardPage);
 adminRoutes.get("/api/v1/events" , event);
 adminRoutes.get("/api/v1/users" , user);
 adminRoutes.get("/api/v1/dashboard-data" , dashboardData);
-adminRoutes.get("/api/v1/teams" , checkEventPermission, teams);
+adminRoutes.get("/api/v1/teams" ,  teams);
 adminRoutes.get("/api/v1/scheduled-events",getAllScheduledEvents)
 adminRoutes.post("/api/v1/scheduled-events" , checkEventPermission, scheduledEvent);
 adminRoutes.patch("/api/v1/scheduled-events/:id/date-time", checkEventPermission, editScheduledEvent);// data & time 
