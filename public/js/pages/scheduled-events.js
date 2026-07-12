@@ -38,7 +38,6 @@ menuItems.forEach(item => {
 
 });
 
-document 
 let userTrackResult;
 let statsResult ;
 document.addEventListener("DOMContentLoaded", async () => {
