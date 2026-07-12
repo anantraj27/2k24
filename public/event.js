@@ -35,28 +35,23 @@ events.forEach((event, index) => {
   card.classList.add("card");
   card.dataset.id=event.id;
 
-  card.innerHTML = `
-        <img
-  src="${event.image_link.replace('/upload/', '/upload/f_auto,q_auto,w_500/')}"
-  loading="lazy"
-  decoding="async"
-  alt="${event.name}"><img
-  src="${event.image_link.replace('/upload/', '/upload/f_auto,q_auto,w_500/')}"
-  loading="lazy"
-  decoding="async"
-  alt="${event.name}">
+card.innerHTML = `
+  <img
+    src="${event.image_link.replace('/upload/', '/upload/f_auto,q_auto,w_500/')}"
+    loading="lazy"
+    decoding="async"
+    alt="${event.name}">
 
-    <h3>${event.name}</h3>
+  <h3>${event.name}</h3>
 
-    <div class="card-bottom">
+  <div class="card-bottom">
+    <p class="event-type">${event.type}</p>
 
-        <p class="event-type">${event.type}</p>
-
-        <button data-id =${event.id} onclick="openForm(${index})">
-            Register
-        </button>
-
-    </div>
+    <button data-id="${event.id}" onclick="openForm(${index})">
+      Register
+    </button>
+  </div>
+`;
 
        `;
   if (event.category.toLowerCase().trim() === "tech") {
