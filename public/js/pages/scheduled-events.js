@@ -41,30 +41,33 @@ menuItems.forEach(item => {
 document 
 let userTrackResult;
 let statsResult ;
-window.onload = async()=>{
-    console.log("hello")
+document.addEventListener("DOMContentLoaded", async () => {
     try {
-      let response = await fetch(`${API }/user/api/v1/dashboard-stats`);
-     
-       
-      if(!response.ok){
+        const data = await get(`${API}/user/api/v1/dashboard-stats`);
 
-        throw new Error(`HTTP! status code ${response.status}`)
-      }
-     let data = await response.json()
-      
-      userTrackResult = data.myEvents;
-      statsResult = data.stats ; 
-     console.log("response aaya ---> ",data)
-     userStats(userTrackResult);
-     stats(statsResult);
+        if (!data || !data.success) {
+            throw new Error("Failed to load dashboard data.");
+        }
+
+        console.log("Dashboard:", data);
+
+        userStats(data.myEvents || []);
+        stats(data.stats || {});
 
     } catch (error) {
-        
-        console.log(error.message);
-    }
+        console.error("Dashboard Error:", error);
 
-}
+        // Optional: User ko message dikhao
+        const myEvents = document.querySelector(".my-events .card");
+        if (myEvents) {
+            myEvents.innerHTML = `
+                <div class="activity-card">
+                    <p>Unable to load dashboard. Please refresh the page.</p>
+                </div>
+            `;
+        }
+    }
+});
 const myEvents = document.querySelector(".my-events .card ");
 const statsContainer = document.querySelector(".stats");
 
