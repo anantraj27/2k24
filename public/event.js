@@ -53,7 +53,7 @@ card.innerHTML = `
   </div>
 `;
 
-       `;
+       
   if (event.category.toLowerCase().trim() === "tech") {
     technicalContainer.appendChild(card);
   } else if (event.category.toLowerCase().trim() === "sports") {
