@@ -1,11 +1,11 @@
 
-import { socket } from "../src/service/socket.js";
-alert("socket.js loaded bottom");
-import { createEvent } from "../src/service/eventService.js";
-import { userDetails } from "../src/service/eventService.js";
-import { usersTable } from "../src/componenet/_UsersDetailCard.js";
-import { eventCard } from "../src/componenet/_eventScheduledCard.js";
-import { get } from "../src/service/api.js";
+// import { socket } from "../src/service/socket.js";
+// alert("socket.js loaded bottom");
+// import { createEvent } from "../src/service/eventService.js";
+// import { userDetails } from "../src/service/eventService.js";
+// import { usersTable } from "../src/componenet/_UsersDetailCard.js";
+// import { eventCard } from "../src/componenet/_eventScheduledCard.js";
+// import { get } from "../src/service/api.js";
 alert("JS Loaded");
 console.log("JS Loaded");
 const API = "/api";
