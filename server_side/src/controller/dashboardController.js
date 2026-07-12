@@ -15,6 +15,8 @@ export const dashboardHome = (req, res) => {
 export const getDashboard = async (req, res) => {
 
     const userId = req.user.id; // ya token se
+    console.log("Dashboard user:", req.user);
+console.log("Dashboard userId:", req.user.id);
 
     try {
 
@@ -63,7 +65,7 @@ export const getDashboard = async (req, res) => {
             )
 
         ]);
-
+console.log("event aaya ---->",statsResult.rows[0])
         return res.status(200).json({
 
             success: true,
