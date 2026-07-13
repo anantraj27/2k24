@@ -53,8 +53,11 @@ typeButtons.forEach(btn => {
 
         } else {
 
-         textarea.placeholder =
+             textarea.placeholder =
 "Write your last message... 💌 (e.g. To my parents..., To a friend..., To someone special...)";
+               
+
+        }
 
     });
 
