@@ -3,6 +3,8 @@ const counter = document.getElementById("count");
 const postBtn = document.getElementById("postBtn");
 const feed = document.getElementById("feed");
 const API = "/api/confession";
+
+let category = "confession";
 window.addEventListener("DOMContentLoaded", loadConfessions);
 
 async function loadConfessions() {
@@ -51,14 +53,8 @@ typeButtons.forEach(btn => {
 
         } else {
 
-            textarea.placeholder =
-                `Write your last message... 💌
-                Examples:
-                • To a cute girl, I just want to say...
-                • To a brave boy, I hope you're doing well...
-                • To my parents, I just want to say I'll never give up...`;
-
-        }
+         textarea.placeholder =
+"Write your last message... 💌 (e.g. To my parents..., To a friend..., To someone special...)";
 
     });
 
