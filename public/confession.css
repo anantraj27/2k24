@@ -380,13 +380,13 @@ textarea{
     border:1px solid #4f8cff;
 }
 
-@media(max-width:700px){
+@media(max-width:500px){
 
 .feed-toolbar{
     
 .feed-toolbar select{
 
-    padding:3px;
+    padding:2px;
 
     border-radius:12px;
 
@@ -408,7 +408,7 @@ textarea{
 }
 .feed-toolbar select{
 
-    padding: 20px;
+    padding: 10px 0;
     flex: 1;
 
     border-radius:12px;
