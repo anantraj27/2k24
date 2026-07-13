@@ -28,6 +28,37 @@ async function loadConfessions() {
     }
 
 }
+const typeButtons = document.querySelectorAll(".type-btn");
+
+typeButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        // Active class remove
+        typeButtons.forEach(b => b.classList.remove("active"));
+
+        // Active class add
+        btn.classList.add("active");
+
+        // Category update
+        category = btn.dataset.type;
+
+        // Placeholder change
+        if (category === "confession") {
+
+            confession.placeholder =
+                "Confess something... Nobody will know it's you 😌";
+
+        } else {
+
+            confession.placeholder =
+                "Write your last message... 💌";
+
+        }
+
+    });
+
+});
 let sessionId = localStorage.getItem("confessionSession");
 
 if(!sessionId){
