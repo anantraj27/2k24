@@ -52,13 +52,11 @@ typeButtons.forEach(btn => {
         } else {
 
             textarea.placeholder =
-                "Write your last message... to anyone in your life 💌 eg..";
-                <ul>
-                    
-                    <li>•To a cute Girl ,Ijust want to say ...</li>
-                    <li>•To a brave boy,I hope you are doing well..</li>
-                    <li>•To my Parents ,I just want to say I will never givup ... </li>
-                </ul>
+                `Write your last message... 💌
+                Examples:
+                • To a cute girl, I just want to say...
+                • To a brave boy, I hope you're doing well...
+                • To my parents, I just want to say I'll never give up...`;
 
         }
 
