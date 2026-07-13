@@ -108,8 +108,8 @@ postBtn.addEventListener("click", async () => {
         return;
     }
 
-    if (text.length > 250) {
-        alert("⚠️ Maximum 250 characters allowed.");
+    if (text.length > 500) {
+        alert("⚠️ Maximum 500 characters allowed.");
         return;
     }
 
@@ -130,7 +130,7 @@ postBtn.addEventListener("click", async () => {
 
         
         textarea.value = "";
-        counter.textContent = "0 / 250";
+        counter.textContent = "0 / 500";
         counter.style.color = "#999";
 
     } catch (err) {
