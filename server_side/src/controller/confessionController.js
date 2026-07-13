@@ -85,7 +85,7 @@ export const addConfession = async (req, res) => {
             });
 
         }
-
+        
         if (message.length > 500 ) {
 
             return res.status(400).json({
