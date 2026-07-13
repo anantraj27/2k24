@@ -88,7 +88,7 @@ textarea.addEventListener("input", () => {
 
     const len = textarea.value.length;
 
-    counter.textContent = `${len} / 250`;
+    counter.textContent = `${len} / 500`;
 
     if (len < 50) {
         counter.style.color = "#ff4d4d";
