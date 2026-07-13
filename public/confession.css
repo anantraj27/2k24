@@ -347,10 +347,11 @@ textarea{
 .feed-toolbar{
 
     display:flex;
+    flex-wrap: nowrap;
 
-    grid-template-columns:repeat(3,1fr);
+    
 
-    gap:12px;
+    gap:2px;
 
     margin-bottom:25px;
 }
