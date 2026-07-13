@@ -408,7 +408,7 @@ textarea{
 }
 .feed-toolbar select{
 
-    padding:2px;
+    padding: 20px;
     flex: 1;
 
     border-radius:12px;
