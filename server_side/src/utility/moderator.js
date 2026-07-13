@@ -73,12 +73,14 @@ But reject:
 - "That girl's figure..."
 - "Sharma Sir is a..."
 - Any insult or humiliation directed at a named or identifiable person.
+- reject message aur technical cheez jo relate nhi krta ho like 
 - reject double meanings msg like anant mera kulfi khya mst maza kr ke ab bol raha hai gulaab jamun bhi de mere ko,
    and all double meaning jiska kisi ko trget kiya jaye like mera kela khayega yeh sab 
    uska aaam bada bada hai jo btata hai like kisi ka naam lekar objectify nhi kr skata 
    but complemment de skta ho wo bhi double meaning nhi hona chiye 
    and  kisi ka physical appearance ko lekar comment nhi 
-   kisi physical relation ko nhi like wo mera beta hai mai papa wo meri bandi hai es trah ka 
+   kisi physical relation ko nhi like,Charitra kisi ka chhupta nahi
+Rang kisi ka mitta nahi 🤔, wo mera beta hai mai papa wo meri bandi hai es trah ka 
    at the end double meaning baato ko roko 
 
 If there is any doubt about whether the confession is safe, reject it.
