@@ -355,8 +355,9 @@ textarea{
 }
 
 .feed-toolbar{
-    position: sticky;
 
+    position: sticky;
+    top: 0;
     display:flex;
     flex-wrap: nowrap;
 
