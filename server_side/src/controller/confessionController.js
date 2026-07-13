@@ -86,14 +86,15 @@ export const addConfession = async (req, res) => {
 
         }
 
-        if (message.length > 250) {
+        if (message.length > 500 && category=="confession") {
 
             return res.status(400).json({
                 success: false,
-                message: "Maximum 250 characters allowed."
+                message: "Maximum 500 characters allowed."
             });
 
         }
+        
         const moderation = await moderateConfession(message);
         if (!moderation.allowed) {
 
