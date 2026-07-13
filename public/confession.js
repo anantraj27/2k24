@@ -4,7 +4,10 @@ const postBtn = document.getElementById("postBtn");
 const feed = document.getElementById("feed");
 const API = "/api/confession";
 
-let category = "confession";
+// let category = "confession";
+// const branch = document.getElementById('branch')
+// const batch = document.getElementById('branch')
+
 window.addEventListener("DOMContentLoaded", loadConfessions);
 
 async function loadConfessions() {
@@ -30,38 +33,38 @@ async function loadConfessions() {
     }
 
 }
-const typeButtons = document.querySelectorAll(".type-btn");
+// const typeButtons = document.querySelectorAll(".type-btn");
 
-typeButtons.forEach(btn => {
+// typeButtons.forEach(btn => {
 
-    btn.addEventListener("click", () => {
+//     btn.addEventListener("click", () => {
 
-        // Active class remove
-        typeButtons.forEach(b => b.classList.remove("active"));
+//         // Active class remove
+//         typeButtons.forEach(b => b.classList.remove("active"));
 
-        // Active class add
-        btn.classList.add("active");
+//         // Active class add
+//         btn.classList.add("active");
 
-        // Category update
-        category = btn.dataset.type;
+//         // Category update
+//         category = btn.dataset.type;
 
-        // Placeholder change
-        if (category === "confession") {
+//         // Placeholder change
+//         if (category === "confession") {
 
-            textarea.placeholder =
-                "Confess something... Nobody will know it's you 😌";
+//             textarea.placeholder =
+//                 "Confess something... Nobody will know it's you 😌";
 
-        } else {
+//         } else {
 
-             textarea.placeholder =
-"Write your last message... 💌 (e.g. To my parents..., To a friend..., To someone special...)";
+//              textarea.placeholder =
+// "Write your last message... 💌 (e.g. To my parents..., To a friend..., To someone special...)";
                
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
 let sessionId = localStorage.getItem("confessionSession");
 
 if(!sessionId){
@@ -118,7 +121,9 @@ postBtn.addEventListener("click", async () => {
         const { data } = await axios.post(API, {
 
             message: text,
-            avatar
+            avatar,
+            // branch,
+            // batch
 
         });
        createCard(data.data, true);
