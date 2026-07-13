@@ -406,5 +406,24 @@ textarea{
 
 
 }
+.feed-toolbar select{
+
+    padding:2px;
+    flex: 1;
+
+    border-radius:12px;
+
+    border:none;
+
+    background:#1d2235;
+
+    color:white;
+
+    font-size:14px;
+
+    outline:none;
+
+    cursor:pointer;
+}
 
 }
