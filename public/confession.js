@@ -46,13 +46,19 @@ typeButtons.forEach(btn => {
         // Placeholder change
         if (category === "confession") {
 
-            confession.placeholder =
+            textarea.placeholder =
                 "Confess something... Nobody will know it's you 😌";
 
         } else {
 
-            confession.placeholder =
-                "Write your last message... 💌";
+            textarea.placeholder =
+                "Write your last message... to anyone in your life 💌 eg..";
+                <ul>
+                    
+                    <li>•To a cute Girl ,Ijust want to say ...</li>
+                    <li>•To a brave boy,I hope you are doing well..</li>
+                    <li>•To my Parents ,I just want to say I will never givup ... </li>
+                </ul>
 
         }
 

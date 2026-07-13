@@ -330,3 +330,61 @@ textarea{
     }
 
 }
+.feed-header{
+
+    margin-top:40px;
+}
+
+.feed-header h3{
+
+    color:white;
+
+    margin-bottom:18px;
+
+    font-size:22px;
+}
+
+.feed-toolbar{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.feed-toolbar select{
+
+    padding:12px;
+
+    border-radius:12px;
+
+    border:none;
+
+    background:#1d2235;
+
+    color:white;
+
+    font-size:14px;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+.feed-toolbar select:focus{
+
+    border:1px solid #4f8cff;
+}
+
+@media(max-width:700px){
+
+.feed-toolbar{
+
+grid-template-columns:1fr;
+
+}
+
+}
