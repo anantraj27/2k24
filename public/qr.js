@@ -28,8 +28,8 @@ const badges = [
   "🧩 Puzzle Master",
   "🌙 Night Owl",
   "☕ Caffeine Powered",
-  "🎮 Gamer Mode",
-  "🎧 Playlist Curator",
+  
+ 
   "📷 Memory Collector",
   "🎨 Creative Mind",
   "🎤 Stage Ready",
@@ -58,7 +58,7 @@ const badges = [
   "🌊 Go With The Flow",
   "🚴 Adventure Seeker",
   "🎁 Full of Surprises",
-  "🏅 Potential Unlocked",
+  
   "🌠 Dream Builder",
   "🎇 Bright Future",
   "🛡️ Fearless Spirit",
@@ -71,18 +71,18 @@ const badges = [
   "🌟 One of One",
   "👀 Everyone's Favourite",
   "🦋 Fresh Beginnings",
-  "📍Making Memories",
+ 
   "🛸 Out of the Box",
   "🪐 Future Icon",
   "🥇Top Tier",
-  "📢 Worth Knowing",
+  
   "🎯 On a Mission",
   "🦾 Future Ready",
-  "🎊 Campus Ready",
+  
   "💙 Kind Soul",
   "🌞 Sunshine Energy",
   "🔥 Unstoppable",
-  "🏁 Just Getting Started"
+ 
 ];
 
 const random = badges[Math.floor(Math.random() * badges.length)];
@@ -139,5 +139,11 @@ document.getElementById("downloadBtn").addEventListener("click", async () => {
     link.download = `Freshers2026.png`;
     link.href = dataUrl;
     link.click();
+
+});
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+
+     window.location.href = "/qr"
 
 });
