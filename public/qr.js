@@ -144,6 +144,6 @@ document.getElementById("downloadBtn").addEventListener("click", async () => {
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
 
-     window.location.href = "/qr"
+     window.location.href = "/login"
 
 });
