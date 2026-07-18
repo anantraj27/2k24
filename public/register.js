@@ -7,7 +7,7 @@ const password1 = document.querySelector(".password")
 const password_rules = document.querySelector(".password-rules")
 const message = password_rules.querySelector(".password_message")
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-
+const name = document.querySelector(".name").textContent
 let password_state = false
 const eyeIcon = document.querySelector(".eye")
 
@@ -96,7 +96,8 @@ button.addEventListener("click", async (e) => {
         
        */
           alert(data.message)
-          window.location.href = "/login"
+           sessionStorage.setItem("Qr_name", name);
+          window.location.href = "/qr"
        
       } catch (error) {
         if(error.galti==="REGISTRATION_ERROR"){
