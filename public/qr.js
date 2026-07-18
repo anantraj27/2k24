@@ -112,7 +112,7 @@ document.getElementById("shareBtn").addEventListener("click", async () => {
 
             await navigator.share({
                 title: "Freshers 2026",
-                text: "Check out my Freshers QR Badge! 🎉",
+                text: "#Freshers 2026 🎉",
                 files: [file]
             });
 
