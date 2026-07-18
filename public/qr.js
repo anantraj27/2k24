@@ -91,7 +91,7 @@ const badge = document.getElementById("badge")
 const name = document.getElementById("name")
 
 const Qr_name =sessionStorage.getItem("Qr_name");
-// name.textContent =Qr_name;
+name.textContent =Qr_name;
 badge.textContent = `✨ Your Badge: ${random}`;
 const card = document.querySelector(".card");
 document.getElementById("shareBtn").addEventListener("click", async () => {
