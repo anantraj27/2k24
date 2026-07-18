@@ -98,7 +98,8 @@ function attachEventActions(container) {
                     {
                         method: "PATCH",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            credentials: "include"
                         },
                         body: JSON.stringify({
                             event_date,
@@ -121,7 +122,8 @@ function attachEventActions(container) {
                     {
                         method: "PATCH",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            credentials: "include"
                         },
                         body: JSON.stringify({
                             status: "live"
@@ -148,7 +150,8 @@ function attachEventActions(container) {
                     {
                         method: "PATCH",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            credentials: "include"
                         },
                         body: JSON.stringify({
                             status: "completed"
@@ -185,7 +188,8 @@ function attachEventActions(container) {
                     {
                         method: "PATCH",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            credentials: "include"
                         },
                         body: JSON.stringify({
                             winner: winnerId,
@@ -209,7 +213,8 @@ function attachEventActions(container) {
                 const response = await fetch(
                     `${API}/admin/api/v1/scheduled-events/${id}`,
                     {
-                        method: "DELETE"
+                        method: "DELETE",
+                        credentials: "include"
                     }
                 );
 

@@ -1,87 +1,119 @@
 const messages = [
+  "📱 123456789... Bas ek number missing hai — tumhara. 😏",
 
-"☕ Chai peene ke baad hi bugs dikhte hain... trust the process 😂",
+  "📸 Instagram hai? Kyunki meri feed ko finally ek reason mil gaya. ✨",
 
-"📚 Attendance kam hai? Confidence high rakho 😎",
+  "🌙 Mummy-Papa bolte the sapno ka peecha karo... isliye tumse baat kar raha hoon. 😉",
 
-"😂 Assignment submit kar diya? Ya phir 'kal karunga' mode ON hai?",
+  "🎨 Kya tum artist ho? Ek hi nazar me mera pura attention draw kar liya. ❤️",
 
-"💘 Crush online hai... lekin pehle registrations check kar lo 😏",
+  "🏡 Tum Barbie ho kya? Kyunki tumhe dekhte hi future ka Dreamhouse imagine ho gaya. 😂",
 
-"🎯 Aaj ka target: Zero bugs, zero drama, full attendance!",
+  "➗ Math me weak hoon... par tumhari value samajhne ke liye calculator nahi chahiye. 💖",
 
-"📖 Notes sabke paas hote hain... samajhne wale alag level ke hote hain 😅",
+  "😄 Tumhara naam kya hai... ya 'mine' bolna jaldi ho jayega? 🤭",
 
-"🏆 Trophy sirf winners le jayenge... memories sab le jayenge ❤️",
+  "💋 Tumhari smile dekh ke lagta hai aaj ka din already successful hai. ✨",
 
-"😎 Last bench wale bhi kabhi-kabhi history bana dete hain.",
+  "❤️ Organ donor nahi hoon... par dil dene ka mood zaroor hai. 😌",
 
-"🍜 Mess ka khana survive kar liya? Phir life me kuch bhi possible hai 😂",
+  "😘 Ek smile udhaar de do... interest ke saath wapas kar dunga. 😂",
 
-"📢 Internal marks ka tension baad me... pehle event mast chalao!",
+  "🗺️ Map hai? Kyunki tumhari aankhon me direction hi bhool gaya. 👀",
 
-"😂 Group project me kaam ek karta hai... marks sab lete hain.",
+  "🪞 Mirror hai? Mujhe future ki ek jhalak dekhni thi... hum dono saath. 😏",
 
-"💡 Code chale ya na chale... confidence kabhi down mat hone dena 😌",
+  "💊 Lagta hai tumhe Vitamin Me ki kami ho gayi hai. 🤭",
 
-"👀 Crush mil jaye to eye contact maintain karna... panic nahi 😆",
+  "📶 WiFi router ho kya? Connection automatically full aa raha hai. 📡",
 
-"🎉 Aaj naye dost banao... LinkedIn connections baad me bana lena 😁",
+  "⚖️ Agar khoobsurti crime hoti... to tum lifetime sentence deserve karte. 😌",
 
-"📝 Viva me jo confidence dikhate ho... wahi real superpower hai 😅",
+  "🌤️ Aaj zyada beautiful kya hai... weather ya tumhari smile? ☀️",
 
-"📈 CGPA important hai... lekin memories ka koi backlog nahi hota ❤️",
+  "🌹 Tumhe dekhkar lagta hai kisi ne 'perfect timing' ko insaan bana diya. ✨",
 
-"😄 Agar faculty idhar aa gayi... ye message automatically disappear ho gaya 😶",
+  "💬 Tum reply karo ya na karo... smile to already aa gayi. 😊",
 
-"🚀 Placement ka tension baad me... pehle semester survive karo 😂",
+  "☕ Coffee peene aaya tha... distraction free me mil gaya. 😂",
 
-"🎓 Degree sabko milegi... college stories sabki alag hongi.",
+  "💫 Tumhari vibe itni achhi hai ki algorithm bhi recommend kare. 🤍",
 
-"✨ Smile! Shayad aaj ka din yaadgaar ban jaye 😄",
+    "💻 Are you JavaScript? Kyunki tumhare bina page complete nahi lagta. 😌",
 
-"😂 WiFi slow ho sakta hai... tumhara enthusiasm nahi.",
+  "🐞 Tum bug nahi ho... warna main kabhi fix hi nahi karna chahta. 😂",
 
-"💻 Ctrl + S daba diya? Future wala tum thank you bolega.",
+  "⚡ Are you CSS? Kyunki tumne meri life ko style de diya. ✨",
 
-"📢 College me do hi cheeze fast failti hain... rumours aur assignment deadlines 😂",
+  "🌐 Are you localhost? Kyunki har baar tumhare paas hi return aa jata hoon. 🤍",
 
-"🤝 Friends acche ho to 4 saal 4 mahine lagte hain.",
+  "📦 Tum npm package ho kya? Ek baar install kiya... ab remove nahi ho rahe. 😅",
 
-"🎯 Attendance 75% ho ya na ho... enthusiasm 100% hona chahiye 😎",
+  "🔒 Are you HTTPS? Kyunki tumhare saath connection secure feel hota hai. ❤️",
 
-"😂 Exam ke ek din pehle sabko topper banne ki feeling aati hai.",
+  "🧠 Tum meri favourite variable ho... kyunki tum kabhi out of scope nahi jaati. 😉",
 
-"📚 Library me padhne jao... aur dost mil jaye... game over 😆",
+  "🚀 Are you Git? Kyunki har din tumhare saath commit karne ka mann karta hai. 😂",
+  "📶 Are you a Router? Kyunki meri feelings ka best route tum hi ho. 😏",
 
-"💘 Agar crush smile kar de... pura din productive lagta hai 😂",
+  "⚡ Are you DNS? Kyunki tumhare bina kisi aur tak pahunch hi nahi pata. 🌐",
 
-"☕ Coding + Coffee = Semester Survival Kit.",
+  "🛜 Are you a Hotspot? Kyunki tumhare aas-paas sab connect hona chahte hain. 😂",
+  "📚 Are you my favourite subject? Kyunki pura din bas tumhare baare me hi sochta rehta hoon. 😌",
 
-"🚀 Server down ho sakta hai... tumhara confidence nahi.",
+"☕ Coffee thandi ho sakti hai... tumhari smile ka effect nahi. ✨",
 
-"😂 Semester shuru hote hi motivation full... end tak bas passing marks ki dua 😅",
+"📖 Tum library ki silent zone ho kya? Kyunki tumhe dekhte hi main bhi chup ho jata hoon. 🤭",
 
-"📢 Faculty: 'Any Questions?'  Entire Class: 😶",
+"🎯 Agar tum assignment hoti... to deadline se pehle complete kar leta. 😂",
 
-"🎉 College fest ka asli winner wahi hai jo photos me sab jagah ho 😂",
+"🪄 Tum magician ho kya? Kyunki baaki sab background blur ho jata hai. ✨",
 
-"🧠 DSA tough hai... lekin 8 AM wali class usse bhi tough hai.",
+"📱 Battery 1% pe ho ya 100%... tumhara message hamesha priority rahega. ❤️",
 
-"📖 Syllabus dekh ke shock lagta hai... phir bhi last week me hi padhte hain 😅",
+"🎵 Tum playlist ka favourite song ho kya? Repeat pe chalne ka mann karta hai. 🎧",
 
-"🏆 Hackathon ho ya viva... confidence aadha kaam kar deta hai.",
+"💬 Tumhari 'Hi' bhi notification nahi... celebration lagti hai. 🥹",
 
-"😴 Hostel me '5 minute aur' sabse bada jhoot hai 😂",
+"🌙 Chand dekhne nikla tha... tum mil gaye. Bonus mil gaya. 😌",
 
-"😂 Semester ka sabse dangerous sentence: 'Abhi bahut time hai.'",
+"📸 Selfie log camera se lete hain... meri favourite picture to tumhari smile hai. 😊",
 
-"💡 Debugging se patience aur patience se placement milta hai 😎",
+"🚦 Tum traffic signal ho kya? Kyunki tumhe dekhte hi main ruk jata hoon. 😂",
 
-"🎈 Agar aaj kisi naye insaan se mile... Hi bolne me kya jaata hai? 😊",
+"🧲 Magnet ho kya? Kyunki attention automatically tumhari taraf chala jata hai. 😏",
 
-"🔥 College khatam ho jayega... ye moments nahi milenge dobara ❤️"
+"🌈 Tum mood booster ho kya? Ek smile aur pura din set. ☀️",
 
+"📝 Attendance kam ho sakti hai... tumhari yaad kabhi short nahi hoti. 😂",
+
+"🎁 Aaj ka best surprise? Tumhe dekh lena. 🤍",
+
+"📡 Network weak ho sakta hai... tumhari vibe kabhi weak nahi hoti. 📶",
+
+"🛒 Shopping list me kuch nahi tha... phir bhi tum pasand aa gaye. 😄",
+
+"🎮 Game over tab hota hai jab tum 'Bye' bol dete ho. 😂",
+
+"🌍 Google Maps duniya dikha sakta hai... par tum jaisa koi nahi. ✨",
+
+"💫 Tumhari smile ka dark mode kabhi mat lana. 😌",
+
+"📅 Calendar me favourite date nahi... favourite person mil gaya. 🤭",
+
+"📦 Are you an API? Kyunki bina tumhare response ke request adhoori lagti hai. 💻",
+
+"⚛️ Are you React? Kyunki tum meri har state instantly change kar dete ho. 😄",
+
+"📨 Are you SMTP? Kyunki meri saari feelings tum tak deliver ho jaati hain. 💌",
+
+"🧠 Are you RAM? Kyunki tum hamesha mere mind me loaded rehte ho. 😂",
+
+"🌐 Are you HTTP 200? Kyunki tumhe dekhte hi sab OK lagne lagta hai. ✅",
+
+"🔑 Are you a Primary Key? Kyunki tumhare jaisa duplicate milna impossible hai. 😉",
+
+"🖥️ Are you Stack Overflow? Kyunki har problem ka answer tumhare paas lagta hai. 😄"
 ];
 const hour = new Date().getHours();
 
