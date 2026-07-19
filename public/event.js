@@ -159,50 +159,52 @@ return ;}
 
     input.addEventListener("input", async () => {
 
-        const q = input.value.trim();
+      alert("Registration has not started you will notified Once started Via Group..✨");
 
-        if (!q) {
-            dropdown.innerHTML = "";
-            return;
-        }
+        // const q = input.value.trim();
 
-        const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`, {
-        credentials: "include"
-        });
-        const data = await res.json();
+        // if (!q) {
+        //     dropdown.innerHTML = "";
+        //     return;
+        // }
 
-        dropdown.innerHTML = "";
+        // const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`, {
+        // credentials: "include"
+        // });
+        // const data = await res.json();
 
-        data.users.forEach(user => {
+        // dropdown.innerHTML = "";
 
-            const option = document.createElement("div");
+        // data.users.forEach(user => {
 
-            option.innerText = user.name;
+        //     const option = document.createElement("div");
 
-            option.addEventListener("click", () => {
+        //     option.innerText = user.name;
 
-                // duplicate
-                if (selectedPlayers.some(p => p.id === user.id))
-                    return;
+        //     option.addEventListener("click", () => {
 
-                // max players
-                if (selectedPlayers.length >= event.max_players) {
-                    alert(`Maximum ${event.max_players} players allowed`);
-                    return;
-                }
+        //         // duplicate
+        //         if (selectedPlayers.some(p => p.id === user.id))
+        //             return;
 
-                selectedPlayers.push(user);
+        //         // max players
+        //         if (selectedPlayers.length >= event.max_players) {
+        //             alert(`Maximum ${event.max_players} players allowed`);
+        //             return;
+        //         }
 
-                renderPlayers();
+        //         selectedPlayers.push(user);
 
-                input.value = "";
-                dropdown.innerHTML = "";
+        //         renderPlayers();
 
-            });
+        //         input.value = "";
+        //         dropdown.innerHTML = "";
 
-            dropdown.appendChild(option);
+        //     });
 
-        });
+        //     dropdown.appendChild(option);
+
+        // });
 
     });
 
@@ -277,86 +279,87 @@ formContent.appendChild(form);
 formPopup.style.display = "flex";
 
 form.addEventListener("submit", async (e) => {
+  alert("Registration has not started you will notified Once started Via Group..✨");
 
-    e.preventDefault();
+    // e.preventDefault();
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData);
+    // const formData = new FormData(form);
+    // const payload = Object.fromEntries(formData);
 
-    // Team Validation
-    if (participationType === "team") {
+    // // Team Validation
+    // if (participationType === "team") {
 
-        if (!payload.team_name?.trim()) {
-            alert("Enter Team Name");
-            return;
-        }
+    //     if (!payload.team_name?.trim()) {
+    //         alert("Enter Team Name");
+    //         return;
+    //     }
 
-        if (selectedPlayers.length < event.min_players) {
-            alert(`Minimum ${event.min_players} players required`);
-            return;
-        }
+    //     if (selectedPlayers.length < event.min_players) {
+    //         alert(`Minimum ${event.min_players} players required`);
+    //         return;
+    //     }
 
-    }
+    // }
 
-    // Captain Name
-    if (!payload.captain_name?.trim()) {
-        alert("Enter Name");
-        return;
-    }
+    // // Captain Name
+    // if (!payload.captain_name?.trim()) {
+    //     alert("Enter Name");
+    //     return;
+    // }
 
-    // Phone Validation
-    if (
-        !payload.captain_phone ||
-        !/^[6-9]\d{9}$/.test(payload.captain_phone)
-    ) {
-        alert("Enter valid 10 digit phone number");
-        return;
-    }
+    // // Phone Validation
+    // if (
+    //     !payload.captain_phone ||
+    //     !/^[6-9]\d{9}$/.test(payload.captain_phone)
+    // ) {
+    //     alert("Enter valid 10 digit phone number");
+    //     return;
+    // }
 
-    // Registration Validation
-    if (!payload.captain_registration_no?.trim()) {
-        alert("Enter Registration Number");
-        return;
-    }
+    // // Registration Validation
+    // if (!payload.captain_registration_no?.trim()) {
+    //     alert("Enter Registration Number");
+    //     return;
+    // }
 
-    payload.event_id = event.id;
-    payload.participation_type = participationType;
-    payload.event_name = event.name;
+    // payload.event_id = event.id;
+    // payload.participation_type = participationType;
+    // payload.event_name = event.name;
 
-    if (selectedPlayers.length > 0) {
-        payload.player_ids = selectedPlayers.map(player => player.id);
-    }
+    // if (selectedPlayers.length > 0) {
+    //     payload.player_ids = selectedPlayers.map(player => player.id);
+    // }
 
-    console.log(payload);
+    // console.log(payload);
 
-    try {
+    // try {
 
-        const { data } = await axios.post(
-            `${API}/user/api/v1/register-event`,
-            payload,
-            {
-        withCredentials: "include"
-        }
-        );
+    //     const { data } = await axios.post(
+    //         `${API}/user/api/v1/register-event`,
+    //         payload,
+    //         {
+    //     withCredentials: "include"
+    //     }
+    //     );
 
-        alert(data.message);
+    //     alert(data.message);
 
-        form.reset();
+    //     form.reset();
 
-        selectedPlayers = [];
+    //     selectedPlayers = [];
 
-        formPopup.style.display = "none";
+    //     formPopup.style.display = "none";
 
-    } catch (err) {
+    // } catch (err) {
 
-        console.error(err);
+    //     console.error(err);
 
-        alert(
-            err.response?.data?.message ||
-            "Something went wrong"
-        );
+    //     alert(
+    //         err.response?.data?.message ||
+    //         "Something went wrong"
+    //     );
 
-    }
+    // }
 
 });
     

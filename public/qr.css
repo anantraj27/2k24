@@ -50,10 +50,20 @@ body{
     box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
-.logo{
+.logo {
     color:#2563eb;
-    font-weight:700;
-    margin-bottom:15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.event-date {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #777;
+    letter-spacing: 1px;
 }
 
 #name{

@@ -128,7 +128,7 @@ retina_detect:true
 
 /* ================= COUNTDOWN TIMER ================= */
 
-const eventDate = new Date("Mar 23, 2026 09:00:00").getTime();
+const eventDate = new Date("July 22, 2026 09:00:00").getTime();
 
 const countdown = setInterval(function(){
 
