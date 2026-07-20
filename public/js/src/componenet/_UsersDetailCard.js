@@ -11,7 +11,7 @@ export  function usersTable(data){
     const cell = Object.values(row)
     .map(value =>`<td>${String(value)}</td>`).join("");
 
-   }).join("")
+   return `<tr>${cell}</tr>`;}).join("")
   
 return`  
          <thead>
