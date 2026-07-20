@@ -10,6 +10,8 @@ const API = "/api/confession";
 
 window.addEventListener("DOMContentLoaded", loadConfessions);
 
+let page = 1;
+const limit = 10;
 async function loadConfessions() {
 
     try {
@@ -33,6 +35,12 @@ async function loadConfessions() {
     }
 
 }
+window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+        page++;
+        loadConfessions();
+    }
+});
 // const typeButtons = document.querySelectorAll(".type-btn");
 
 // typeButtons.forEach(btn => {
