@@ -13,30 +13,38 @@ window.addEventListener("DOMContentLoaded", loadConfessions);
 let page = 1;
 const limit = 10;
 async function loadConfessions() {
-
     try {
+        const { data } = await axios.get(API, {
+            params: {
+                page,
+                limit
+            }
+        });
 
-        const { data } = await axios.get(API);
-
-        feed.innerHTML = "";
+        // Sirf first page pe clear karo
+        if (page === 1) {
+            feed.innerHTML = "";
+        }
 
         data.data.forEach(confession => {
-
             createCard(confession);
-
         });
 
     } catch (err) {
-
         console.error(err);
-
-        alert("Unable to load confessions.");
-
     }
-
 }
+// window.addEventListener("scroll", () => {
+//     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+//         page++;
+//         loadConfessions();
+//     }
+// });
 window.addEventListener("scroll", () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+    if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 200
+    ) {
         page++;
         loadConfessions();
     }
