@@ -47,6 +47,12 @@ export const moderateConfession = async (message) => {
         - "Wo meri bandi hai."
         - "Main uska papa hu."
         - "Charitra kisi ka chhupta nahi..."
+        - sorry kyun bola junior 
+        - reject every things other than confession and has some positive emotion 
+        -confession ka alwa kuch nhi 
+        -confession ka alwa kisi ko praise krna that's okay
+        -but faltu ka baat ko reject
+        - jo sense nhi bnta reject
 
         Mentioning a person's name alone is NOT a violation unless the content is insulting, humiliating, sexual, defamatory or otherwise unsafe.
 
