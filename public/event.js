@@ -324,8 +324,7 @@ form.addEventListener("submit", async (e) => {
     }
 
     payload.event_id = event.id;
-    payload.participation_type = participationType;
-    payload.event_name = event.name;
+    payload.participation_type = document.querySelector(".form-content select").value;
     console.log(payload);
 
     if (selectedPlayers.length > 0) {
