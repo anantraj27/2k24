@@ -11,20 +11,7 @@ export  function usersTable(data){
     const cell = Object.values(row)
     .map(value =>`<td>${String(value)}</td>`).join("");
 
-   return `
-   <tr>
-     ${cell}
-      <td> 
-         <button class="accept" data-id="${row.id}">
-            Accept
-          </button>
-
-          <button class="reject" data-id="${row.id}">
-            Reject
-          </button>
-         </td>
-        </tr>
-        `}).join("")
+   }).join("")
   
 return`  
          <thead>
