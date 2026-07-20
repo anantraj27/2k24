@@ -1,5 +1,5 @@
 const sportsContainer = document.querySelector(".sports-container");
-const literallyContainer = document.querySelector(".literally-container");
+const literallyContainer = document.querySelector(".literary-container");
 const culturalContainer = document.querySelector(".cultural-container");
 const technicalContainer = document.querySelector(".technical-container");
 
