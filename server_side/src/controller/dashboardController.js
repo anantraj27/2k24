@@ -401,8 +401,8 @@ export const eventRegister = async (req, res) => {
             ON tm.user_id = u.id
 
             WHERE
-                er.event_id = $1,
-                AND er.participation_type = $2,
+                er.event_id = $1
+                AND er.participation_type = $2
                 AND tm.user_id = ANY($3::int[])
             `,
             [event_id,participation_type, allMembers]
@@ -414,7 +414,7 @@ export const eventRegister = async (req, res) => {
 
             return res.status(400).json({
                 success: false,
-                message: `${alreadyRegistered[0].name} is already registered in this event.`
+               message: `${alreadyRegistered[0].name} is already registered in this ${participation_type} category.`
             });
 
         }
