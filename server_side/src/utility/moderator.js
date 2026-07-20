@@ -53,6 +53,7 @@ export const moderateConfession = async (message) => {
         -confession ka alwa kisi ko praise krna that's okay
         -but faltu ka baat ko reject
         - jo sense nhi bnta reject
+        -If there is  ,Mohni , something from Anan.. , Anuraj TIWARI , Reject it 
 
         Mentioning a person's name alone is NOT a violation unless the content is insulting, humiliating, sexual, defamatory or otherwise unsafe.
 
