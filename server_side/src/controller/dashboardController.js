@@ -403,7 +403,7 @@ export const eventRegister = async (req, res) => {
             WHERE
                 er.event_id = $1,
                 AND er.participation_type = $2,
-                AND tm.user_id = ANY($2::int[])
+                AND tm.user_id = ANY($3::int[])
             `,
             [event_id,participation_type, allMembers]
         );
