@@ -82,7 +82,8 @@ closeBtn.addEventListener("click", () => {
 function openForm(index) {
  selectedPlayers = [];
   const event = events[index];
-   let participationType = event.type; 
+   let participationType =
+    event.type === "team/solo" ? "team" : event.type;
 
   function renderFields(fields, selectedValue = "team") {
     formContent.innerHTML = "";
@@ -325,6 +326,7 @@ form.addEventListener("submit", async (e) => {
     payload.event_id = event.id;
     payload.participation_type = participationType;
     payload.event_name = event.name;
+    console.log(payload);
 
     if (selectedPlayers.length > 0) {
         payload.player_ids = selectedPlayers.map(player => player.id);
