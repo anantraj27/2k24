@@ -241,10 +241,11 @@ function createCard(confession, isNew = false) {
 
         <div class="reply-input">
 
-            <input
+            <textarea
                 type="text"
                 class="reply-text"
                 placeholder="Write a reply...">
+                </textarea>
 
             <button
                 class="send-reply"
