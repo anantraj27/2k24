@@ -381,6 +381,8 @@ sendBtn.addEventListener("click", async () => {
     const input = card.querySelector(".reply-text");
 
     const message = input.value.trim();
+    console.log(message);
+    console.log(`${API}/${sendBtn.dataset.id}/replies`)
 
     if (!message) return;
 
