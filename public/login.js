@@ -26,7 +26,7 @@ login.addEventListener('click', async (e) => {
         if (result.success) {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
-            audio = new Audio(song);
+            let audio = new Audio(song);
               audio.play();
             window.location.href = "/home"; // Redirect to home
               
