@@ -160,52 +160,53 @@ return ;}
 
     input.addEventListener("input", async () => {
 
-      // alert("Registration has not started you will notified Once started Via Group..✨");
+    alert("Registration has been closed From website Feel the google form Proided by Your Seniors in Aarambh whatsapp Group..✨");
+  
 
-        const q = input.value.trim();
+        // const q = input.value.trim();
 
-        if (!q) {
-            dropdown.innerHTML = "";
-            return;
-        }
+        // if (!q) {
+        //     dropdown.innerHTML = "";
+        //     return;
+        // }
 
-        const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`, {
-        credentials: "include"
-        });
-        const data = await res.json();
+        // const res = await fetch(`${API}/user/api/v1/search-users?q=${q}`, {
+        // credentials: "include"
+        // });
+        // const data = await res.json();
 
-        dropdown.innerHTML = "";
+        // dropdown.innerHTML = "";
 
-        data.users.forEach(user => {
+        // data.users.forEach(user => {
 
-            const option = document.createElement("div");
+        //     const option = document.createElement("div");
 
-            option.innerText = user.name;
+        //     option.innerText = user.name;
 
-            option.addEventListener("click", () => {
+        //     option.addEventListener("click", () => {
 
-                // duplicate
-                if (selectedPlayers.some(p => p.id === user.id))
-                    return;
+        //         // duplicate
+        //         if (selectedPlayers.some(p => p.id === user.id))
+        //             return;
 
-                // max players
-                if (selectedPlayers.length >= event.max_players) {
-                    alert(`Maximum ${event.max_players} players allowed`);
-                    return;
-                }
+        //         // max players
+        //         if (selectedPlayers.length >= event.max_players) {
+        //             alert(`Maximum ${event.max_players} players allowed`);
+        //             return;
+        //         }
 
-                selectedPlayers.push(user);
+        //         selectedPlayers.push(user);
 
-                renderPlayers();
+        //         renderPlayers();
 
-                input.value = "";
-                dropdown.innerHTML = "";
+        //         input.value = "";
+        //         dropdown.innerHTML = "";
 
-            });
+        //     });
 
-            dropdown.appendChild(option);
+        //     dropdown.appendChild(option);
 
-        });
+        // });
 
     });
 
@@ -280,89 +281,89 @@ formContent.appendChild(form);
 formPopup.style.display = "flex";
 
 form.addEventListener("submit", async (e) => {
-  // alert("Registration has not started you will notified Once started Via Group..✨");
+  alert("Registration has been closed From website Feel the google form Proided by Your Seniors in Aarambh whatsapp Group..✨");
 
-    e.preventDefault();
+//     e.preventDefault();
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData);
+//     const formData = new FormData(form);
+//     const payload = Object.fromEntries(formData);
 
-    // Team Validation
-    if (participationType === "team") {
+//     // Team Validation
+//     if (participationType === "team") {
 
-        if (!payload.team_name?.trim()) {
-            alert("Enter Team Name");
-            return;
-        }
+//         if (!payload.team_name?.trim()) {
+//             alert("Enter Team Name");
+//             return;
+//         }
 
-        if (selectedPlayers.length < event.min_players) {
-            alert(`Minimum ${event.min_players} players required`);
-            return;
-        }
+//         if (selectedPlayers.length < event.min_players) {
+//             alert(`Minimum ${event.min_players} players required`);
+//             return;
+//         }
 
-    }
+//     }
 
-    // Captain Name
-    if (!payload.captain_name?.trim()) {
-        alert("Enter Name");
-        return;
-    }
+//     // Captain Name
+//     if (!payload.captain_name?.trim()) {
+//         alert("Enter Name");
+//         return;
+//     }
 
-    // Phone Validation
-    if (
-        !payload.captain_phone ||
-        !/^[6-9]\d{9}$/.test(payload.captain_phone)
-    ) {
-        alert("Enter valid 10 digit phone number");
-        return;
-    }
+//     // Phone Validation
+//     if (
+//         !payload.captain_phone ||
+//         !/^[6-9]\d{9}$/.test(payload.captain_phone)
+//     ) {
+//         alert("Enter valid 10 digit phone number");
+//         return;
+//     }
 
-    // Registration Validation
-    if (!payload.captain_registration_no?.trim()) {
-        alert("Enter Registration Number");
-        return;
-    }
+//     // Registration Validation
+//     if (!payload.captain_registration_no?.trim()) {
+//         alert("Enter Registration Number");
+//         return;
+//     }
 
-    payload.event_id = event.id;
-  const select = document.querySelector(".form-content select");
+//     payload.event_id = event.id;
+//   const select = document.querySelector(".form-content select");
 
-payload.participation_type = select ? select.value : event.type;
-    console.log(payload);
+// payload.participation_type = select ? select.value : event.type;
+//     console.log(payload);
 
-    if (selectedPlayers.length > 0) {
-        payload.player_ids = selectedPlayers.map(player => player.id);
-    }
+//     if (selectedPlayers.length > 0) {
+//         payload.player_ids = selectedPlayers.map(player => player.id);
+//     }
 
-    console.log(payload);
+//     console.log(payload);
 
-    try {
+//     try {
 
-        const { data } = await axios.post(
-            `${API}/user/api/v1/register-event`,
-            payload,
-            {
-        withCredentials: "include"
-        }
-        );
+//         const { data } = await axios.post(
+//             `${API}/user/api/v1/register-event`,
+//             payload,
+//             {
+//         withCredentials: "include"
+//         }
+//         );
 
-        alert(data.message);
+//         alert(data.message);
 
-        form.reset();
+//         form.reset();
 
-        selectedPlayers = [];
+//         selectedPlayers = [];
 
-        formPopup.style.display = "none";
+//         formPopup.style.display = "none";
 
-    } catch (err) {
+//     } catch (err) {
 
-        console.error(err);
+//         console.error(err);
 
-        alert(
-            err.response?.data?.message ||
-            "Something went wrong"
-        );
+//         alert(
+//             err.response?.data?.message ||
+//             "Something went wrong"
+//         );
 
-    }
+//     }
 
 });
     
