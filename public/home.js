@@ -115,6 +115,22 @@ const messages = [
 
 "🖥️ Are you Stack Overflow? Kyunki har problem ka answer tumhare paas lagta hai. 😄"
 ];
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    if (sessionStorage.getItem("playLoginMusic") === "true") {
+
+        const audio = new Audio("/images/waaanBeYours.mp3");
+        audio.volume = 0.5;
+
+        audio.play().catch(err => {
+            console.log("Audio Error:", err);
+        });
+
+        sessionStorage.removeItem("playLoginMusic");
+    }
+
+});
 const hour = new Date().getHours();
 
 let greet = "Hello";
