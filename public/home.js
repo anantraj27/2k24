@@ -118,7 +118,7 @@ const messages = [
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    if (sessionStorage.getItem("playLoginMusic") === "true") {
+   
 
         const audio = new Audio("/images/waaanBeYours.mp3");
         audio.volume = 0.5;
@@ -127,8 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
             console.log("Audio Error:", err);
         });
 
-        sessionStorage.removeItem("playLoginMusic");
-    }
+   
 
 
 
