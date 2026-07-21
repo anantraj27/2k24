@@ -1,5 +1,5 @@
 const API = "/api";
-
+let song = '/images/waaanaBeYours.mpeg';
 const email = document.querySelector(".email")
 const password =document.querySelector(".password")
 const login = document.querySelector(".login")
@@ -27,6 +27,9 @@ login.addEventListener('click', async (e) => {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
             window.location.href = "/home"; // Redirect to home
+              audio = new Audio(song);
+              audio.play();
+
         } else {
             // Yeh tab chalega jab success: false ho
             alert("Login failed: " + result.message);
