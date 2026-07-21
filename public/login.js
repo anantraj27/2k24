@@ -26,9 +26,10 @@ login.addEventListener('click', async (e) => {
         if (result.success) {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
-            window.location.href = "/home"; // Redirect to home
-              audio = new Audio(song);
+            audio = new Audio(song);
               audio.play();
+            window.location.href = "/home"; // Redirect to home
+              
 
         } else {
             // Yeh tab chalega jab success: false ho
