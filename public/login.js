@@ -26,8 +26,19 @@ login.addEventListener('click', async (e) => {
         if (result.success) {
             console.log("Login Success!");
             sessionStorage.setItem("username", result.name);
-            let audio = new Audio(song);
-              audio.play();
+           const audio = new Audio("/images/waaanBeYours.mp3");
+
+audio.onloadedmetadata = () => {
+    console.log("Duration:", audio.duration);
+};
+
+audio.onerror = () => {
+    console.log("Audio error:", audio.error);
+};
+
+audio.play()
+    .then(() => console.log("Playing"))
+    .catch(err => console.error(err));
             window.location.href = "/home"; // Redirect to home
               
 
