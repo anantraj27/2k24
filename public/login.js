@@ -1,5 +1,5 @@
 const API = "/api";
-let song = '/images/waaanaBeYours.mpeg';
+let song = '/images/waaanaBeYours.mp3';
 const email = document.querySelector(".email")
 const password =document.querySelector(".password")
 const login = document.querySelector(".login")
