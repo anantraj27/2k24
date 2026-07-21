@@ -8,8 +8,15 @@ const API = "/api/confession";
 // const branch = document.getElementById('branch')
 // const batch = document.getElementById('branch')
 
+
 window.addEventListener("DOMContentLoaded", loadConfessions);
 
+  const audio = new Audio("/images/waaanBeYours.mp3");
+        audio.volume = 0.5;
+
+        audio.play().catch(err => {
+            console.log("Audio Error:", err);
+        });
 let page = 1;
 const limit = 10;
 async function loadConfessions() {
