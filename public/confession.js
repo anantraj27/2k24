@@ -231,6 +231,33 @@ function createCard(confession, isNew = false) {
             </button>
 
         </div>
+<div class="reply-section">
+
+        <button
+            class="show-replies"
+            data-id="${confession.id}">
+            💬 Replies
+        </button>
+
+        <div class="reply-input">
+
+            <input
+                type="text"
+                class="reply-text"
+                placeholder="Write a reply...">
+
+            <button
+                class="send-reply"
+                data-id="${confession.id}">
+                Send
+            </button>
+
+        </div>
+
+        <div class="reply-list"></div>
+
+</div>
+
 
     `;
 
@@ -245,6 +272,7 @@ function createCard(confession, isNew = false) {
     }
 
     attachReaction(card);
+    loadReplies(card, confession.id);
 
 }
 function attachReaction(card) {
@@ -346,6 +374,47 @@ function attachReaction(card) {
         }
 
     });
+const sendBtn = card.querySelector(".send-reply");
+
+sendBtn.addEventListener("click", async () => {
+
+    const input = card.querySelector(".reply-text");
+
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    try {
+
+        const { data } = await axios.post(
+            `${API}/${sendBtn.dataset.id}/replies`,
+            {
+                message,
+                sessionId
+            }
+        );
+
+        const list = card.querySelector(".reply-list");
+
+        list.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="reply">
+                <b>Anonymous</b>
+                <p>${escapeHTML(message)}</p>
+            </div>
+            `
+        );
+
+        input.value = "";
+
+    } catch (err) {
+
+        alert("Unable to reply");
+
+    }
+
+});
 
 }
 // Reaction
@@ -372,6 +441,31 @@ function timeAgo(date) {
         return `${days} day${days > 1 ? "s" : ""} ago`;
 
     return new Date(date).toLocaleDateString();
+}
+async function loadReplies(card, id) {
+
+    const { data } = await axios.get(
+        `${API}/${id}/replies`
+    );
+
+    const list = card.querySelector(".reply-list");
+
+    list.innerHTML = "";
+
+    data.forEach(reply => {
+
+        list.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="reply">
+                <b>Anonymous</b>
+                <p>${escapeHTML(reply.message)}</p>
+            </div>
+            `
+        );
+
+    });
+
 }
 
 // Escape HTML
